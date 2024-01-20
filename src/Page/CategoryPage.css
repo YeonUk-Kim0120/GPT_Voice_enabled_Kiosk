@@ -1,0 +1,112 @@
+.container-colum {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 10px;
+}
+
+.container-row {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  gap: 10px;
+}
+
+.container-menu-row {
+  display: grid;
+  grid-template-rows: 1fr 2fr 2fr 2fr 1fr;
+  gap: 5px;
+}
+
+.container-baguni-col {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+
+.container-baguni-row {
+  display: grid;
+  grid-template-rows: 3fr 2fr;
+  gap: 10px;
+}
+
+.container-baguni-rowrow {
+  display: grid;
+  grid-template-rows: 2fr 12fr 3fr;
+  gap: 3px;
+}
+
+.category-button {
+  width: 92px;
+  height: 65px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #fcac43;
+  border: 1px solid gray;
+}
+
+.team-color {
+  background-color: #fcac43;
+}
+
+.boonga {
+  width: 140px;
+  height: 110px;
+}
+
+.pay-button {
+  width: 130px;
+  height: 50px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 22px;
+  background-color: #3d4dc6;
+  border-radius: 15px;
+}
+
+.basket {
+  border-radius: 10px;
+}
+
+.team-logo {
+  width: 80px;
+  height: 90px;
+  margin-top: 10%;
+  margin-left: 5%;
+  display: block;
+}
+
+.brand-logo {
+  width: 150px;
+  height: 50px;
+  display: block;
+  margin-left: 15%;
+}
+.baguni-text-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.baguni-text1 {
+  color: #000000;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.baguni-text2 {
+  color: #000000;
+  font-size: 10px;
+}
+
+.baguni-text3 {
+  color: #000000;
+  font-size: 17px;
+}
+.baguni-text {
+  vertical-align: text-bottom;
+}
+.baguni-text4 {
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+  font-size: 23px;
+}

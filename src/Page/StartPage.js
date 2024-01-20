@@ -9,30 +9,41 @@ function StartPage() {
   };
 
   const ScreenStyle = {
-    width: "370px",
-    height: "824px",
+    width: "386px",
+    height: "840px",
     margin: "0 auto",
     border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
   };
 
   return (
-    <div style={ScreenStyle} onClick={getTouch}>
+    <div style={ScreenStyle} onClick={getTouch} className="container-row">
       {touch ? (
         <h1>
           <Navigate to="/category" />
         </h1>
       ) : (
-        <div className="center-container">
-          <img
-            src="https://img.79plus.co.kr/megahp/common/img/bi_logo1.png"
-            className="Logo"
-          />
-          <h3 className="Text">화면을 터치해 주세요!!</h3>
-          <img
-            src="https://play-lh.googleusercontent.com/bPWZ36dOPSgSo6XuvgBFe_8wvVzAysFgd6aETrMgELq29j0WuC3Hu5yP9l3tQPJ1cLw=w600-h300-pc0xffffff-pd"
-            className="Boong"
-          />
-        </div>
+        <>
+          <div></div>
+          <div></div>
+          <div>
+            <div className="Logo">
+              <img
+                src={`${process.env.PUBLIC_URL}/Imgs/BrandLogo.png`}
+                className="Logo"
+              />
+            </div>
+            <h3 className="Text">화면을 터치해 주세요!!</h3>
+          </div>
+          <div></div>
+          <div className="container-col">
+            <div></div>
+            <div></div>
+            <img
+              src={`${process.env.PUBLIC_URL}/Imgs/Boonga.png`}
+              className="Boong"
+            />
+          </div>
+        </>
       )}
     </div>
   );
