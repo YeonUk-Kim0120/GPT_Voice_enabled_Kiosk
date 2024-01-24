@@ -1,9 +1,11 @@
 import './Call.css';
 
-function Call() {
+function Call({ showModal }) {
   return (
     <div>
-      <button className="callButton">직원 호출!</button>
+      <button className="callButton" onClick={showModal}>
+        직원 호출!
+      </button>
     </div>
   );
 }

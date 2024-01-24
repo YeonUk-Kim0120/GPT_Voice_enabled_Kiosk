@@ -1,7 +1,7 @@
 import logo from '../imgs/logo.png';
 import './PayOK.css';
 import receipt from '../imgs/영수증.svg';
-import { useOrder } from '../component/orderContext';
+import { useOrder } from './orderContext';
 
 function PayOK() {
   const [orderNum] = useOrder();

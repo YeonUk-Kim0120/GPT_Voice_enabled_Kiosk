@@ -1,5 +1,4 @@
-import { OrderProvider } from '../component/orderContext';
-import PayOK from './PayOK';
+import PayOK from '../component/PayOK';
 
 function PayOKPage() {
   return <PayOK />;

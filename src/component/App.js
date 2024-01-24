@@ -1,5 +1,5 @@
 // App.js
-import React from 'react';
+import React, { useState } from 'react';
 import BackButton from './BackButton';
 import './App.css';
 import logo from '../imgs/logo.png';
@@ -9,15 +9,15 @@ import pre_card from '../imgs/선불카드 2.svg';
 import kakaopay from '../imgs/카카오페이 1.svg';
 import Payment from './Payment';
 import Call from './Call';
-import { Link } from 'react-router-dom';
-import PayOKButton from './PayOKButton';
-import { useOrder } from './orderContext';
+import Pay from './Pay';
 
 function App() {
-  const [orderNum, incrementOrderNum] = useOrder();
+  const [modal, setModal] = useState(false);
+  const [selectedNum, setSelectedNum] = useState(null);
 
-  const handlePayOKClick = () => {
-    incrementOrderNum();
+  const showModal = (num) => {
+    setSelectedNum(num);
+    setModal(true);
   };
 
   return (
@@ -28,27 +28,41 @@ function App() {
       </div>
       <h1 className="payment">결제하기</h1>
       <div className="paymentRow">
-        <Link to="pay1">
-          <Payment method={'카드 결제'} imgSrc={card} />
-        </Link>
-        <Link to="pay2">
-          <Payment method={'기프티콘'} imgSrc={gifticon} />
-        </Link>
+        <div>
+          <Payment
+            method={'카드 결제'}
+            imgSrc={card}
+            showModal={() => showModal(1)}
+          />
+        </div>
+        <div>
+          <Payment
+            method={'기프티콘'}
+            imgSrc={gifticon}
+            showModal={() => showModal(2)}
+          />
+        </div>
       </div>
       <div className="paymentRow">
-        <Link to="pay2">
-          <Payment method={'선불 카드'} imgSrc={pre_card} />
-          <Payment method={'카카오페이'} imgSrc={kakaopay} />
-        </Link>
+        <div>
+          <Payment
+            method={'선불 카드'}
+            imgSrc={pre_card}
+            showModal={() => showModal(2)}
+          />
+        </div>
+        <div>
+          <Payment
+            method={'카카오페이'}
+            imgSrc={kakaopay}
+            showModal={() => showModal(2)}
+          />
+        </div>
       </div>
       <div className="smallButton">
-        <Link to="call">
-          <Call />
-        </Link>
-        <Link to="payOK">
-          <PayOKButton onClick={handlePayOKClick} />
-        </Link>
+        <Call showModal={() => showModal(3)} />
       </div>
+      {modal && <Pay setModal={setModal} num={selectedNum} />}
     </div>
   );
 }

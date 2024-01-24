@@ -4,9 +4,9 @@ function PaymentPic({ method, imgSrc }) {
   return <img className="picture" src={imgSrc} alt={method} />;
 }
 
-function Payment({ method, imgSrc }) {
+function Payment({ method, imgSrc, showModal }) {
   return (
-    <button className="button">
+    <button className="button" onClick={showModal}>
       <PaymentPic imgSrc={imgSrc} />
       <h3>{method}</h3>
       {method === '카드 결제' ? (
