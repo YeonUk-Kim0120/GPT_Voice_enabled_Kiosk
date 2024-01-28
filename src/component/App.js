@@ -2,18 +2,19 @@
 import React, { useState } from 'react';
 import BackButton from './BackButton';
 import './App.css';
-import logo from '../imgs/logo.png';
-import card from '../imgs/card.svg';
-import gifticon from '../imgs/Vector.svg';
-import pre_card from '../imgs/선불카드 2.svg';
-import kakaopay from '../imgs/카카오페이 1.svg';
-import Payment from './Payment';
 import Call from './Call';
 import Pay from './Pay';
+import Payment from './Payment';
+import MenuOptionBoth from './MenuOptionBoth';
 
 function App() {
   const [modal, setModal] = useState(false);
   const [selectedNum, setSelectedNum] = useState(null);
+  const [option, setOption] = useState(false);
+
+  const showOption = () => {
+    setOption(true);
+  };
 
   const showModal = (num) => {
     setSelectedNum(num);
@@ -22,23 +23,29 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={showOption}>옵션</button>
+      {option && <MenuOptionBoth id={3} setOption={setOption} />}
       <div className="nav">
         <BackButton />
-        <img src={logo} alt="카페 로고" className="logo" />
+        <img
+          src={`${process.env.PUBLIC_URL}/Imgs/logo.png`}
+          alt="카페 로고"
+          className="logo"
+        />
       </div>
       <h1 className="payment">결제하기</h1>
       <div className="paymentRow">
         <div>
           <Payment
             method={'카드 결제'}
-            imgSrc={card}
+            imgSrc={`${process.env.PUBLIC_URL}/Imgs/card.svg`}
             showModal={() => showModal(1)}
           />
         </div>
         <div>
           <Payment
             method={'기프티콘'}
-            imgSrc={gifticon}
+            imgSrc={`${process.env.PUBLIC_URL}/Imgs/Vector.svg`}
             showModal={() => showModal(2)}
           />
         </div>
@@ -47,14 +54,14 @@ function App() {
         <div>
           <Payment
             method={'선불 카드'}
-            imgSrc={pre_card}
+            imgSrc={`${process.env.PUBLIC_URL}/Imgs/선불카드 2.svg`}
             showModal={() => showModal(2)}
           />
         </div>
         <div>
           <Payment
             method={'카카오페이'}
-            imgSrc={kakaopay}
+            imgSrc={`${process.env.PUBLIC_URL}/Imgs/카카오페이 1.svg`}
             showModal={() => showModal(2)}
           />
         </div>
