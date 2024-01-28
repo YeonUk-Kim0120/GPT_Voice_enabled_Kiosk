@@ -9,23 +9,8 @@ function CategoryPage() {
   // const [payIsOpen, setPayIsOpen] = useState(false);
   // const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const itemsPerPage = 9;
-  const totalPages = Math.ceil(menus.length / itemsPerPage);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = menus.slice(indexOfFirstItem, indexOfLastItem);
-
-  const goToNextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const goToPrevPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
-
-  const costSum = 123000;
   const getMenus = async () => {
     const json = await (await fetch("/megaMenu2.json")).json();
     // console.log(json);
@@ -36,6 +21,29 @@ function CategoryPage() {
   useEffect(() => {
     getMenus();
   }, []);
+  const navigate = useNavigate();
+
+  const filteredMenus = menus.filter((menu) => {
+    // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
+    if (selectedCategory === "all") return true;
+    // 그렇지 않으면 선택된 카테고리에 해당하는 메뉴만 반환
+    return menu.category === selectedCategory;
+  });
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(filteredMenus.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredMenus.slice(indexOfFirstItem, indexOfLastItem);
+
+  const goToNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const goToPrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const costSum = 123000;
 
   const ScreenStyle = {
     width: "386px",
@@ -69,19 +77,71 @@ function CategoryPage() {
                 className="team-logo"
               />
               <button className="category-button">추천</button>
-              <button className="category-button">커피</button>
-              <button className="category-button">
-                스무디 <br />
-                프라페
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("커피");
+                  setCurrentPage(1);
+                }}
+              >
+                커피
               </button>
-              <button className="category-button">
-                에이드 <br />
-                주스
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("음료 메뉴");
+                  setCurrentPage(1);
+                }}
+              >
+                음료 메뉴
               </button>
-              <button className="category-button">차(Tea)</button>
-              <button className="category-button">음료</button>
-              <button className="category-button">디저트</button>
-              <button className="category-button">기타</button>
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("디카페인");
+                  setCurrentPage(1);
+                }}
+              >
+                디카페인
+              </button>
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("TEA");
+                  setCurrentPage(1);
+                }}
+              >
+                TEA
+              </button>
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("스무디, 프라페");
+                  setCurrentPage(1);
+                }}
+              >
+                스무디,
+                <br /> 프라페
+              </button>
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("에이드, 주스");
+                  setCurrentPage(1);
+                }}
+              >
+                에이드,
+                <br /> 주스
+              </button>
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("디저트");
+                  setCurrentPage(1);
+                }}
+              >
+                디저트
+              </button>
             </div>
             <div className="container-menu-row">
               <div className="header">
