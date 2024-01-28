@@ -1,18 +1,41 @@
 import { useEffect, useState } from "react";
-import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
+// import Modal from "react-modal";
 import "./CategoryPage.css";
-
 function CategoryPage() {
   const [loading, setLoading] = useState(false);
-  const [menus, setMenu] = useState([]);
-  const [payIsOpen, setPayIsOpen] = useState(false);
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [menus, setMenus] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  // const [payIsOpen, setPayIsOpen] = useState(false);
+  // const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(menus.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = menus.slice(indexOfFirstItem, indexOfLastItem);
+
+  const goToNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const goToPrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
   const costSum = 123000;
-  const getMenu = async () => {
-    const json = await (await fetch(``)).json();
-    setMenu(json.data.menus);
+  const getMenus = async () => {
+    const json = await (await fetch("/megaMenu2.json")).json();
+    // console.log(json);
+    setMenus(json);
     setLoading(false);
   };
+
+  useEffect(() => {
+    getMenus();
+  }, []);
 
   const ScreenStyle = {
     width: "386px",
@@ -28,9 +51,9 @@ function CategoryPage() {
     border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
   };
 
-  useEffect(() => {
-    getMenu();
-  }, []);
+  const goHome = function () {
+    navigate("/");
+  };
 
   //버튼들 만들기
   return (
@@ -61,16 +84,76 @@ function CategoryPage() {
               <button className="category-button">기타</button>
             </div>
             <div className="container-menu-row">
-              <div>
-                <img
-                  src={`${process.env.PUBLIC_URL}/Imgs/BrandLogo.png`}
-                  className="brand-logo"
-                />
+              <div className="header">
+                <div className="brand-logo">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/Imgs/BrandLogo.png`}
+                    className="brand-logo"
+                  />
+                </div>
+                <div className="home-icon">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/Imgs/home.png`}
+                    className="home-icon"
+                    onClick={goHome}
+                  />
+                </div>
               </div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+
+              <div className="menu-grid-container">
+                {" "}
+                {/* 이 div를 추가 */}
+                {currentItems.map((menu) => (
+                  <div key={menu.id} className="menu-item">
+                    <img
+                      src={`${process.env.PUBLIC_URL}/Imgs/아메리카노.png`}
+                      alt={menu.name}
+                      className="menu-image1"
+                    />
+                    <div className="menu-name1">{menu.name}</div>
+                    <div className="menu-price1">
+                      {Boolean(Number(menu.price_hot))
+                        ? menu.price_hot
+                        : Boolean(Number(menu.price_ice))
+                        ? menu.price_ice
+                        : menu.price_constant}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bottom">
+                <div className="page-indicators">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/Imgs/dot1.png`}
+                    className="page-dot1"
+                  />
+                  <img
+                    src={`${process.env.PUBLIC_URL}/Imgs/dot2.png`}
+                    className="page-dot2"
+                  />
+                  <img
+                    src={`${process.env.PUBLIC_URL}/Imgs/dot2.png`}
+                    className="page-dot2"
+                  />
+                </div>
+                <div className="page-buttons">
+                  {currentPage > 1 && (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/Imgs/left.png`}
+                      className="page-button"
+                      onClick={goToPrevPage}
+                    />
+                  )}
+                  {currentPage < totalPages && (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/Imgs/right.png`}
+                      className="page-button"
+                      onClick={goToNextPage}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
           </div>
           <div className="container-baguni-col">

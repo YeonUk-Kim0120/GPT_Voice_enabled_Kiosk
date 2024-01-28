@@ -7,7 +7,7 @@ function StartPage() {
   const getTouch = function () {
     setTouch(true);
   };
-
+  let a = 1;
   const ScreenStyle = {
     width: "386px",
     height: "840px",

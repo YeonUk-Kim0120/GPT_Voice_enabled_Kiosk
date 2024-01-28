@@ -1,7 +1,40 @@
+.container-menu-row {
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+  gap: 5px;
+}
+
+.menu-grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* 한 줄에 3개의 아이템을 표시합니다. */
+  grid-template-rows: repeat(3, 1fr); /* 세 줄을 만듭니다. */
+  gap: 1px; /* 아이템 사이의 간격을 설정합니다. */
+  width: 32vh;
+  height: 51vh;
+}
+
+.menu-item {
+  display: grid;
+  grid-template-rows: 3fr 1fr 1fr;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;  */
+  background: rgb(255, 254, 254); /* 배경색 */
+  border: 2px solid rgb(227, 191, 30);
+  padding: 10px;
+  border-radius: 10px; /* 둥근 모서리 */
+  width: 6vh; /* 부모 요소에 맞게 너비를 설정합니다. */
+  height: 14vh; /* 내용에 맞게 높이를 조절합니다. */
+}
+
 .container-colum {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 10px;
+  gap: 5px;
 }
 
 .container-row {
@@ -9,13 +42,16 @@
   grid-template-rows: 3fr 1fr;
   gap: 10px;
 }
-
-.container-menu-row {
-  display: grid;
-  grid-template-rows: 1fr 2fr 2fr 2fr 1fr;
-  gap: 5px;
+.menu-image1 {
+  width: 10vh; /* 이미지의 너비를 메뉴 아이템의 80%로 설정합니다. */
+  height: 10vh; /* 이미지의 높이를 자동으로 조절합니다. */
+  object-fit: contain; /* 이미지 비율을 유지하면서 컨테이너에 맞게 조절합니다. */
 }
 
+/* =------------- */
+/* =------------- */
+/* =------------- */
+/* =------------- */
 .container-baguni-col {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -35,7 +71,7 @@
 }
 
 .category-button {
-  width: 92px;
+  width: 93px;
   height: 65px;
   color: #ffffff;
   font-weight: bold;
@@ -76,10 +112,16 @@
 }
 
 .brand-logo {
-  width: 150px;
+  width: 120px;
   height: 50px;
   display: block;
-  margin-left: 15%;
+  margin: auto;
+}
+.home-icon {
+  width: 25px;
+  height: 27px;
+  display: block;
+  margin: auto;
 }
 .baguni-text-container {
   display: grid;
@@ -109,4 +151,58 @@
   font-weight: bold;
   text-align: center;
   font-size: 23px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 5px;
+}
+
+.bottom {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+
+.page-button {
+  width: 32;
+  height: 32;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.page-buttons {
+  display: block;
+  margin: auto;
+}
+
+.page-indicators {
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 세로축 기준 중앙 정렬 */
+  gap: 5px; /* 점들 사이의 간격 */
+}
+
+.page-dot1 {
+  width: 10px; /* 점 이미지의 가로 크기 */
+  height: 10px; /* 점 이미지의 세로 크기 */
+  /* 추가적인 스타일링이 필요하다면 여기에 추가 */
+}
+
+.page-dot2 {
+  width: 5px; /* 점 이미지의 가로 크기 */
+  height: 5px; /* 점 이미지의 세로 크기 */
+  /* 추가적인 스타일링이 필요하다면 여기에 추가 */
+}
+
+.menu-name1 {
+  font-size: 10px; /* 글자 크기 */
+  color: #010101; /* 글자 색상 */
+  text-align: right;
+}
+
+.menu-price1 {
+  color: #000000; /* 글자 색상 */
+  font-size: 11px; /* 글자 크기 */
+  text-align: right;
 }
