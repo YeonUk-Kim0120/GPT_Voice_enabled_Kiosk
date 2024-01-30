@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Pay.css';
-import { useOrder } from './orderContext';
+import { useOrder } from '../hooks/orderContext';
 
 function Pay({ setModal, num }) {
   const [orderNum, incrementOrderNum] = useOrder();

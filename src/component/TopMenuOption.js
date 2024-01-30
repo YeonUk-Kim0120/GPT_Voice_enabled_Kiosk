@@ -20,7 +20,7 @@ function TopMenuOption({ name, price, count, setCount }) {
         <p className="menu-name" id="name">
           {name}
         </p>
-        <p className="menu-price">￦ {price}</p>
+        <p className="menu-price">￦ {price.toLocaleString()}</p>
         <div className="count-container">
           <button className="count-button" onClick={minusButton}>
             -
