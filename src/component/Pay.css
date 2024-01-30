@@ -1,0 +1,35 @@
+.info-container {
+  width: 370px;
+  height: 256px;
+  background-color: #fcac43;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(11px);
+  text-align: center;
+}
+
+#cancelButton {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+}
+
+#okButton {
+  position: absolute;
+  bottom: 20px;
+  right: 80px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+}
