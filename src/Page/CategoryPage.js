@@ -3,17 +3,16 @@ import { useNavigate } from "react-router-dom";
 // import Modal from "react-modal";
 import "./CategoryPage.css";
 function CategoryPage() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [menus, setMenus] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState("all");
   // const [payIsOpen, setPayIsOpen] = useState(false);
   // const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
   const getMenus = async () => {
-    const json = await (await fetch("/megaMenu2.json")).json();
-    // console.log(json);
+    const json = await (await fetch("/megaMenu.json")).json();
     setMenus(json);
     setLoading(false);
   };
@@ -21,11 +20,11 @@ function CategoryPage() {
   useEffect(() => {
     getMenus();
   }, []);
-  const navigate = useNavigate();
 
   const filteredMenus = menus.filter((menu) => {
     // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
-    if (selectedCategory === "all") return true;
+    if (selectedCategory === "all")
+      return [3, 4, 21, 63, 66, 71, 73, 78, 79].includes(menu.id);
     // 그렇지 않으면 선택된 카테고리에 해당하는 메뉴만 반환
     return menu.category === selectedCategory;
   });
@@ -76,7 +75,15 @@ function CategoryPage() {
                 src={`${process.env.PUBLIC_URL}/Imgs/logo.png`}
                 className="team-logo"
               />
-              <button className="category-button">추천</button>
+              <button
+                className="category-button"
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setCurrentPage(1);
+                }}
+              >
+                추천
+              </button>
               <button
                 className="category-button"
                 onClick={() => {
@@ -164,12 +171,13 @@ function CategoryPage() {
                 {" "}
                 {/* 이 div를 추가 */}
                 {currentItems.map((menu) => (
-                  <div key={menu.id} className="menu-item">
+                  <div key={menu.id} className="menu-item1">
                     <img
                       src={`${process.env.PUBLIC_URL}/Imgs/아메리카노.png`}
                       alt={menu.name}
                       className="menu-image1"
                     />
+                    <div></div>
                     <div className="menu-name1">{menu.name}</div>
                     <div className="menu-price1">
                       {Boolean(Number(menu.price_hot))
@@ -184,7 +192,7 @@ function CategoryPage() {
 
               <div className="bottom">
                 <div className="page-indicators">
-                  <img
+                  {/* <img
                     src={`${process.env.PUBLIC_URL}/Imgs/dot1.png`}
                     className="page-dot1"
                   />
@@ -195,7 +203,10 @@ function CategoryPage() {
                   <img
                     src={`${process.env.PUBLIC_URL}/Imgs/dot2.png`}
                     className="page-dot2"
-                  />
+                  /> */}
+                  {currentPage}
+                  {"/"}
+                  {totalPages}
                 </div>
                 <div className="page-buttons">
                   {currentPage > 1 && (

@@ -7,7 +7,7 @@ function StartPage() {
   const getTouch = function () {
     setTouch(true);
   };
-  let a = 1;
+
   const ScreenStyle = {
     width: "386px",
     height: "840px",
@@ -18,9 +18,9 @@ function StartPage() {
   return (
     <div style={ScreenStyle} onClick={getTouch} className="container-row">
       {touch ? (
-        <h1>
+        <>
           <Navigate to="/category" />
-        </h1>
+        </>
       ) : (
         <>
           <div></div>
