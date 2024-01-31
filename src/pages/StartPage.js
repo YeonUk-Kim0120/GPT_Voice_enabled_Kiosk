@@ -28,7 +28,7 @@ function StartPage() {
           <div>
             <div className="Logo">
               <img
-                src={`${process.env.PUBLIC_URL}/Imgs/BrandLogo.png`}
+                src={`${process.env.PUBLIC_URL}/imgs/BrandLogo.png`}
                 className="Logo"
               />
             </div>
@@ -39,7 +39,7 @@ function StartPage() {
             <div></div>
             <div></div>
             <img
-              src={`${process.env.PUBLIC_URL}/Imgs/Boonga.png`}
+              src={`${process.env.PUBLIC_URL}/imgs/Boonga.png`}
               className="Boong"
             />
           </div>

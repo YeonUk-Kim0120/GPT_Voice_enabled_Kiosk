@@ -44,6 +44,11 @@ function CategoryPage() {
 
   const costSum = 123000;
 
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
   const ScreenStyle = {
     width: "386px",
     height: "840px",
@@ -72,80 +77,72 @@ function CategoryPage() {
           <div className="container-colum">
             <div className="team-color">
               <img
-                src={`${process.env.PUBLIC_URL}/Imgs/logo.png`}
+                src={`${process.env.PUBLIC_URL}/imgs/blogo.png`}
                 className="team-logo"
               />
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("all");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "all" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("all")}
               >
                 추천
               </button>
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("커피");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "커피" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("커피")}
               >
                 커피
               </button>
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("음료 메뉴");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "음료 메뉴" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("음료 메뉴")}
               >
                 음료 메뉴
               </button>
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("디카페인");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "디카페인" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("디카페인")}
               >
                 디카페인
               </button>
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("TEA");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "TEA" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("TEA")}
               >
                 TEA
               </button>
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("스무디, 프라페");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "스무디, 프라페" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("스무디, 프라페")}
               >
                 스무디,
                 <br /> 프라페
               </button>
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("에이드, 주스");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "에이드, 주스" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("에이드, 주스")}
               >
                 에이드,
                 <br /> 주스
               </button>
               <button
-                className="category-button"
-                onClick={() => {
-                  setSelectedCategory("디저트");
-                  setCurrentPage(1);
-                }}
+                className={`category-button ${
+                  selectedCategory === "디저트" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryClick("디저트")}
               >
                 디저트
               </button>
@@ -154,13 +151,13 @@ function CategoryPage() {
               <div className="header">
                 <div className="brand-logo">
                   <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/BrandLogo.png`}
+                    src={`${process.env.PUBLIC_URL}/imgs/BrandLogo.png`}
                     className="brand-logo"
                   />
                 </div>
                 <div className="home-icon">
                   <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/home.png`}
+                    src={`${process.env.PUBLIC_URL}/imgs/home.png`}
                     className="home-icon"
                     onClick={goHome}
                   />
@@ -173,7 +170,7 @@ function CategoryPage() {
                 {currentItems.map((menu) => (
                   <div key={menu.id} className="menu-item1">
                     <img
-                      src={`${process.env.PUBLIC_URL}/Imgs/아메리카노.png`}
+                      src={`${process.env.PUBLIC_URL}/imgs/아메리카노.png`}
                       alt={menu.name}
                       className="menu-image1"
                     />
@@ -193,15 +190,15 @@ function CategoryPage() {
               <div className="bottom">
                 <div className="page-indicators">
                   {/* <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/dot1.png`}
+                    src={`${process.env.PUBLIC_URL}/imgs/dot1.png`}
                     className="page-dot1"
                   />
                   <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/dot2.png`}
+                    src={`${process.env.PUBLIC_URL}/imgs/dot2.png`}
                     className="page-dot2"
                   />
                   <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/dot2.png`}
+                    src={`${process.env.PUBLIC_URL}/imgs/dot2.png`}
                     className="page-dot2"
                   /> */}
                   {currentPage}
@@ -211,14 +208,14 @@ function CategoryPage() {
                 <div className="page-buttons">
                   {currentPage > 1 && (
                     <img
-                      src={`${process.env.PUBLIC_URL}/Imgs/left.png`}
+                      src={`${process.env.PUBLIC_URL}/imgs/left.png`}
                       className="page-button"
                       onClick={goToPrevPage}
                     />
                   )}
                   {currentPage < totalPages && (
                     <img
-                      src={`${process.env.PUBLIC_URL}/Imgs/right.png`}
+                      src={`${process.env.PUBLIC_URL}/imgs/right.png`}
                       className="page-button"
                       onClick={goToNextPage}
                     />
@@ -229,10 +226,8 @@ function CategoryPage() {
           </div>
           <div className="container-baguni-col">
             <div style={basket} className="basket container-baguni-rowrow">
-              <div className="baguni-text1">
-                -주문한 상품 <hr />
-              </div>
-              <div>백에서 받아오기</div>
+              <div className="baguni-text1">-주문한 상품</div>
+              <div className="baguni-text2">백에서 받아오기</div>
               <div className="baguni-text-container">
                 <div className="baguni-text3"> 총 금액:</div>
                 <div className="baguni-text4">{`${costSum}원`}</div>
@@ -241,7 +236,7 @@ function CategoryPage() {
             <div className="container-baguni-row">
               <div>
                 <img
-                  src={`${process.env.PUBLIC_URL}/Imgs/Boonga.png`}
+                  src={`${process.env.PUBLIC_URL}/imgs/Boonga.png`}
                   className="boonga"
                 />
               </div>
