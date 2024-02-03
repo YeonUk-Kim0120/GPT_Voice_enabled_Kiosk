@@ -65,7 +65,7 @@
 }
 .category-button.active {
   text-decoration: underline;
-  border: 2px solid #b5aca0;
+  border: 5px solid #b5aca0;
 }
 .team-color {
   background-color: #fcac43;
