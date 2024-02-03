@@ -1,16 +1,34 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Modal from "react-modal";
+import Modal from "react-modal";
 import "./CategoryPage.css";
+
+const menusDetail = [
+  {
+    id: 1,
+    menu: "아메리카노",
+    options: "아이스, 샷 추가x1",
+    price: 4000,
+    number: 1,
+  },
+  {
+    id: 2,
+    menu: "아포카토",
+    options: "샷 추가x3",
+    price: 5000,
+    number: 2,
+  },
+];
+
 function CategoryPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [menus, setMenus] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  // const [payIsOpen, setPayIsOpen] = useState(false);
+  const [payIsOpen, setPayIsOpen] = useState(false);
   // const [menuIsOpen, setMenuIsOpen] = useState(false);
-
+  const isZero = menusDetail.length === 0;
   const getMenus = async () => {
     const json = await (await fetch("/megaMenu.json")).json();
     setMenus(json);
@@ -56,6 +74,19 @@ function CategoryPage() {
     border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
   };
 
+  const customStyles = {
+    content: {
+      // top: "0", // 세로 방향에서 화면 꼭대기에 위치
+      left: "5%", // 가로 방향에서 화면의 중앙에 위치
+      // right: "auto",
+      // bottom: "auto",
+      // marginRight: "-50%",
+      // transform: "translate(-50%, 0)", // 중앙 정렬을 위한 변환
+      width: "80%", // 모달의 가로 크기는 화면의 50%
+      height: "80%", // 모달의 세로 크기는 화면의 100%
+    },
+  };
+
   const basket = {
     width: "230px",
     height: "185px",
@@ -67,7 +98,10 @@ function CategoryPage() {
     navigate("/");
   };
 
-  //버튼들 만들기
+  const goPay = function () {
+    setPayIsOpen(true);
+  };
+
   return (
     <div style={ScreenStyle} className="container-row">
       {loading ? (
@@ -241,12 +275,91 @@ function CategoryPage() {
                 />
               </div>
               <div>
-                <button className="pay-button">결제하기</button>
+                <button className="pay-button" onClick={goPay}>
+                  결제하기
+                </button>
               </div>
             </div>
           </div>
         </>
       )}
+      <Modal
+        isOpen={payIsOpen}
+        onRequestClose={() => setPayIsOpen(false)}
+        // style={customStyles}
+        contentLabel="pay Modal"
+        className="detail-modal"
+      >
+        <div className="detail-modal-container">
+          <div className="detail-modal-header-container">
+            <div className="detail-modal-date-container">
+              <p className="detail-modal-text-brand">메가커피 통일점</p>
+              <p className="detail-modal-text-date">
+                2024년 3월 2일 오전 9시 12분
+              </p>
+            </div>
+            <div>
+              <img
+                src={`${process.env.PUBLIC_URL}/imgs/Boonga.png`}
+                className="boonga"
+              />
+            </div>
+          </div>
+          <div>
+            <div className="detail-modal-checktext-container">
+              주문 세부내용을 확인해 주세요!
+            </div>
+          </div>
+          <div className="detail-modal-list">
+            {!isZero
+              ? menusDetail.map((menuDetail) => (
+                  <div key={menuDetail.id} className="detail-modal-item">
+                    <p>{menuDetail.menu}</p>
+                    <span className="">{menuDetail.options}</span>
+                    <span className="">{menuDetail.number} 개</span>
+                    <span className="">
+                      {menuDetail.number * menuDetail.price} 원
+                    </span>
+                  </div>
+                ))
+              : "현재 선택한 메뉴가 없습니다."}
+          </div>
+          <div className="detail-modal-total-container">
+            <span>총 수량:</span>
+            <span>{"N"} 개</span>
+          </div>
+          <div className="detail-modal-total-container">
+            <span>총 결재금액:</span>
+            <span>{"4,000"} 원</span>
+          </div>
+          <div className="detail-modal-btns-container">
+            <div>
+              <button
+                className="detail-modal-cancel-button"
+                onClick={() => setPayIsOpen(false)}
+              >
+                취소
+              </button>
+            </div>
+            <div>
+              <button
+                className="detail-modal-in-button"
+                onClick={() => setPayIsOpen(false)}
+              >
+                먹고가기
+              </button>
+            </div>
+            <div>
+              <button
+                className="detail-modal-out-button"
+                onClick={() => setPayIsOpen(false)}
+              >
+                포장하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }
