@@ -298,7 +298,6 @@ function CategoryPage() {
               <p className="detail-modal-text-brand">메가커피 통일점</p>
               <p className="detail-modal-text-date">
                 <CurrentTime />
-                아놔.
               </p>
             </div>
             <div>
