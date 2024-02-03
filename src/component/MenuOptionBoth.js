@@ -49,6 +49,10 @@ function MenuOptionBoth({ id, setOption }) {
     setIsTempClicked(clickedValue);
   };
 
+  const handleHoldClick = () => {
+    const product = { ...menu, totalPrice, isCupClicked, isTempClicked };
+  };
+
   return (
     <div className="option-container">
       {menu ? (
@@ -187,7 +191,9 @@ function MenuOptionBoth({ id, setOption }) {
             <button id="cancel-button" onClick={closeOption}>
               취소
             </button>
-            <button id="hold-button">담기</button>
+            <button id="hold-button" onClick={handleHoldClick}>
+              담기
+            </button>
           </div>
         </>
       ) : null}
