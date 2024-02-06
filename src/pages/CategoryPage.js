@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import './CategoryPage.css';
-import MenuOptionBoth from '../component/MenuOptionBoth';
+import '../component/CurrentTime';
+import CurrentTime from '../component/CurrentTime';
 
 const menusDetail = [
   {
