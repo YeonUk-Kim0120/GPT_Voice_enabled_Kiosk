@@ -1,31 +1,31 @@
 import { useEffect, useRef, useState } from 'react';
-import { getMenus } from '../api';
 import './MenuOptionBoth.css';
 import TopMenuOption from './TopMenuOption';
 
-function MenuOptionBoth({ id, setOption }) {
-  const [menus, setMenus] = useState([]);
+function MenuOptionBoth({ id, setOption, menus }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [count, setCount] = useState(1);
   const [isCupClicked, setIsCupClicked] = useState(null);
   const [isTempClicked, setIsTempClicked] = useState(null);
+  const [loading, setLoading] = useState(false);
   const priceRef = useRef(0);
 
-  useEffect(() => {
-    const fetchMenus = async () => {
-      const menuData = await getMenus();
-      setMenus(menuData);
-    };
-
-    fetchMenus();
-  }, []);
-
+  console.log(menus);
   const menu = menus[id - 1];
+  console.log(menu);
   useEffect(() => {
-    if (menu) {
-      priceRef.current = Math.min(menu.price_hot, menu.price_ice);
-      setTotalPrice((priceRef.current * count).toLocaleString());
+    let selectedPrice = 0;
+
+    if (menu.price_hot !== 0 && menu.price_ice !== 0) {
+      selectedPrice = Math.min(menu.price_hot, menu.price_ice);
+    } else if (menu.price_hot == 0) {
+      selectedPrice = menu.price_ice;
+    } else if (menu.price_ice == 0) {
+      selectedPrice = menu.price_hot;
     }
+
+    priceRef.current = selectedPrice;
+    setTotalPrice((selectedPrice * count).toLocaleString());
   }, [menu, count]);
 
   let price_same;
@@ -51,7 +51,9 @@ function MenuOptionBoth({ id, setOption }) {
 
   return (
     <div className="option-container">
-      {menu ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
         <>
           <div className="top-menu-option">
             <TopMenuOption
@@ -190,7 +192,7 @@ function MenuOptionBoth({ id, setOption }) {
             <button id="hold-button">담기</button>
           </div>
         </>
-      ) : null}
+      )}
     </div>
   );
 }

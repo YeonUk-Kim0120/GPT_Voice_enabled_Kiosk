@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
-import "./StartPage.css";
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import './StartPage.css';
 
 function StartPage() {
   const [touch, setTouch] = useState(false);
@@ -9,10 +9,10 @@ function StartPage() {
   };
 
   const ScreenStyle = {
-    width: "386px",
-    height: "840px",
-    margin: "0 auto",
-    border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
+    width: '386px',
+    height: '840px',
+    margin: '0 auto',
+    border: '1px solid black', // 경계를 확인하기 위한 임시 스타일
   };
 
   return (
