@@ -370,3 +370,7 @@
   border-radius: 10px;
   border: none;
 }
+
+.detail-modal {
+  padding: 0;
+}
