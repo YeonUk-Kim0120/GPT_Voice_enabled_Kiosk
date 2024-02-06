@@ -61,13 +61,15 @@
   font-size: 16px;
   background-color: #fcac43;
   border: 1px solid gray;
+  border-radius: 10px;
 }
 .category-button.active {
   text-decoration: underline;
-  border: 2px solid #000000;
+  border: 5px solid #b5aca0;
 }
 .team-color {
   background-color: #fcac43;
+  border-radius: 10px;
 }
 
 .boonga {
@@ -281,21 +283,38 @@
   background-color: #f7f7f7;
   border: 0.2px solid black;
   border-radius: 16px;
-  padding: 12px;
+  padding: 3px;
   margin-bottom: 8px;
   display: grid;
-  grid-template-columns: 2fr 4fr 1fr 2fr;
-  gap: 10px;
+  grid-template-columns: 2.2fr 3.8fr 1fr 2fr;
+  gap: 5px;
   justify-content: space-between;
   align-items: center;
+  min-height: 40px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
 }
-
 .detail-modal-item p {
   margin: 0;
   color: #9e4040;
 }
 
+.detail-modal-menu-text {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.detail-modal-options-text {
+  font-size: 10px;
+  font-weight: bold;
+}
+.detail-modal-count-text {
+  font-size: 13px;
+  font-weight: bold;
+}
+.detail-modal-price-text {
+  font-size: 13px;
+  font-weight: bold;
+}
 .detail-modal-total-container {
   display: flex;
   justify-content: space-between; /* 양쪽 끝에 요소를 배치 */

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Modal from 'react-modal';
-import './CategoryPage.css';
-import '../component/CurrentTime';
-import CurrentTime from '../component/CurrentTime';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
+import "./CategoryPage.css";
+import "../component/CurrentTime";
+import CurrentTime from "../component/CurrentTime";
 
 const menusDetail = [
   {
@@ -308,7 +308,7 @@ function CategoryPage() {
       )}
       <Modal
         isOpen={payIsOpen}
-        onRequestClose={() => setPayIsOpen(false)}
+        //onRequestClose={() => setPayIsOpen(false)}
         // style={customStyles}
         contentLabel="pay Modal"
         className="detail-modal"
@@ -318,7 +318,7 @@ function CategoryPage() {
             <div className="detail-modal-date-container">
               <p className="detail-modal-text-brand">메가커피 통일점</p>
               <p className="detail-modal-text-date">
-                2024년 3월 2일 오전 9시 12분
+                <CurrentTime />
               </p>
             </div>
             <div>
@@ -337,10 +337,14 @@ function CategoryPage() {
             {!isZero
               ? menusDetail.map((menuDetail) => (
                   <div key={menuDetail.id} className="detail-modal-item">
-                    <p>{menuDetail.menu}</p>
-                    <span className="">{menuDetail.options}</span>
-                    <span className="">{menuDetail.number} 개</span>
-                    <span className="">
+                    <p className="detail-modal-menu-text">{menuDetail.menu}</p>
+                    <span className="detail-modal-options-text">
+                      {menuDetail.options}
+                    </span>
+                    <span className="detail-modal-count-text">
+                      {menuDetail.number} 개
+                    </span>
+                    <span className="detail-modal-price-text">
                       {menuDetail.number * menuDetail.price} 원
                     </span>
                   </div>
