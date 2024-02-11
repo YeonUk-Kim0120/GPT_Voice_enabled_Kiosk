@@ -14,6 +14,7 @@
   backdrop-filter: blur(11px);
   text-align: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0;
 }
 
 .top-menu-option {
