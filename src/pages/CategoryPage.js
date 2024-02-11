@@ -100,8 +100,12 @@ function CategoryPage() {
     navigate("/");
   };
 
-  const goPay = function () {
+  const modalPay = function () {
     setPayIsOpen(true);
+  };
+
+  const goPay = function () {
+    navigate("/pay");
   };
 
   return (
@@ -277,7 +281,7 @@ function CategoryPage() {
                 />
               </div>
               <div>
-                <button className="pay-button" onClick={goPay}>
+                <button className="pay-button" onClick={modalPay}>
                   결제하기
                 </button>
               </div>
@@ -348,18 +352,12 @@ function CategoryPage() {
               </button>
             </div>
             <div>
-              <button
-                className="detail-modal-in-button"
-                onClick={() => setPayIsOpen(false)}
-              >
+              <button className="detail-modal-in-button" onClick={goPay}>
                 먹고가기
               </button>
             </div>
             <div>
-              <button
-                className="detail-modal-out-button"
-                onClick={() => setPayIsOpen(false)}
-              >
+              <button className="detail-modal-out-button" onClick={goPay}>
                 포장하기
               </button>
             </div>
