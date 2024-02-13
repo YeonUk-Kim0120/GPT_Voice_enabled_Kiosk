@@ -114,7 +114,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -127,9 +127,12 @@ hr {
   font-size: 10px;
   background-color: white;
   padding: 0;
-
+  color: black;
   &.active {
     background-color: #fcac43;
+  }
+  &.disabled {
+    background-color: #9a8f8f;
   }
 }
 
@@ -144,6 +147,7 @@ hr {
 
 #temp-option {
   margin-right: 32px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

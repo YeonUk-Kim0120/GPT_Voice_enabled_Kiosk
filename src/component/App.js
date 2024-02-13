@@ -5,7 +5,6 @@ import './App.css';
 import Call from './Call';
 import Pay from './Pay';
 import Payment from './Payment';
-import MenuOptionBoth from './MenuOptionBoth';
 
 function App() {
   const [modal, setModal] = useState(false);
