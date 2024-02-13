@@ -15,13 +15,19 @@ function MenuOptionBoth({ id, setOption, menus }) {
   const menu = menus[id - 1];
   const type = menu.menu_type;
   console.log(menu);
+
+  let price_same = false;
+  if (menu.price_hot === menu.price_ice) {
+    price_same = true;
+  }
+
   useEffect(() => {
     let selectedPrice = 0;
 
     if (menu.price_hot !== 0 && menu.price_ice !== 0) {
       selectedPrice = Math.min(menu.price_hot, menu.price_ice);
     }
-    if (menu.price_ice !== 0 && menu.price_hot == 0) {
+    if (menu.price_ice !== 0 && menu.price_hot === 0) {
       selectedPrice = menu.price_ice;
     }
     if (menu.price_ice == 0 && menu.price_hot == 0) {
@@ -30,14 +36,17 @@ function MenuOptionBoth({ id, setOption, menus }) {
     if (menu.price_ice == 0 && menu.price_hot == 0) {
       selectedPrice = menu.price_constant;
     }
-    priceRef.current = selectedPrice;
-    setTotalPrice((selectedPrice * count).toLocaleString());
-  }, [menu, count]);
 
-  let price_same = 0;
-  if (menu.price_hot === menu.price_ice) {
-    price_same = 1;
-  }
+    priceRef.current = selectedPrice;
+
+    if (!price_same && isTempClicked === 'ice') {
+      let priceDifference = Math.abs(menu.price_hot - menu.price_ice);
+      selectedPrice += priceDifference;
+    }
+
+    setTotalPrice((selectedPrice * count).toLocaleString());
+  }, [menu, count, isTempClicked]);
+
   const closeOption = () => {
     setOption(false);
   };
@@ -50,6 +59,8 @@ function MenuOptionBoth({ id, setOption, menus }) {
   const handleTempClick = (value) => {
     setIsTempClicked(value);
   };
+
+  console.log(priceRef.current);
 
   return (
     <div className="option-container">
@@ -73,9 +84,7 @@ function MenuOptionBoth({ id, setOption, menus }) {
               <>
                 <p className="option-box">무료 옵션</p>
                 <hr />
-                {price_same ||
-                menu.menu_type === 'onlyice' ||
-                menu.menu_type === 'onlyhot' ? (
+                {price_same || type === 'onlyice' || type === 'onlyhot' ? (
                   <TempOption
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
@@ -88,7 +97,7 @@ function MenuOptionBoth({ id, setOption, menus }) {
                 />
                 <p className="option-box">유료 옵션</p>
                 <hr />
-                {!price_same && menu.menu_type === 'both' ? (
+                {!price_same && type === 'both' ? (
                   <TempOption
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
