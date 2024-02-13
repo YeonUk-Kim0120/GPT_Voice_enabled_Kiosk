@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import './CategoryPage.css';
+import '../component/CurrentTime';
+import CurrentTime from '../component/CurrentTime';
 import MenuOptionBoth from '../component/MenuOptionBoth';
 
 const menusDetail = [
@@ -101,6 +103,10 @@ function CategoryPage() {
   };
 
   const goPay = function () {
+    navigate('/pay');
+  };
+
+  const modalPay = function () {
     setPayIsOpen(true);
   };
 
@@ -262,20 +268,46 @@ function CategoryPage() {
                   {totalPages}
                 </div>
                 <div className="page-buttons">
-                  {currentPage > 1 && (
+                  {/* {currentPage > 1 && (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/leftY.png`}
+                      className="page-button"
+                      onClick={goToPrevPage}
+                    />
+                  )} */}
+                  {currentPage === 1 ? (
                     <img
                       src={`${process.env.PUBLIC_URL}/imgs/left.png`}
+                      className="page-button"
+                      onClick={null}
+                    />
+                  ) : (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/leftY.png`}
                       className="page-button"
                       onClick={goToPrevPage}
                     />
                   )}
-                  {currentPage < totalPages && (
+                  {currentPage === totalPages ? (
                     <img
                       src={`${process.env.PUBLIC_URL}/imgs/right.png`}
+                      className="page-button"
+                      onClick={null}
+                    />
+                  ) : (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/rightY.png`}
                       className="page-button"
                       onClick={goToNextPage}
                     />
                   )}
+                  {/* {currentPage < totalPages && (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/rightY.png`}
+                      className="page-button"
+                      onClick={goToNextPage}
+                    />
+                  )} */}
                 </div>
               </div>
             </div>
@@ -290,14 +322,19 @@ function CategoryPage() {
               </div>
             </div>
             <div className="container-baguni-row">
-              <div>
+              <div className="">
                 <img
-                  src={`${process.env.PUBLIC_URL}/imgs/Boonga.png`}
+                  src={`${process.env.PUBLIC_URL}/imgs/bubble.png`}
+                  className="bubble"
+                />
+                <p className="bubble-text">안녕하세요 </p>
+                <img
+                  src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
                   className="boonga"
                 />
               </div>
-              <div>
-                <button className="pay-button" onClick={goPay}>
+              <div className="pay-button-loc">
+                <button className="pay-button" onClick={modalPay}>
                   결제하기
                 </button>
               </div>
@@ -307,7 +344,7 @@ function CategoryPage() {
       )}
       <Modal
         isOpen={payIsOpen}
-        onRequestClose={() => setPayIsOpen(false)}
+        //onRequestClose={() => setPayIsOpen(false)}
         // style={customStyles}
         contentLabel="pay Modal"
         className="detail-modal"
@@ -317,7 +354,7 @@ function CategoryPage() {
             <div className="detail-modal-date-container">
               <p className="detail-modal-text-brand">메가커피 통일점</p>
               <p className="detail-modal-text-date">
-                2024년 3월 2일 오전 9시 12분
+                <CurrentTime />
               </p>
             </div>
             <div>
@@ -336,10 +373,14 @@ function CategoryPage() {
             {!isZero
               ? menusDetail.map((menuDetail) => (
                   <div key={menuDetail.id} className="detail-modal-item">
-                    <p>{menuDetail.menu}</p>
-                    <span className="">{menuDetail.options}</span>
-                    <span className="">{menuDetail.number} 개</span>
-                    <span className="">
+                    <p className="detail-modal-menu-text">{menuDetail.menu}</p>
+                    <span className="detail-modal-options-text">
+                      {menuDetail.options}
+                    </span>
+                    <span className="detail-modal-count-text">
+                      {menuDetail.number} 개
+                    </span>
+                    <span className="detail-modal-price-text">
                       {menuDetail.number * menuDetail.price} 원
                     </span>
                   </div>
@@ -363,22 +404,16 @@ function CategoryPage() {
                 취소
               </button>
             </div>
-            <Link to="/pay">
-              <button
-                className="detail-modal-in-button"
-                onClick={() => setPayIsOpen(false)}
-              >
+            <div>
+              <button className="detail-modal-in-button" onClick={goPay}>
                 먹고가기
               </button>
-            </Link>
-            <Link to="/pay">
-              <button
-                className="detail-modal-out-button"
-                onClick={() => setPayIsOpen(false)}
-              >
+            </div>
+            <div>
+              <button className="detail-modal-out-button" onClick={goPay}>
                 포장하기
               </button>
-            </Link>
+            </div>
           </div>
         </div>
       </Modal>

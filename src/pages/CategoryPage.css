@@ -14,6 +14,7 @@
   gap: 10px; /* 아이템 사이의 간격을 설정합니다. */
   width: 32vh;
   height: 51vh;
+  margin-top: 5%;
 }
 
 .menu-item1 {
@@ -54,29 +55,60 @@
 /* =------------- */
 
 .category-button {
-  width: 93px;
-  height: 66px;
+  width: 95px;
+  height: 66.2px;
   color: #ffffff;
   font-weight: bold;
   font-size: 16px;
   background-color: #fcac43;
-  border: 1px solid gray;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .category-button.active {
-  text-decoration: underline;
-  border: 2px solid #000000;
+  /* text-decoration: underline; */
+  border: 5px solid #ffffff;
 }
 .team-color {
   background-color: #fcac43;
+  border-radius: 10px;
 }
 
 .boonga {
-  width: 140px;
+  width: 110px;
   height: 110px;
+  position: fixed;
+  bottom: 60px; /* 원하는 위치로 조정 */
+  right: 5px; /* 원하는 위치로 조정 */
 }
-
-.pay-button {
+.bubble {
   width: 130px;
+  height: 70px;
+  position: fixed;
+  bottom: 130px; /* 원하는 위치로 조정 */
+  right: 10px; /* 원하는 위치로 조정 */
+}
+.bubble-text {
+  width: 120px;
+  height: 40px;
+  position: fixed;
+  bottom: 145px; /* 원하는 위치로 조정 */
+  right: 15px; /* 원하는 위치로 조정 */
+  z-index: 1;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+.pay-button-loc {
+  position: fixed;
+  bottom: 18px; /* 원하는 위치로 조정 */
+  right: 14px; /* 원하는 위치로 조정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pay-button {
+  width: 120px;
   height: 50px;
   color: #ffffff;
   font-weight: bold;
@@ -187,6 +219,8 @@
   align-items: center; /* 세로축 기준 중앙 정렬 */
   gap: 5px; /* 점들 사이의 간격 */
   height: 15.5px;
+  font-size: 10px;
+  font-weight: 800;
 }
 
 .page-dot1 {
@@ -209,6 +243,8 @@
   white-space: nowrap; /* 텍스트를 한 줄에 표시 */
   overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
   text-overflow: ellipsis;
+  width: 80px;
+  margin-left: 7%;
 }
 
 .detail-modal {
@@ -246,7 +282,7 @@
   font-weight: bold; /* 글자 두께 */
 }
 .detail-modal-text-date {
-  font-size: 12px; /* 글자 크기 */
+  font-size: 11px; /* 글자 크기 */
   color: #000000;
   font-weight: bold; /* 글자 두께 */
 }
@@ -281,21 +317,38 @@
   background-color: #f7f7f7;
   border: 0.2px solid black;
   border-radius: 16px;
-  padding: 12px;
+  padding: 3px;
   margin-bottom: 8px;
   display: grid;
-  grid-template-columns: 2fr 4fr 1fr 2fr;
-  gap: 10px;
+  grid-template-columns: 2.2fr 3.8fr 1fr 2fr;
+  gap: 5px;
   justify-content: space-between;
   align-items: center;
+  min-height: 40px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
 }
-
 .detail-modal-item p {
   margin: 0;
   color: #9e4040;
 }
 
+.detail-modal-menu-text {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.detail-modal-options-text {
+  font-size: 10px;
+  font-weight: bold;
+}
+.detail-modal-count-text {
+  font-size: 13px;
+  font-weight: bold;
+}
+.detail-modal-price-text {
+  font-size: 13px;
+  font-weight: bold;
+}
 .detail-modal-total-container {
   display: flex;
   justify-content: space-between; /* 양쪽 끝에 요소를 배치 */
