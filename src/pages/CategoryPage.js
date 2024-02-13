@@ -7,7 +7,9 @@ import CurrentTime from "../component/CurrentTime";
 import MenuOptionBoth from "../component/MenuOptionBoth";
 import Message from "../component/Message";
 
-const messages = "gd";
+const messages =
+  "안녕하세요 김년욱입니다녕하세요 김년욱녕하세요 김년욱녕하세요 김년욱 3sadasdasd";
+const messages2 = "안녕하세요 김년욱입니다4asdkjhasdklhjasdkhjasdhkl12312";
 // const messages = [
 //   "안녕하세요!",
 //   "이 말풍선은 길어질까요?",
@@ -369,9 +371,12 @@ function CategoryPage() {
               </p>
             </div>
             <div>
+              <div className="bubble2">
+                <Message message={messages2} className="bubble2" />
+              </div>
               <img
-                src={`${process.env.PUBLIC_URL}/imgs/Boonga.png`}
-                className="boonga"
+                src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
+                className="boonga2"
               />
             </div>
           </div>

@@ -3,15 +3,17 @@
 }
 
 .bubble {
-  background-color: #f0f0f0;
-  padding: 10px;
+  background-color: #edebeb;
+  padding: 4px;
   margin: 5px;
   border-radius: 10px;
-  min-width: 10px;
+
   max-height: 10px;
-  max-width: 150px;
-  max-height: 90px;
-  font-size: 13px;
+  max-height: 250px;
+  width: 130px;
+
+  font-size: 10px;
+  font-weight: 600;
   border: 2px solid black;
-  z-index: 2;
+  word-wrap: break-word;
 }
