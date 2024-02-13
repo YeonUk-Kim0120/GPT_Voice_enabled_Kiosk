@@ -7,9 +7,8 @@ import CurrentTime from "../component/CurrentTime";
 import MenuOptionBoth from "../component/MenuOptionBoth";
 import Message from "../component/Message";
 
-const messages =
-  "안녕하세요 김년욱입니다녕하세요 김년욱녕하세요 김년욱녕하세요 김년욱 3sadasdasd";
-const messages2 = "안녕하세요 김년욱입니다4asdkjhasdklhjasdkhjasdhkl12312";
+const messages = "안녕하세요 김년욱입니다";
+const messages2 = "안녕하세요 김년욱입니다. 여기는 장바구니입니다.";
 // const messages = [
 //   "안녕하세요!",
 //   "이 말풍선은 길어질까요?",
@@ -362,7 +361,10 @@ function CategoryPage() {
         contentLabel="pay Modal"
         className="detail-modal"
       >
-        <div className="detail-modal-container">
+        <div
+          className="detail-modal-container"
+          style={{ position: "relative", zIndex: 3 }}
+        >
           <div className="detail-modal-header-container">
             <div className="detail-modal-date-container">
               <p className="detail-modal-text-brand">메가커피 통일점</p>
@@ -371,7 +373,7 @@ function CategoryPage() {
               </p>
             </div>
             <div>
-              <div className="bubble2">
+              <div style={{ position: "relative", zIndex: 2 }}>
                 <Message message={messages2} className="bubble2" />
               </div>
               <img
