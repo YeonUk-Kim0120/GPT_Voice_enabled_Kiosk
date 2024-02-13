@@ -322,13 +322,18 @@ function CategoryPage() {
               </div>
             </div>
             <div className="container-baguni-row">
-              <div>
+              <div className="">
                 <img
-                  src={`${process.env.PUBLIC_URL}/imgs/Boonga.png`}
+                  src={`${process.env.PUBLIC_URL}/imgs/bubble.png`}
+                  className="bubble"
+                />
+                <p className="bubble-text">안녕하세요 </p>
+                <img
+                  src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
                   className="boonga"
                 />
               </div>
-              <div>
+              <div className="pay-button-loc">
                 <button className="pay-button" onClick={modalPay}>
                   결제하기
                 </button>
