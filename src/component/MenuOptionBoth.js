@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import './MenuOptionBoth.css';
 import TopMenuOption from './TopMenuOption';
+import CupOption from './CupOption';
+import TempOption from './TempOption';
 
 function MenuOptionBoth({ id, setOption, menus }) {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -10,31 +12,32 @@ function MenuOptionBoth({ id, setOption, menus }) {
   const [loading, setLoading] = useState(false);
   const priceRef = useRef(0);
 
-  console.log(menus);
   const menu = menus[id - 1];
+  const type = menu.menu_type;
   console.log(menu);
   useEffect(() => {
     let selectedPrice = 0;
 
     if (menu.price_hot !== 0 && menu.price_ice !== 0) {
       selectedPrice = Math.min(menu.price_hot, menu.price_ice);
-    } else if (menu.price_hot == 0) {
+    }
+    if (menu.price_ice !== 0 && menu.price_hot == 0) {
       selectedPrice = menu.price_ice;
-    } else if (menu.price_ice == 0) {
+    }
+    if (menu.price_ice == 0 && menu.price_hot == 0) {
       selectedPrice = menu.price_hot;
     }
-
+    if (menu.price_ice == 0 && menu.price_hot == 0) {
+      selectedPrice = menu.price_constant;
+    }
     priceRef.current = selectedPrice;
     setTotalPrice((selectedPrice * count).toLocaleString());
   }, [menu, count]);
 
-  let price_same;
-  if (menu) {
-    if (menu.price_hot === menu.price_ice) {
-      price_same = 1;
-    }
+  let price_same = 0;
+  if (menu.price_hot === menu.price_ice) {
+    price_same = 1;
   }
-
   const closeOption = () => {
     setOption(false);
   };
@@ -44,9 +47,8 @@ function MenuOptionBoth({ id, setOption, menus }) {
     setIsCupClicked(clickedValue);
   };
 
-  const handleTempClick = (e) => {
-    const clickedValue = e.target.value;
-    setIsTempClicked(clickedValue);
+  const handleTempClick = (value) => {
+    setIsTempClicked(value);
   };
 
   return (
@@ -67,117 +69,34 @@ function MenuOptionBoth({ id, setOption, menus }) {
             <p className="option-box">메뉴 설명</p>
             <hr />
             <p id="menu-description">{menu.description}</p>
-            <p className="option-box">무료 옵션</p>
-            <hr />
-            {price_same ? (
-              <div id="temp-option">
-                <span className="temp">온도</span>
-                <button
-                  value="따뜻하게"
-                  className={`choose ${
-                    isTempClicked === '따뜻하게' ? 'active' : ''
-                  }`}
-                  onClick={handleTempClick}
-                >
-                  <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/따뜻하게.png`}
-                    alt="따뜻하게"
+            {menu.category === '디저트' ? null : (
+              <>
+                <p className="option-box">무료 옵션</p>
+                <hr />
+                {price_same ||
+                menu.menu_type === 'onlyice' ||
+                menu.menu_type === 'onlyhot' ? (
+                  <TempOption
+                    isTempClicked={isTempClicked}
+                    handleTempClick={handleTempClick}
+                    price={{ ice: menu.price_ice, hot: menu.price_hot }}
                   />
-                  <p>따뜻하게</p>
-                </button>
-                <button
-                  value="시원하게"
-                  className={`choose ${
-                    isTempClicked === '시원하게' ? 'active' : ''
-                  }`}
-                  onClick={handleTempClick}
-                >
-                  <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/시원하게.png`}
-                    alt="시원하게"
-                  />
-                  <p>시원하게</p>
-                </button>
-              </div>
-            ) : null}
-            <div id="cup-option">
-              <span>컵 선택</span>
-              <button
-                value="일회용기"
-                className={`choose ${
-                  isCupClicked === '일회용기' ? 'active' : ''
-                }`}
-                onClick={handleCupClick}
-              >
-                <p>일회용기</p>
-                <img
-                  src={`${process.env.PUBLIC_URL}/imgs/일회용기.png`}
-                  alt="일회용기"
+                ) : null}
+                <CupOption
+                  isCupClicked={isCupClicked}
+                  handleCupClick={handleCupClick}
                 />
-                <p className="cup-small-option">매장 이용 불가</p>
-              </button>
-              <button
-                value="매장용컵"
-                className={`choose ${
-                  isCupClicked === '매장용컵' ? 'active' : ''
-                }`}
-                onClick={handleCupClick}
-              >
-                <p>매장용컵</p>
-                <img
-                  src={`${process.env.PUBLIC_URL}/imgs/매장용컵.png`}
-                  alt="매장용컵"
-                />
-                <p className="cup-small-option">매장 이용</p>
-              </button>
-              <button
-                value="텀블러"
-                className={`choose ${
-                  isCupClicked === '텀블러' ? 'active' : ''
-                }`}
-                onClick={handleCupClick}
-              >
-                <p>텀블러</p>
-                <img
-                  src={`${process.env.PUBLIC_URL}/imgs/텀블러.png`}
-                  alt="텀블러"
-                />
-                <p className="cup-small-option">스탬프 적립</p>
-              </button>
-            </div>
-            <p className="option-box">유료 옵션</p>
-            <hr />
-            {!price_same ? (
-              <div id="temp-option">
-                <span className="temp">온도</span>
-                <button
-                  value="따뜻하게"
-                  className={`choose ${
-                    isTempClicked === '따뜻하게' ? 'active' : ''
-                  }`}
-                  onClick={handleTempClick}
-                >
-                  <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/따뜻하게.png`}
-                    alt="따뜻하게"
+                <p className="option-box">유료 옵션</p>
+                <hr />
+                {!price_same && menu.menu_type === 'both' ? (
+                  <TempOption
+                    isTempClicked={isTempClicked}
+                    handleTempClick={handleTempClick}
+                    price={{ ice: menu.price_ice, hot: menu.price_hot }}
                   />
-                  <p>따뜻하게</p>
-                </button>
-                <button
-                  value="시원하게"
-                  className={`choose ${
-                    isTempClicked === '시원하게' ? 'active' : ''
-                  }`}
-                  onClick={handleTempClick}
-                >
-                  <img
-                    src={`${process.env.PUBLIC_URL}/Imgs/시원하게.png`}
-                    alt="시원하게"
-                  />
-                  <p>시원하게</p>
-                </button>
-              </div>
-            ) : null}
+                ) : null}
+              </>
+            )}
           </div>
           <hr id="total-line" />
           <div id="total-price-container">

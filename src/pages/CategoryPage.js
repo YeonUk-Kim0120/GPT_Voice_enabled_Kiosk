@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import './CategoryPage.css';
-import '../component/CurrentTime';
-import CurrentTime from '../component/CurrentTime';
+import MenuOptionBoth from '../component/MenuOptionBoth';
 
 const menusDetail = [
   {
@@ -364,22 +363,22 @@ function CategoryPage() {
                 취소
               </button>
             </div>
-            <div>
+            <Link to="/pay">
               <button
                 className="detail-modal-in-button"
                 onClick={() => setPayIsOpen(false)}
               >
                 먹고가기
               </button>
-            </div>
-            <div>
+            </Link>
+            <Link to="/pay">
               <button
                 className="detail-modal-out-button"
                 onClick={() => setPayIsOpen(false)}
               >
                 포장하기
               </button>
-            </div>
+            </Link>
           </div>
         </div>
       </Modal>
