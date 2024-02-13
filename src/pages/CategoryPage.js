@@ -268,20 +268,46 @@ function CategoryPage() {
                   {totalPages}
                 </div>
                 <div className="page-buttons">
-                  {currentPage > 1 && (
+                  {/* {currentPage > 1 && (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/leftY.png`}
+                      className="page-button"
+                      onClick={goToPrevPage}
+                    />
+                  )} */}
+                  {currentPage === 1 ? (
                     <img
                       src={`${process.env.PUBLIC_URL}/imgs/left.png`}
+                      className="page-button"
+                      onClick={null}
+                    />
+                  ) : (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/leftY.png`}
                       className="page-button"
                       onClick={goToPrevPage}
                     />
                   )}
-                  {currentPage < totalPages && (
+                  {currentPage === totalPages ? (
                     <img
                       src={`${process.env.PUBLIC_URL}/imgs/right.png`}
+                      className="page-button"
+                      onClick={null}
+                    />
+                  ) : (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/rightY.png`}
                       className="page-button"
                       onClick={goToNextPage}
                     />
                   )}
+                  {/* {currentPage < totalPages && (
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/rightY.png`}
+                      className="page-button"
+                      onClick={goToNextPage}
+                    />
+                  )} */}
                 </div>
               </div>
             </div>
