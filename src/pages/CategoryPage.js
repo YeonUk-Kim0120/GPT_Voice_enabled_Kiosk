@@ -5,6 +5,16 @@ import "./CategoryPage.css";
 import "../component/CurrentTime";
 import CurrentTime from "../component/CurrentTime";
 import MenuOptionBoth from "../component/MenuOptionBoth";
+import Message from "../component/Message";
+
+const messages = "gd";
+// const messages = [
+//   "안녕하세요!",
+//   "이 말풍선은 길어질까요?",
+//   "짧아지나요?",
+//   "리액트로 말풍선을 만들어 보는 중입니다.",
+//   "다양한 말을 넣어서 테스트해 보세요!",
+// ];
 
 const menusDetail = [
   {
@@ -323,11 +333,12 @@ function CategoryPage() {
             </div>
             <div className="container-baguni-row">
               <div className="">
-                <img
+                {/* <img
                   src={`${process.env.PUBLIC_URL}/imgs/bubble.png`}
                   className="bubble"
                 />
-                <p className="bubble-text">안녕하세요 </p>
+                <p className="bubble-text">안녕하세요 </p> */}
+                <Message message={messages} />
                 <img
                   src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
                   className="boonga"
