@@ -128,12 +128,14 @@ hr {
   background-color: white;
   padding: 0;
   color: black;
-  &.active {
-    background-color: #fcac43;
-  }
-  &.disabled {
-    background-color: #9a8f8f;
-  }
+}
+
+.choose.active {
+  background-color: #fcac43;
+}
+
+.choose.disabled {
+  background-color: #c6c6c6;
 }
 
 .choose p {

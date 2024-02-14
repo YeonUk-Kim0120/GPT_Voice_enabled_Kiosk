@@ -15,7 +15,7 @@ function TempOption({ isTempClicked, handleTempClick, price }) {
       <span className="temp">온도</span>
       <button
         value="hot"
-        className={`choose ${price.hot === 0 ? 'disabled' : ''} ${
+        className={`choose ${price.hot == 0 ? 'disabled' : ''} ${
           isTempClicked === 'hot' ? 'active' : ''
         }`}
         onClick={() => handleTempButtonClick('hot')}
