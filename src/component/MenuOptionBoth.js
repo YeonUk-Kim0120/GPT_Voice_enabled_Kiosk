@@ -76,6 +76,7 @@ function MenuOptionBoth({ id, setOption, menus }) {
               price={priceRef.current}
               count={count}
               setCount={setCount}
+              img={menu.image}
             />
           </div>
           <div className="option-choose-container">
