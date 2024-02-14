@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Modal from "react-modal";
-import "./CategoryPage.css";
-import "../component/CurrentTime";
-import CurrentTime from "../component/CurrentTime";
-import MenuOptionBoth from "../component/MenuOptionBoth";
-import Message from "../component/Message";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
+import './CategoryPage.css';
+import '../component/CurrentTime';
+import CurrentTime from '../component/CurrentTime';
+import MenuOptionBoth from '../component/MenuOptionBoth';
+import Message from '../component/Message';
 
-const messages = "안녕하세요 김년욱입니다";
-const messages2 = "안녕하세요 김년욱입니다. 여기는 장바구니입니다.";
+const messages = '안녕하세요 김년욱입니다';
+const messages2 = '안녕하세요 김년욱입니다. 여기는 장바구니입니다.';
 // const messages = [
 //   "안녕하세요!",
 //   "이 말풍선은 길어질까요?",
@@ -20,15 +20,15 @@ const messages2 = "안녕하세요 김년욱입니다. 여기는 장바구니입
 const menusDetail = [
   {
     id: 1,
-    menu: "아메리카노",
-    options: "아이스, 샷 추가x1",
+    menu: '아메리카노',
+    options: '아이스, 샷 추가x1',
     price: 4000,
     number: 1,
   },
   {
     id: 2,
-    menu: "아포카토",
-    options: "샷 추가x3",
+    menu: '아포카토',
+    options: '샷 추가x3',
     price: 5000,
     number: 2,
   },
@@ -39,25 +39,25 @@ function CategoryPage() {
   const [loading, setLoading] = useState(false);
   const [menus, setMenus] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [payIsOpen, setPayIsOpen] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [selectedItemIdx, setSelectedItemIdx] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const isZero = menusDetail.length === 0;
   const getMenus = async () => {
-    const json = await (await fetch("/megaMenu.json")).json();
+    const json = await (await fetch('/megaMenu.json')).json();
     setMenus(json);
     setLoading(false);
   };
 
   useEffect(() => {
     getMenus();
-    Modal.setAppElement("#root");
+    Modal.setAppElement('#root');
   }, []);
 
   const filteredMenus = menus.filter((menu) => {
     // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
-    if (selectedCategory === "all")
+    if (selectedCategory === 'all')
       return [3, 4, 21, 63, 66, 71, 73, 78, 79].includes(menu.id);
     // 그렇지 않으면 선택된 카테고리에 해당하는 메뉴만 반환
     return menu.category === selectedCategory;
@@ -84,37 +84,37 @@ function CategoryPage() {
   };
 
   const ScreenStyle = {
-    width: "390px",
-    height: "844px",
-    margin: "0 auto",
-    border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
+    width: '390px',
+    height: '844px',
+    margin: '0 auto',
+    border: '1px solid black', // 경계를 확인하기 위한 임시 스타일
   };
 
   const customStyles = {
     content: {
       // top: "0", // 세로 방향에서 화면 꼭대기에 위치
-      left: "5%", // 가로 방향에서 화면의 중앙에 위치
+      left: '5%', // 가로 방향에서 화면의 중앙에 위치
       // right: "auto",
       // bottom: "auto",
       // marginRight: "-50%",
       // transform: "translate(-50%, 0)", // 중앙 정렬을 위한 변환
-      width: "80%", // 모달의 가로 크기는 화면의 50%
-      height: "80%", // 모달의 세로 크기는 화면의 100%
+      width: '80%', // 모달의 가로 크기는 화면의 50%
+      height: '80%', // 모달의 세로 크기는 화면의 100%
     },
   };
 
   const basket = {
-    width: "230px",
-    height: "185px",
-    margin: "0 auto",
-    border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
+    width: '230px',
+    height: '185px',
+    margin: '0 auto',
+    border: '1px solid black', // 경계를 확인하기 위한 임시 스타일
   };
   const goHome = function () {
-    navigate("/");
+    navigate('/');
   };
 
   const goPay = function () {
-    navigate("/pay");
+    navigate('/pay');
   };
 
   const modalPay = function () {
@@ -122,7 +122,8 @@ function CategoryPage() {
   };
 
   const handleDetailOpen = (id) => {
-    setSelectedItemIdx(id);
+    const selectedItem = menus.find((menu) => menu.id === id);
+    setSelectedItem(selectedItem);
     setMenuIsOpen(true);
   };
 
@@ -140,67 +141,67 @@ function CategoryPage() {
               />
               <button
                 className={`category-button ${
-                  selectedCategory === "all" ? "active" : ""
+                  selectedCategory === 'all' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("all")}
+                onClick={() => handleCategoryClick('all')}
               >
                 추천
               </button>
               <button
                 className={`category-button ${
-                  selectedCategory === "커피" ? "active" : ""
+                  selectedCategory === '커피' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("커피")}
+                onClick={() => handleCategoryClick('커피')}
               >
                 커피
               </button>
               <button
                 className={`category-button ${
-                  selectedCategory === "음료 메뉴" ? "active" : ""
+                  selectedCategory === '음료 메뉴' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("음료 메뉴")}
+                onClick={() => handleCategoryClick('음료 메뉴')}
               >
                 음료 메뉴
               </button>
               <button
                 className={`category-button ${
-                  selectedCategory === "디카페인" ? "active" : ""
+                  selectedCategory === '디카페인' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("디카페인")}
+                onClick={() => handleCategoryClick('디카페인')}
               >
                 디카페인
               </button>
               <button
                 className={`category-button ${
-                  selectedCategory === "TEA" ? "active" : ""
+                  selectedCategory === 'TEA' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("TEA")}
+                onClick={() => handleCategoryClick('TEA')}
               >
                 TEA
               </button>
               <button
                 className={`category-button ${
-                  selectedCategory === "스무디, 프라페" ? "active" : ""
+                  selectedCategory === '스무디, 프라페' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("스무디, 프라페")}
+                onClick={() => handleCategoryClick('스무디, 프라페')}
               >
                 스무디,
                 <br /> 프라페
               </button>
               <button
                 className={`category-button ${
-                  selectedCategory === "에이드, 주스" ? "active" : ""
+                  selectedCategory === '에이드, 주스' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("에이드, 주스")}
+                onClick={() => handleCategoryClick('에이드, 주스')}
               >
                 에이드,
                 <br /> 주스
               </button>
               <button
                 className={`category-button ${
-                  selectedCategory === "디저트" ? "active" : ""
+                  selectedCategory === '디저트' ? 'active' : ''
                 }`}
-                onClick={() => handleCategoryClick("디저트")}
+                onClick={() => handleCategoryClick('디저트')}
               >
                 디저트
               </button>
@@ -226,15 +227,14 @@ function CategoryPage() {
                 <div>
                   안녕
                   <MenuOptionBoth
-                    id={selectedItemIdx}
+                    menu={selectedItem}
                     setOption={setMenuIsOpen}
-                    menus={menus}
                   />
                 </div>
               </Modal>
 
               <div className="menu-grid-container">
-                {" "}
+                {' '}
                 {/* 이 div를 추가 */}
                 {currentItems.map((menu) => (
                   <div
@@ -280,7 +280,7 @@ function CategoryPage() {
                     className="page-dot2"
                   /> */}
                   {currentPage}
-                  {"/"}
+                  {'/'}
                   {totalPages}
                 </div>
                 <div className="page-buttons">
@@ -368,7 +368,7 @@ function CategoryPage() {
       >
         <div
           className="detail-modal-container"
-          style={{ position: "relative", zIndex: 3 }}
+          style={{ position: 'relative', zIndex: 3 }}
         >
           <div className="detail-modal-header-container">
             <div className="detail-modal-date-container">
@@ -378,7 +378,7 @@ function CategoryPage() {
               </p>
             </div>
             <div>
-              <div style={{ position: "relative", zIndex: 2 }}>
+              <div style={{ position: 'relative', zIndex: 2 }}>
                 <Message message={messages2} className="bubble2" />
               </div>
               <img
@@ -408,15 +408,15 @@ function CategoryPage() {
                     </span>
                   </div>
                 ))
-              : "현재 선택한 메뉴가 없습니다."}
+              : '현재 선택한 메뉴가 없습니다.'}
           </div>
           <div className="detail-modal-total-container">
             <span>총 수량:</span>
-            <span>{"N"} 개</span>
+            <span>{'N'} 개</span>
           </div>
           <div className="detail-modal-total-container">
             <span>총 결재금액:</span>
-            <span>{"4,000"} 원</span>
+            <span>{'4,000'} 원</span>
           </div>
           <div className="detail-modal-btns-container">
             <div>
