@@ -1,7 +1,12 @@
 import { useState } from 'react';
 
-function TempOption({ isTempClicked, handleTempClick, price }) {
-  const [activeTemp, setActiveTemp] = useState(null);
+function TempOption({
+  isTempClicked,
+  handleTempClick,
+  price,
+  activeTemp,
+  setActiveTemp,
+}) {
   console.log(price);
 
   const handleTempButtonClick = (value) => {

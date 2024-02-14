@@ -3,13 +3,16 @@ import './MenuOptionBoth.css';
 import TopMenuOption from './TopMenuOption';
 import CupOption from './CupOption';
 import TempOption from './TempOption';
+import { useShoppingCart } from '../hooks/shoppingCart';
 
 function MenuOptionBoth({ id, setOption, menus }) {
+  const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [count, setCount] = useState(1);
   const [isCupClicked, setIsCupClicked] = useState(null);
   const [isTempClicked, setIsTempClicked] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [activeTemp, setActiveTemp] = useState(null);
   const priceRef = useRef(0);
 
   const menu = menus[id - 1];
@@ -63,8 +66,20 @@ function MenuOptionBoth({ id, setOption, menus }) {
   };
 
   const putItem = () => {
-    let itemOption = {};
+    let itemOption = {
+      name: menu.name,
+      count: count,
+      temp: activeTemp,
+      cup: isCupClicked,
+      price: totalPrice,
+    };
+    setShoppingCart((prevItem) => [...prevItem, itemOption]);
+    closeOption();
   };
+
+  useEffect(() => {
+    console.log(shoppingCart);
+  }, [shoppingCart]);
 
   return (
     <div className="option-container">
@@ -94,6 +109,8 @@ function MenuOptionBoth({ id, setOption, menus }) {
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
                     price={{ ice: menu.price_ice, hot: menu.price_hot }}
+                    activeTemp={activeTemp}
+                    setActiveTemp={setActiveTemp}
                   />
                 ) : null}
                 <CupOption
@@ -107,6 +124,8 @@ function MenuOptionBoth({ id, setOption, menus }) {
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
                     price={{ ice: menu.price_ice, hot: menu.price_hot }}
+                    activeTemp={activeTemp}
+                    setActiveTemp={setActiveTemp}
                   />
                 ) : null}
               </>
