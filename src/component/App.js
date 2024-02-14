@@ -5,7 +5,6 @@ import './App.css';
 import Call from './Call';
 import Pay from './Pay';
 import Payment from './Payment';
-import MenuOptionBoth from './MenuOptionBoth';
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -23,8 +22,6 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={showOption}>옵션</button>
-      {option && <MenuOptionBoth id={3} setOption={setOption} />}
       <div className="nav">
         <BackButton />
         <img

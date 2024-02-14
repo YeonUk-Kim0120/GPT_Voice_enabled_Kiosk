@@ -14,6 +14,7 @@
   backdrop-filter: blur(11px);
   text-align: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0;
 }
 
 .top-menu-option {
@@ -113,7 +114,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -126,10 +127,15 @@ hr {
   font-size: 10px;
   background-color: white;
   padding: 0;
+  color: black;
+}
 
-  &.active {
-    background-color: #fcac43;
-  }
+.choose.active {
+  background-color: #fcac43;
+}
+
+.choose.disabled {
+  background-color: #c6c6c6;
 }
 
 .choose p {
@@ -143,6 +149,7 @@ hr {
 
 #temp-option {
   margin-right: 32px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

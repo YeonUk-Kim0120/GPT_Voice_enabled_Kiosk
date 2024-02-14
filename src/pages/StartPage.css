@@ -1,0 +1,43 @@
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.Text {
+  text-align: center;
+  animation: blink 2s linear infinite; /* 1초 간격으로 무한 반복 */
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Boong {
+  width: 200px;
+  height: 150px;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* 부모 컨테이너의 전체 높이를 사용하도록 설정 */
+}
+
+.container-row {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.container-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
