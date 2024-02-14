@@ -6,6 +6,7 @@ import "../component/CurrentTime";
 import CurrentTime from "../component/CurrentTime";
 import MenuOptionBoth from "../component/MenuOptionBoth";
 import Message from "../component/Message";
+import { useShoppingCart } from "../hooks/shoppingCart";
 
 const messages = "안녕하세요 김년욱입니다";
 const messages2 = "안녕하세요 김년욱입니다. 여기는 장바구니입니다.";
@@ -36,6 +37,7 @@ const menusDetail = [
 
 function CategoryPage() {
   const navigate = useNavigate();
+  const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [menus, setMenus] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -76,7 +78,7 @@ function CategoryPage() {
     setCurrentPage(currentPage - 1);
   };
 
-  const costSum = 123000;
+  let costSum = 0;
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -331,7 +333,13 @@ function CategoryPage() {
           <div className="container-baguni-col">
             <div style={basket} className="basket container-baguni-rowrow">
               <div className="baguni-text1">-주문한 상품</div>
-              <div className="baguni-text2">백에서 받아오기</div>
+              <div className="baguni-text2">
+                {shoppingCart.map((menu) => (
+                  <div>
+                    {menu.name}/{menu.temp}/{menu.cup}/{menu.count}/{menu.price}
+                  </div>
+                ))}
+              </div>
               <div className="baguni-text-container">
                 <div className="baguni-text3"> 총 금액:</div>
                 <div className="baguni-text4">{`${costSum}원`}</div>
