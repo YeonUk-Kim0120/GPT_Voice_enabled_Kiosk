@@ -248,7 +248,7 @@ function CategoryPage() {
                       className="menu-image1"
                     /> */}
                     <img
-                      src={`${process.env.PUBLIC_URL}/imgs/${menu.name}.jpg`}
+                      src={`${process.env.PUBLIC_URL}/imgs/${menu.image}`}
                       alt={menu.name}
                       className="menu-image1"
                     />
