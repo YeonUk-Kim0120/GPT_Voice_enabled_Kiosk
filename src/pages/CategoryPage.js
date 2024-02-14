@@ -242,8 +242,13 @@ function CategoryPage() {
                     key={menu.id}
                     className="menu-item1"
                   >
-                    <img
+                    {/* <img
                       src={`${process.env.PUBLIC_URL}/imgs/아메리카노.png`}
+                      alt={menu.name}
+                      className="menu-image1"
+                    /> */}
+                    <img
+                      src={`${process.env.PUBLIC_URL}/imgs/${menu.name}.jpg`}
                       alt={menu.name}
                       className="menu-image1"
                     />
