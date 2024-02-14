@@ -3,6 +3,7 @@ import './Pay.css';
 import { useOrder } from '../hooks/orderContext';
 
 function Pay({ setModal, num }) {
+  // eslint-disable-next-line
   const [orderNum, incrementOrderNum] = useOrder();
 
   const closeModal = () => {
