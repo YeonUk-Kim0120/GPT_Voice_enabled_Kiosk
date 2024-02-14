@@ -540,6 +540,18 @@
     "image": "디카페인 메가리카노.jpg"
   },
   {
+    "id": 46,
+    "user_id": "3",
+    "name": "화이트 뱅쇼",
+    "category": "TEA",
+    "price_hot": "0",
+    "price_ice": "3900",
+    "price_constant": "0",
+    "menu_type": "onlyice",
+    "description": "레몬, 자몽, 석류, 백포도, 사과 등 다양한 과일로 맛을 낸 겨울한정 화이트 뱅쇼",
+    "image": "화이트 뱅쇼.jpg"
+  },
+  {
     "id": 47,
     "user_id": "3",
     "name": "복숭아아이스티",
@@ -658,6 +670,30 @@
     "menu_type": "both",
     "description": "홍차 특유의 풍부한 플레이버를 만끽할 수 있는 허브티.",
     "image": "얼그레이.jpg"
+  },
+  {
+    "id": 57,
+    "user_id": "3",
+    "name": "스모어 블랙쿠키 프라페",
+    "category": "스무디, 프라페",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "4400",
+    "menu_type": "no_temperature",
+    "description": "진한 초코스무디에 바삭한 쿠키를 넣어 쫀득 달콤한 마시멜로우 잼과 함께 달콤하게 즐기는 겨울 한정 프라페",
+    "image": "스모어 블랙쿠키 프라페.jpg"
+  },
+  {
+    "id": 58,
+    "user_id": "3",
+    "name": "스모어 카라멜쿠키 프라페",
+    "category": "스무디, 프라페",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "4400",
+    "menu_type": "no_temperature",
+    "description": "로투스 쿠키와 함께 진한 카라멜 맛의 스무디를 쫀득 달콤한 마시멜로우 잼과 함께 즐기는 겨울 한정 프라페",
+    "image": "스모어 카라멜쿠키 프라페.jpg"
   },
   {
     "id": 59,
@@ -852,6 +888,18 @@
     "image": "망고요거트스무디.jpg"
   },
   {
+    "id": 75,
+    "user_id": "3",
+    "name": "스노우 샹그리아 에이드",
+    "category": "에이드, 주스",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "3900",
+    "menu_type": "no_temperature",
+    "description": "레몬, 자몽, 석류, 백포도, 사과 등 다양한 과일로 맛을 낸 새하얀 스노우를 표현한 겨울한정 샹그리아 에이드",
+    "image": "스노우 샹그리아 에이드.jpg"
+  },
+  {
     "id": 76,
     "user_id": "3",
     "name": "레드오렌지 자몽주스",
@@ -960,6 +1008,30 @@
     "image": "청포도에이드.jpg"
   },
   {
+    "id": 85,
+    "user_id": "3",
+    "name": "유니콘매직에이드 (핑크)",
+    "category": "에이드, 주스",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "3800",
+    "menu_type": "no_temperature",
+    "description": "섞으면 마법처럼 색이 변하는 재미에 레몬의 상큼함으로 입까지 즐거운 이색 에이드.",
+    "image": "유니콘매직에이드 (핑크).jpg"
+  },
+  {
+    "id": 86,
+    "user_id": "3",
+    "name": "유니콘매직에이드 (블루)",
+    "category": "에이드, 주스",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "3800",
+    "menu_type": "no_temperature",
+    "description": "섞으면 마법처럼 색이 변하는 재미에 라임의 청량함으로 입까지 즐거운 이색 에이드.",
+    "image": "유니콘매직에이드 (블루).jpg"
+  },
+  {
     "id": 87,
     "user_id": "3",
     "name": "체리콕",
@@ -984,6 +1056,18 @@
     "image": "라임모히또.jpg"
   },
   {
+    "id": 89,
+    "user_id": "3",
+    "name": "따끈따끈 간식꾸러미",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "3900",
+    "menu_type": "no_temperature",
+    "description": "겨울 대표 간식 팥&슈크림 붕어빵과 앙버터호두과자, 꿀을 가득 머금은 미니호떡으로 구성된 돌아온 따끈따끈 간식꾸러미",
+    "image": "따끈따끈 간식꾸러미.jpg"
+  },
+  {
     "id": 90,
     "user_id": "3",
     "name": "초코스모어 쿠키",
@@ -996,6 +1080,18 @@
     "image": "초코스모어쿠키.jpg"
   },
   {
+    "id": 91,
+    "user_id": "3",
+    "name": "뚱크림치즈약과쿠키",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "3300",
+    "menu_type": "no_temperature",
+    "description": "쿠키 안에 바닐라맛 크림치즈  가득! 달달하고 꾸덕한 약과가 통째로 올라간 쫀득한 쿠키",
+    "image": "뚱크림치즈약과쿠키.jpg"
+  },
+  {
     "id": 92,
     "user_id": "3",
     "name": "와앙 피자 보름달빵",
@@ -1006,6 +1102,18 @@
     "menu_type": "no_temperature",
     "description": "한끼로도 든든한 중독적인 추억의 와앙 큰 소시지 피자빵",
     "image": "와앙 피자 보름달빵.jpg"
+  },
+  {
+    "id": 93,
+    "user_id": "3",
+    "name": "와앙 콘마요 보름달빵",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "3900",
+    "menu_type": "no_temperature",
+    "description": "톡톡 터지는 옥수수콘이 매력적인 와앙 큰 콘치즈마요 보름달빵",
+    "image": "와앙 콘마요 보름달빵.jpg"
   },
   {
     "id": 94,
@@ -1138,5 +1246,185 @@
     "menu_type": "no_temperature",
     "description": "따뜻하고 바삭한 크로플 위에 차갑고 달콤한 바닐라 아이스크림을 올려 만든 매력적인 베이커리 메뉴.",
     "image": "아이스크림크로플.jpg"
+  },
+  {
+    "id": 105,
+    "user_id": "3",
+    "name": "머그(옐로우)",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "9000",
+    "menu_type": "no_temperature",
+    "description": "일상 어디서든 활용하기 좋은 메가MGC커피 대용량 머그컵.",
+    "image": "머그(옐로우).jpg"
+  },
+  {
+    "id": 106,
+    "user_id": "3",
+    "name": "메가엠지씨스틱 오리지날 아메리카노",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "4100",
+    "menu_type": "no_temperature",
+    "description": "예가체프 원두의 레드와인을 연상케 하는 깊은 풍미, 화이트 초콜릿의 고급스런 단 맛에 풍부한 바디감을 더해 밸런스 잡힌 맛을 느낄 수 있는 아메리카노",
+    "image": "메가 엠지씨 스틱 오리지날 아메리카노.jpg"
+  },
+  {
+    "id": 107,
+    "user_id": "3",
+    "name": "메가엠지씨스틱 디카페인 아메리카노",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "4900",
+    "menu_type": "no_temperature",
+    "description": "물의 삼투압을 이용한 독일 워터 프로세스 방식으로 카페인을 줄이고,브라질 원두 특유의 산미와 달콤함, 바디감은 고스란히 담아 조화로운 맛을 느낄 수 있는 아메리카노",
+    "image": "메가 엠지씨 스틱 디카페인 아메리카노.jpg"
+  },
+  {
+    "id": 108,
+    "user_id": "3",
+    "name": "메가엠지씨스틱 스테비아 믹스커피",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "4800",
+    "menu_type": "no_temperature",
+    "description": "무지방 우유가 함유된 프리마로 커피 본연의 맛은 배가시키고대체 감미료 스테비아로 당과 칼로리를 낮춰 부담 없이 달콤한 라떼의 맛을 즐길 수 있는 믹스커피",
+    "image": "메가 엠지씨 스틱 스테비아 믹스커피.jpg"
+  },
+  {
+    "id": 109,
+    "user_id": "3",
+    "name": "메가 엠지씨 스틱 스테비아 디카페인 믹스커피",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "5400",
+    "menu_type": "no_temperature",
+    "description": "무지방 우유가 함유된 프리마로 커피 본연의 맛은 배가시키고 대체 감미료 스테비아로 당과 칼로리는 낮춘  디카페인임에도 밸런스 잡힌 스테비아 디카페인 믹스커피",
+    "image": "메가 엠지씨 스틱 스테비아 디카페인 믹스커피.jpg"
+  },
+  {
+    "id": 110,
+    "user_id": "3",
+    "name": "스테비아 케이스",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "5900",
+    "menu_type": "no_temperature",
+    "description": "천연 감미료 스테비아 1gx40개입 케이스.",
+    "image": "스테비아 케이스.jpg"
+  },
+  {
+    "id": 111,
+    "user_id": "3",
+    "name": "메가 엠지씨 티플레저 블루밍 캐모마일",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "9500",
+    "menu_type": "no_temperature",
+    "description": "마음의 안정과 여유를 주는 은은하고 향긋한 캐모마일의 꽃향과  싱그러운 레몬그라스, 비타민C가 풍부한 사과를 블렌딩한  디카페인 캐모마일 블렌딩 티",
+    "image": "메가 엠지씨 티플레저 블루밍 캐모마일.jpg"
+  },
+  {
+    "id": 112,
+    "user_id": "3",
+    "name": "메가 엠지씨 티플레저 프루티 루이보스",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "9500",
+    "menu_type": "no_temperature",
+    "description": "무게감 있으면서도 개운하고 깔끔한 전세계 4% 클래식 등급 루이보스와 비타민C가 풍부한 제주도산 귤피, 전남 고흥산 유자를 블렌딩한 디카페인 루이보스 블렌딩 티",
+    "image": "메가 엠지씨 티플레저 프루티 루이보스.jpg"
+  },
+  {
+    "id": 113,
+    "user_id": "3",
+    "name": "메가 엠지씨 티플레저 스위트 히비스커스",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "9500",
+    "menu_type": "no_temperature",
+    "description": "상큼한 히비스커스에 비타민C, 비타민E가 풍부한 레몬머틀과 달콤한 패션후르츠향, 천연 감미료 스테비아를 더해 새콤달콤하게 블렌딩한 디카페인 히비스커스 블렌딩 티",
+    "image": "메가 엠지씨 티플레저 스위트 히비스커스.jpg"
+  },
+  {
+    "id": 114,
+    "user_id": "3",
+    "name": "MGC 텀블러(웜그레이)",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "19800",
+    "menu_type": "no_temperature",
+    "description": "뛰어난 보온보냉력으로 하루종일 그대로, MGC 데일리 텀블러",
+    "image": "MGC 텀블러(웜그레이).jpg"
+  },
+  {
+    "id": 115,
+    "user_id": "3",
+    "name": "MGC 텀블러(옐로우)",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "19800",
+    "menu_type": "no_temperature",
+    "description": "뛰어난 보온보냉력으로 하루종일 그대로, MGC 데일리 텀블러",
+    "image": "MGC 텀블러(옐로우).jpg"
+  },
+  {
+    "id": 116,
+    "user_id": "3",
+    "name": "MGC 텀블러(스카이)",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "19800",
+    "menu_type": "no_temperature",
+    "description": "뛰어난 보온보냉력으로 하루종일 그대로, MGC 데일리 텀블러",
+    "image": "MGC 텀블러(스카이).jpg"
+  },
+  {
+    "id": 117,
+    "user_id": "3",
+    "name": "텀블러(실버)",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "15000",
+    "menu_type": "no_temperature",
+    "description": "기능성과 비주얼을 다잡은 메가MGC커피 텀블러.",
+    "image": "텀블러(실버).jpg"
+  },
+  {
+    "id": 118,
+    "user_id": "3",
+    "name": "텀블러(브론즈)",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "15000",
+    "menu_type": "no_temperature",
+    "description": "기능성과 비주얼을 다잡은 메가MGC커피 텀블러.",
+    "image": "텀블러(브론즈).jpg"
+  },
+  {
+    "id": 119,
+    "user_id": "3",
+    "name": "텀블러(화이트)",
+    "category": "디저트",
+    "price_hot": "0",
+    "price_ice": "0",
+    "price_constant": "15000",
+    "menu_type": "no_temperature",
+    "description": "기능성과 비주얼을 다잡은 메가MGC커피 텀블러.",
+    "image": "텀블러(화이트).jpg"
   }
 ]
