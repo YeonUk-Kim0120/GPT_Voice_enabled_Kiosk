@@ -24,10 +24,10 @@ function MenuOptionBoth({ id, setOption, menus }) {
   useEffect(() => {
     let selectedPrice = 0;
 
-    if (menu.price_hot !== 0 && menu.price_ice !== 0) {
+    if (menu.price_hot != 0 && menu.price_ice != 0) {
       selectedPrice = Math.min(menu.price_hot, menu.price_ice);
     }
-    if (menu.price_ice !== 0 && menu.price_hot === 0) {
+    if (menu.price_ice != 0 && menu.price_hot == 0) {
       selectedPrice = menu.price_ice;
     }
     if (menu.price_ice == 0 && menu.price_hot == 0) {
@@ -39,7 +39,9 @@ function MenuOptionBoth({ id, setOption, menus }) {
 
     priceRef.current = selectedPrice;
 
-    if (!price_same && isTempClicked === 'ice') {
+    console.log(typeof selectedPrice);
+
+    if (type == 'both' && isTempClicked === 'ice' && !price_same) {
       let priceDifference = Math.abs(menu.price_hot - menu.price_ice);
       selectedPrice += priceDifference;
     }
