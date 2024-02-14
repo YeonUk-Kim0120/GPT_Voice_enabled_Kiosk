@@ -5,7 +5,7 @@ import CupOption from './CupOption';
 import TempOption from './TempOption';
 import { useShoppingCart } from '../hooks/shoppingCart';
 
-function MenuOptionBoth({ id, setOption, menus }) {
+function MenuOptionBoth({ menu, setOption }) {
   const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [count, setCount] = useState(1);
@@ -15,7 +15,6 @@ function MenuOptionBoth({ id, setOption, menus }) {
   const [activeTemp, setActiveTemp] = useState(null);
   const priceRef = useRef(0);
 
-  const menu = menus[id - 1];
   const type = menu.menu_type;
   console.log(menu);
 
