@@ -1,4 +1,4 @@
-function TopMenuOption({ name, price, count, setCount }) {
+function TopMenuOption({ name, price, count, setCount, img }) {
   const plusButton = () => {
     setCount((prevCount) => prevCount + 1);
   };
@@ -13,7 +13,7 @@ function TopMenuOption({ name, price, count, setCount }) {
     <>
       <img
         className="pic"
-        src={`${process.env.PUBLIC_URL}/Imgs/아메리카노.png`}
+        src={`${process.env.PUBLIC_URL}/Imgs/${img}`}
         alt={name}
       />
       <div className="basic-menu">

@@ -62,7 +62,9 @@ function MenuOptionBoth({ id, setOption, menus }) {
     setIsTempClicked(value);
   };
 
-  console.log(priceRef.current);
+  const putItem = () => {
+    let itemOption = {};
+  };
 
   return (
     <div className="option-container">
@@ -76,6 +78,7 @@ function MenuOptionBoth({ id, setOption, menus }) {
               price={priceRef.current}
               count={count}
               setCount={setCount}
+              img={menu.image}
             />
           </div>
           <div className="option-choose-container">
@@ -119,7 +122,9 @@ function MenuOptionBoth({ id, setOption, menus }) {
             <button id="cancel-button" onClick={closeOption}>
               취소
             </button>
-            <button id="hold-button">담기</button>
+            <button id="hold-button" onClick={putItem}>
+              담기
+            </button>
           </div>
         </>
       )}
