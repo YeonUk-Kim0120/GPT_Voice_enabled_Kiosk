@@ -142,6 +142,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 10px;
+  margin-left: 0px;
 }
 
 .container-baguni-row {
@@ -173,8 +174,11 @@
 
 .baguni-text2 {
   color: #000000;
-  font-size: 15px;
+  font-size: 13px;
+  font-weight: 560;
   border-bottom: 1.5px solid #000000;
+  overflow-y: auto;
+  margin-left: 5px;
 }
 
 .baguni-text3 {
@@ -321,7 +325,7 @@
   padding: 3px;
   margin-bottom: 8px;
   display: grid;
-  grid-template-columns: 2.2fr 3.8fr 1fr 2fr;
+  grid-template-columns: 3.5fr 2.5fr 1fr 2fr;
   gap: 5px;
   justify-content: space-between;
   align-items: center;
@@ -331,23 +335,24 @@
 .detail-modal-item p {
   margin: 0;
   color: #9e4040;
+  word-wrap: break-word;
 }
 
 .detail-modal-menu-text {
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 1000;
 }
 
 .detail-modal-options-text {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: bold;
 }
 .detail-modal-count-text {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: bold;
 }
 .detail-modal-price-text {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: bold;
 }
 .detail-modal-total-container {
@@ -408,4 +413,8 @@
 
 .detail-modal {
   padding: 0;
+}
+
+.shopingcart {
+  line-height: 1.8;
 }
