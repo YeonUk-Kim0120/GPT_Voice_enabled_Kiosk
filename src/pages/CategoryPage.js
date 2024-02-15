@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Modal from "react-modal";
-import "./CategoryPage.css";
-import "../component/CurrentTime";
-import CurrentTime from "../component/CurrentTime";
-import MenuOptionBoth from "../component/MenuOptionBoth";
-import Message from "../component/Message";
-import { useShoppingCart } from "../hooks/shoppingCart";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
+import './CategoryPage.css';
+import '../component/CurrentTime';
+import CurrentTime from '../component/CurrentTime';
+import MenuOptionBoth from '../component/MenuOptionBoth';
+import Message from '../component/Message';
+import { useShoppingCart } from '../hooks/shoppingCart';
 
 const messages =
   "안녕하세요 김년욱입니다안녕하세요 김년욱입니다안녕하세요 김년욱입니다안녕하세요 김년욱입니다";
@@ -46,6 +46,7 @@ function CategoryPage() {
   const [payIsOpen, setPayIsOpen] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [shoppingCart, setShoppingCart] = useShoppingCart();
   const isZero = menusDetail.length === 0;
   const getMenus = async () => {
     const json = await (await fetch("/megaMenu.json")).json();
@@ -124,8 +125,9 @@ function CategoryPage() {
     navigate("/");
   };
 
-  const goPay = function () {
-    navigate("/pay");
+  const goPay = function (e) {
+    setShoppingCart((prevItems) => [...prevItems, { method: e.target.value }]);
+    navigate('/pay');
   };
 
   const modalPay = function () {
@@ -457,12 +459,20 @@ function CategoryPage() {
               </button>
             </div>
             <div>
-              <button className="detail-modal-in-button" onClick={goPay}>
+              <button
+                className="detail-modal-in-button"
+                onClick={goPay}
+                value="먹고가기"
+              >
                 먹고가기
               </button>
             </div>
             <div>
-              <button className="detail-modal-out-button" onClick={goPay}>
+              <button
+                className="detail-modal-out-button"
+                onClick={goPay}
+                value="포장하기"
+              >
                 포장하기
               </button>
             </div>

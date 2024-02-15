@@ -4,19 +4,20 @@ import TopMenuOption from './TopMenuOption';
 import CupOption from './CupOption';
 import TempOption from './TempOption';
 import { useShoppingCart } from '../hooks/shoppingCart';
+import TumblerOption from './TumblerOption';
 
 function MenuOptionBoth({ menu, setOption }) {
   const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [count, setCount] = useState(1);
   const [isCupClicked, setIsCupClicked] = useState(null);
+  const [isTumblerClicked, setIsTumblerClicked] = useState(null);
   const [isTempClicked, setIsTempClicked] = useState(null);
   const [loading, setLoading] = useState(false);
   const [activeTemp, setActiveTemp] = useState(null);
   const priceRef = useRef(0);
 
   const type = menu.menu_type;
-  console.log(menu);
 
   let price_same = false;
   if (menu.price_hot === menu.price_ice) {
@@ -41,8 +42,6 @@ function MenuOptionBoth({ menu, setOption }) {
 
     priceRef.current = selectedPrice;
 
-    console.log(typeof selectedPrice);
-
     if (type == 'both' && isTempClicked === 'ice' && !price_same) {
       let priceDifference = Math.abs(menu.price_hot - menu.price_ice);
       selectedPrice += priceDifference;
@@ -58,6 +57,11 @@ function MenuOptionBoth({ menu, setOption }) {
   const handleCupClick = (e) => {
     const clickedValue = e.target.value;
     setIsCupClicked(clickedValue);
+  };
+
+  const handleTumblerClick = (e) => {
+    const clickedValue = e.target.value;
+    setIsTumblerClicked(clickedValue);
   };
 
   const handleTempClick = (value) => {
@@ -112,9 +116,9 @@ function MenuOptionBoth({ menu, setOption }) {
                     setActiveTemp={setActiveTemp}
                   />
                 ) : null}
-                <CupOption
-                  isCupClicked={isCupClicked}
-                  handleCupClick={handleCupClick}
+                <TumblerOption
+                  isTumblerClicked={isTumblerClicked}
+                  handleTumblerClick={handleTumblerClick}
                 />
                 <p className="option-box">유료 옵션</p>
                 <hr />
