@@ -6,6 +6,7 @@ import '../component/CurrentTime';
 import CurrentTime from '../component/CurrentTime';
 import MenuOptionBoth from '../component/MenuOptionBoth';
 import Message from '../component/Message';
+import { useShoppingCart } from '../hooks/shoppingCart';
 
 const messages = '안녕하세요 김년욱입니다';
 const messages2 = '안녕하세요 김년욱입니다. 여기는 장바구니입니다.';
@@ -43,6 +44,7 @@ function CategoryPage() {
   const [payIsOpen, setPayIsOpen] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [shoppingCart, setShoppingCart] = useShoppingCart();
   const isZero = menusDetail.length === 0;
   const getMenus = async () => {
     const json = await (await fetch('/megaMenu.json')).json();
@@ -113,7 +115,8 @@ function CategoryPage() {
     navigate('/');
   };
 
-  const goPay = function () {
+  const goPay = function (e) {
+    setShoppingCart((prevItems) => [...prevItems, { method: e.target.value }]);
     navigate('/pay');
   };
 
@@ -428,12 +431,20 @@ function CategoryPage() {
               </button>
             </div>
             <div>
-              <button className="detail-modal-in-button" onClick={goPay}>
+              <button
+                className="detail-modal-in-button"
+                onClick={goPay}
+                value="먹고가기"
+              >
                 먹고가기
               </button>
             </div>
             <div>
-              <button className="detail-modal-out-button" onClick={goPay}>
+              <button
+                className="detail-modal-out-button"
+                onClick={goPay}
+                value="포장하기"
+              >
                 포장하기
               </button>
             </div>

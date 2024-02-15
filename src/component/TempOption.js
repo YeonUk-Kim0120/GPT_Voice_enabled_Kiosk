@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 function TempOption({
   isTempClicked,
   handleTempClick,
@@ -7,8 +5,6 @@ function TempOption({
   activeTemp,
   setActiveTemp,
 }) {
-  console.log(price);
-
   const handleTempButtonClick = (value) => {
     if (!price[value]) return;
     setActiveTemp(value === activeTemp ? null : value);

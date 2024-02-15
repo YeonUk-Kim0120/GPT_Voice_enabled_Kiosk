@@ -1,15 +1,17 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BackButton from './BackButton';
 import './App.css';
 import Call from './Call';
 import Pay from './Pay';
 import Payment from './Payment';
+import { useShoppingCart } from '../hooks/shoppingCart';
 
 function App() {
   const [modal, setModal] = useState(false);
   const [selectedNum, setSelectedNum] = useState(null);
   const [option, setOption] = useState(false);
+  const [shoppingCart, setShoppingCart] = useShoppingCart();
 
   const showOption = () => {
     setOption(true);
@@ -20,10 +22,17 @@ function App() {
     setModal(true);
   };
 
+  useEffect(() => {
+    console.log(shoppingCart);
+  }, []);
+
   return (
     <div className="App">
       <div className="nav">
-        <BackButton />
+        <BackButton
+          shoppingCart={shoppingCart}
+          setShoppingCart={setShoppingCart}
+        />
         <img
           src={`${process.env.PUBLIC_URL}/Imgs/logo.png`}
           alt="카페 로고"
