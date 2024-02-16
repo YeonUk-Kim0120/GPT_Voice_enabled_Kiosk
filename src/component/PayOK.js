@@ -1,6 +1,6 @@
-import './PayOK.css';
-import { useOrder } from '../hooks/orderContext';
-import { Link } from 'react-router-dom';
+import "./PayOK.css";
+import { useOrder } from "../hooks/orderContext";
+import { Link } from "react-router-dom";
 
 function PayOK() {
   const [orderNum] = useOrder();

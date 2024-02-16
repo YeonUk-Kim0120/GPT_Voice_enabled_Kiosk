@@ -138,6 +138,7 @@ function CategoryPage() {
     border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
   };
   const goHome = function () {
+    //setShoppingCart([]);
     navigate("/");
   };
 
