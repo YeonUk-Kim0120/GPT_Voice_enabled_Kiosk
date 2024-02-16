@@ -25,6 +25,7 @@ function TumblerOption({ isTumblerClicked, handleTumblerClick }) {
           src={`${process.env.PUBLIC_URL}/imgs/일회용기.png`}
           alt="일회용기"
         />
+        <p className="cup-small-option">일회용기</p>
       </button>
     </div>
   );

@@ -76,10 +76,10 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
-  overflow-y: scroll;
-  max-height: 350px;
+  overflow-y: auto;
+  max-height: 345px;
   margin-left: 32px;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 
 .option-box {
@@ -145,7 +145,21 @@ hr {
 
 .choose p {
   padding: 0;
-  margin: 5px;
+  margin: 4px;
+}
+
+.choose .sml {
+  margin: 2px;
+}
+
+.choose #medium {
+  width: 25px;
+  height: 25px;
+}
+
+.choose #large {
+  width: 30px;
+  height: 30px;
 }
 
 .cup-small-option {
@@ -164,6 +178,20 @@ hr {
 
 .temp {
   margin-right: 19px;
+}
+
+#cup-size-option {
+  margin-right: 32px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cup-size {
+  margin-right: 0px;
 }
 
 #total-line {
