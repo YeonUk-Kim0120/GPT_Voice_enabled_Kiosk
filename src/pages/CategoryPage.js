@@ -57,6 +57,34 @@ function CategoryPage() {
     Modal.setAppElement("#root");
   }, []);
 
+  useEffect(() => {
+    const totalPrice = calculateTotalPrice();
+    // 여기서 totalPrice를 사용할 수 있습니다.
+  }, [shoppingCart]);
+
+  // 총 가격을 계산하는 함수
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    shoppingCart.forEach((menu) => {
+      totalPrice += Number(menu.price); // 각 메뉴의 가격을 합산합니다.
+    });
+    return totalPrice;
+  };
+
+  useEffect(() => {
+    const totalCount = calculateTotalCount();
+    // 여기서 totalPrice를 사용할 수 있습니다.
+  }, [shoppingCart]);
+
+  // 총 가격을 계산하는 함수
+  const calculateTotalCount = () => {
+    let totalCount = 0;
+    shoppingCart.forEach((menu) => {
+      totalCount += Number(menu.count); // 각 메뉴의 가격을 합산합니다.
+    });
+    return totalCount;
+  };
+
   const filteredMenus = menus.filter((menu) => {
     // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
     if (selectedCategory === "all")
@@ -77,16 +105,6 @@ function CategoryPage() {
   const goToPrevPage = () => {
     setCurrentPage(currentPage - 1);
   };
-
-  const [costSum, setCostSum] = useState(0);
-  useEffect(() => {
-    let sum = 0;
-    shoppingCart.forEach((menu) => {
-      sum += Number(menu.price);
-    });
-    // 계산된 합계를 상태로 설정합니다.
-    setCostSum(sum);
-  }, [shoppingCart]);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -362,7 +380,9 @@ function CategoryPage() {
               </div>
               <div className="baguni-text-container">
                 <div className="baguni-text3"> 총 금액:</div>
-                <div className="baguni-text4">{`${costSum}원`}</div>
+                <div className="baguni-text4">
+                  {calculateTotalPrice().toLocaleString()}원
+                </div>
               </div>
             </div>
             <div className="container-baguni-row">
@@ -441,11 +461,11 @@ function CategoryPage() {
           </div>
           <div className="detail-modal-total-container">
             <span>총 수량:</span>
-            <span>{"N"} 개</span>
+            <span>{calculateTotalCount()} 개</span>
           </div>
           <div className="detail-modal-total-container">
             <span>총 결재금액:</span>
-            <span>{"4,000"} 원</span>
+            <span>{calculateTotalPrice().toLocaleString()} 원</span>
           </div>
           <div className="detail-modal-btns-container">
             <div>
