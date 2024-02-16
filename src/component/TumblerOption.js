@@ -7,8 +7,8 @@ function TumblerOption({ isTumblerClicked, handleTumblerClick }) {
         <span>선택</span>
       </div>
       <button
-        value="텀블러"
-        className={`choose ${isTumblerClicked === '텀블러' ? 'active' : ''}`}
+        value="텀블러O"
+        className={`choose ${isTumblerClicked === '텀블러O' ? 'active' : ''}`}
         onClick={handleTumblerClick}
       >
         <p>텀블러 O</p>
@@ -16,8 +16,8 @@ function TumblerOption({ isTumblerClicked, handleTumblerClick }) {
         <p className="cup-small-option">스탬프 적립</p>
       </button>
       <button
-        value="일회용기"
-        className={`choose ${isTumblerClicked === '일회용기' ? 'active' : ''}`}
+        value="텀블러X"
+        className={`choose ${isTumblerClicked === '텀블러X' ? 'active' : ''}`}
         onClick={handleTumblerClick}
       >
         <p>텀블러 X</p>

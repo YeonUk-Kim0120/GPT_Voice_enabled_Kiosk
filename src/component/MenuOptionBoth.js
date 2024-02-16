@@ -73,7 +73,7 @@ function MenuOptionBoth({ menu, setOption }) {
       name: menu.name,
       count: count,
       temp: activeTemp,
-      cup: isCupClicked,
+      tumbler: isTumblerClicked,
       price: totalPrice,
     };
     setShoppingCart((prevItem) => [...prevItem, itemOption]);

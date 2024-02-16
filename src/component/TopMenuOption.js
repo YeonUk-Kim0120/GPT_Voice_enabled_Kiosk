@@ -9,6 +9,9 @@ function TopMenuOption({ name, price, count, setCount, img }) {
     }
   };
 
+  const priceINT = parseInt(price);
+  const priceWON = priceINT.toLocaleString();
+
   return (
     <>
       <img
@@ -20,7 +23,7 @@ function TopMenuOption({ name, price, count, setCount, img }) {
         <p className="menu-name" id="name">
           {name}
         </p>
-        <p className="menu-price">￦ {price.toLocaleString()}</p>
+        <p className="menu-price">￦ {priceWON}</p>
         <div className="count-container">
           <button className="count-button" onClick={minusButton}>
             -

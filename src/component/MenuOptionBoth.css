@@ -79,6 +79,7 @@
   overflow-y: scroll;
   max-height: 350px;
   margin-left: 32px;
+  padding-top: 10px;
 }
 
 .option-box {
@@ -90,14 +91,14 @@
   padding: 3px 5px;
   border-radius: 5px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 0x;
+  margin-bottom: 0;
   margin-top: 0;
 }
 
 hr {
   margin-left: 0;
   width: 305.723px;
-  height: 1px;
+  height: 0.5px;
   background: #000;
   margin-top: 6px;
 }
