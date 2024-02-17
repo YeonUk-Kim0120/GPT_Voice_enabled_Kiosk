@@ -286,11 +286,12 @@ function CategoryPage() {
                     </div>
                     <div className="menu-name1">{menu.name}</div>
                     <div className="menu-price1">
-                      {(Boolean(Number(menu.price_hot))
-                        ? menu.price_hot.toLocaleString()
-                        : Boolean(Number(menu.price_ice))
-                        ? menu.price_ice.toLocaleString()
-                        : menu.price_constant.toLocaleString()
+                      {Number(
+                        Boolean(Number(menu.price_hot))
+                          ? menu.price_hot.toLocaleString()
+                          : Boolean(Number(menu.price_ice))
+                          ? menu.price_ice.toLocaleString()
+                          : menu.price_constant.toLocaleString()
                       ).toLocaleString()}
                       원
                     </div>
