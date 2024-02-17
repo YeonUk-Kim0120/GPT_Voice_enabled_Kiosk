@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import './MenuOptionBoth.css';
-import TopMenuOption from './TopMenuOption';
-import CupOption from './CupOption';
-import TempOption from './TempOption';
-import { useShoppingCart } from '../hooks/shoppingCart';
-import TumblerOption from './TumblerOption';
-import CupSize from './CupSize';
+import { useEffect, useRef, useState } from "react";
+import "./MenuOptionBoth.css";
+import TopMenuOption from "./TopMenuOption";
+import CupOption from "./CupOption";
+import TempOption from "./TempOption";
+import { useShoppingCart } from "../hooks/shoppingCart";
+import TumblerOption from "./TumblerOption";
+import CupSize from "./CupSize";
 
 function MenuOptionBoth({ menu, setOption }) {
   const [shoppingCart, setShoppingCart] = useShoppingCart();
@@ -45,16 +45,16 @@ function MenuOptionBoth({ menu, setOption }) {
     selectedPrice = Number(selectedPrice);
     priceRef.current = selectedPrice;
 
-    if (type == 'both' && isTempClicked === 'ice' && !price_same) {
+    if (type == "both" && isTempClicked === "ice" && !price_same) {
       let priceDifference = Math.abs(menu.price_hot - menu.price_ice);
       selectedPrice += priceDifference;
     }
 
-    if (isCupSizeClicked === 'medium') {
+    if (isCupSizeClicked === "medium") {
       selectedPrice += 300;
     }
 
-    if (isCupSizeClicked === 'large') {
+    if (isCupSizeClicked === "large") {
       selectedPrice += 500;
     }
 
@@ -103,6 +103,7 @@ function MenuOptionBoth({ menu, setOption }) {
 
   return (
     <div className="option-container">
+      {/*onClick={putItem}지워야함*/}
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -120,11 +121,11 @@ function MenuOptionBoth({ menu, setOption }) {
             <p className="option-box">메뉴 설명</p>
             <hr />
             <p id="menu-description">{menu.description}</p>
-            {menu.category === '디저트' ? null : (
+            {menu.category === "디저트" ? null : (
               <>
                 <p className="option-box">무료 옵션</p>
                 <hr />
-                {price_same || type === 'onlyice' || type === 'onlyhot' ? (
+                {price_same || type === "onlyice" || type === "onlyhot" ? (
                   <TempOption
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
@@ -139,7 +140,7 @@ function MenuOptionBoth({ menu, setOption }) {
                 />
                 <p className="option-box">유료 옵션</p>
                 <hr />
-                {!price_same && type === 'both' ? (
+                {!price_same && type === "both" ? (
                   <TempOption
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
