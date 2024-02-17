@@ -35,9 +35,11 @@ const menusDetail = [
 
 function CategoryPage() {
   const [messages, setMessages] = useState(
-    "안녕녕하세요! 원하시는 메뉴가 있을까요?"
+    "안녕녕하세요! 할메가커피에 오신 것을 환영합니다. 주문을 도와드릴까요?"
   );
-  const messages2 = "주문문하신 메뉴가 맞는지 확인해주세요!";
+  const [messages2, setMessages2] = useState(
+    "주문문하신 메뉴가 맞는지 확인해주세요!"
+  );
   const navigate = useNavigate();
   const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [loading, setLoading] = useState(false);
@@ -58,8 +60,8 @@ function CategoryPage() {
     getMenus();
     Modal.setAppElement("#root");
   }, []);
-  //주작라인입니다.///////////////////////////////////////////////////
-  //주작 라인입니다./////////////////////////////////////////////////
+  //.///////////////////////////////////////////////////
+  //./////////////////////////////////////////////////
   const [is, setIs] = useState(0);
   const goSpy = () => {
     if (is === 0) {
@@ -68,18 +70,25 @@ function CategoryPage() {
       openAmericano();
     } else if (is == 2) {
       modalPay();
+    } else if (is == 3) {
+      setMessages2("포포장하시겠어요? 먹고가시겠어요?");
+    } else if (is == 4) {
+      navigate("/pay");
     }
+
     setIs(is + 1);
   };
   const changeMessage = function () {
-    setMessages("초초코스모어 쿠키 한 개 주문하시겠어요?");
+    setMessages(
+      "딸딸기라떼 시원한 것으로 1잔 기본 사이즈로 준비해드리겠습니다"
+    );
   };
   const openAmericano = function () {
-    handleDetailOpen(90);
-    setMessages("더더 주문하시겠습니까?");
+    handleDetailOpen(21);
+    setMessages("추추가 주문은 없으신가요?");
   };
-  //주작라인입니다.///////////////////////////////////////////////////
-  //주작라인입니다.///////////////////////////////////////////////////
+  //.///////////////////////////////////////////////////
+  /////////////////////////////////////////////////////
   useEffect(() => {
     const totalPrice = calculateTotalPrice();
     // 여기서 totalPrice를 사용할 수 있습니다.
@@ -511,13 +520,12 @@ function CategoryPage() {
                   <div className="detail-modal-item">
                     <p className="detail-modal-menu-text">{menuDetail.name}</p>
                     <span className="detail-modal-options-text">
-                      {menuDetail.temp === "ice" ? "ICE" : "HOT"}
-                      {menuDetail.tumbler ? `,${menuDetail.tumbler}` : null},
-                      {menuDetail.size === "small"
-                        ? "S"
+                      {menuDetail.temp === "hot" ? "따뜻하게" : "시원하게"},{" "}
+                      {menuDetail.size === "large"
+                        ? "L"
                         : menuDetail.size === "medium"
                         ? "M"
-                        : "L"}
+                        : "S"}
                     </span>
                     <span className="detail-modal-count-text">
                       {menuDetail.count} 개
@@ -529,7 +537,7 @@ function CategoryPage() {
                 ))
               : "현재 선택한 메뉴가 없습니다."}
           </div>
-          <div className="detail-modal-total-container" onClick={goPay}>
+          <div className="detail-modal-total-container" onClick={goSpy}>
             <span>총 수량:</span>
             <span>{calculateTotalCount()} 개</span>
           </div>

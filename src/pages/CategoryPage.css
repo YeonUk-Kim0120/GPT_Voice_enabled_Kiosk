@@ -78,8 +78,8 @@
   width: 110px;
   height: 110px;
   position: fixed;
-  bottom: 60px; /* 원하는 위치로 조정 */
-  right: 20px; /* 원하는 위치로 조정 */
+  bottom: 50px; /* 원하는 위치로 조정 */
+  right: -4px; /* 원하는 위치로 조정 */
 }
 .boonga2 {
   width: 100px;
