@@ -85,6 +85,7 @@ function MenuOptionBoth({ menu, setOption }) {
 
   const putItem = () => {
     let itemOption = {
+      id: menu.id,
       name: menu.name,
       count: count,
       size: isCupSizeClicked,
