@@ -86,7 +86,11 @@ function CategoryPage() {
   };
 
   const deleteMenu = function (id) {
-    shoppingCart.filter((menu) => shoppingCart.id !== id);
+    const newShoppingCart = shoppingCart.filter(
+      (menu) => shoppingCart.id === id
+    );
+    console.log(newShoppingCart);
+    setShoppingCart(newShoppingCart);
   };
   const filteredMenus = menus.filter((menu) => {
     // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
@@ -386,7 +390,10 @@ function CategoryPage() {
                       <div>
                         <button
                           className="delete-menu-button"
-                          onClick={() => deleteMenu(menu.id)}
+                          onClick={() => {
+                            deleteMenu(menu.id);
+                            console.log(menu.id);
+                          }}
                         >
                           삭제
                         </button>
