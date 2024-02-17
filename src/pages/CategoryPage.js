@@ -86,13 +86,14 @@ function CategoryPage() {
   };
 
   const deleteMenu = function (id) {
-    const newShoppingCart = shoppingCart.filter((menu) =>
-      shoppingCart.includes(menu.id)
-    );
-    console.log(newShoppingCart);
-    console.log(shoppingCart);
-    console.log(id);
-    setShoppingCart(newShoppingCart);
+    const updatedMenu = [...shoppingCart];
+    const index = updatedMenu.findIndex((menu) => menu.id === id);
+
+    if (index !== -1) {
+      updatedMenu.splice(index, 1);
+    }
+
+    setShoppingCart(updatedMenu);
   };
   const filteredMenus = menus.filter((menu) => {
     // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
@@ -388,13 +389,17 @@ function CategoryPage() {
                     >
                       <div className="shop-mnue-name">{menu.name}</div>
                       <div>{menu.count}개</div>
-                      <div>{menu.price.toLocaleString()}원</div>
+                      <div>
+                        {menu.price !== undefined
+                          ? `${menu.price.toLocaleString()}원`
+                          : "가격 정보 없음"}
+                      </div>
+
                       <div>
                         <button
                           className="delete-menu-button"
                           onClick={() => {
                             deleteMenu(menu.id);
-                            console.log(menu.id);
                           }}
                         >
                           삭제
