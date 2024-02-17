@@ -6,19 +6,15 @@ import Call from './Call';
 import Pay from './Pay';
 import Payment from './Payment';
 import { useShoppingCart } from '../hooks/shoppingCart';
+import Modal from 'react-modal';
 
 function App() {
   const [modal, setModal] = useState(false);
-  const [selectedNum, setSelectedNum] = useState(null);
-  const [option, setOption] = useState(false);
+  const [payMethod, setPayMethod] = useState(null);
   const [shoppingCart, setShoppingCart] = useShoppingCart();
 
-  const showOption = () => {
-    setOption(true);
-  };
-
-  const showModal = (num) => {
-    setSelectedNum(num);
+  const showModal = (method) => {
+    setPayMethod(method);
     setModal(true);
   };
 
@@ -45,14 +41,14 @@ function App() {
           <Payment
             method={'카드 결제'}
             imgSrc={`${process.env.PUBLIC_URL}/Imgs/card.svg`}
-            showModal={() => showModal(1)}
+            showModal={() => showModal('카드결제')}
           />
         </div>
         <div>
           <Payment
             method={'기프티콘'}
             imgSrc={`${process.env.PUBLIC_URL}/Imgs/Vector.svg`}
-            showModal={() => showModal(2)}
+            showModal={() => showModal('기프티콘')}
           />
         </div>
       </div>
@@ -61,21 +57,23 @@ function App() {
           <Payment
             method={'선불 카드'}
             imgSrc={`${process.env.PUBLIC_URL}/Imgs/선불카드 2.svg`}
-            showModal={() => showModal(2)}
+            showModal={() => showModal('선불카드')}
           />
         </div>
         <div>
           <Payment
             method={'카카오페이'}
             imgSrc={`${process.env.PUBLIC_URL}/Imgs/카카오페이 1.svg`}
-            showModal={() => showModal(2)}
+            showModal={() => showModal('카카오페이')}
           />
         </div>
       </div>
       <div className="smallButton">
-        <Call showModal={() => showModal(3)} />
+        <Call showModal={() => showModal('직원호출')} />
       </div>
-      {modal && <Pay setModal={setModal} num={selectedNum} />}
+      <Modal isOpen={modal} className="pay-card">
+        <Pay setModal={setModal} method={payMethod} />
+      </Modal>
     </div>
   );
 }
