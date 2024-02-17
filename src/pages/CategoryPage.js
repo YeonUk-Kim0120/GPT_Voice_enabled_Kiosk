@@ -8,8 +8,6 @@ import MenuOptionBoth from "../component/MenuOptionBoth";
 import Message from "../component/Message";
 import { useShoppingCart } from "../hooks/shoppingCart";
 
-const messages = "안녕녕하신가요";
-const messages2 = "안녕하세요 김년욱입니다. 여기는 장바구니입니다.";
 // const messages = [
 //   "안녕하세요!",
 //   "이 말풍선은 길어질까요?",
@@ -36,6 +34,10 @@ const menusDetail = [
 ];
 
 function CategoryPage() {
+  const [messages, setMessages] = useState(
+    "안녕녕하세요! 원하시는 메뉴가 있을까요?"
+  );
+  const messages2 = "안녕하세요 김년욱입니다. 여기는 장바구니입니다.";
   const navigate = useNavigate();
   const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [loading, setLoading] = useState(false);
@@ -56,7 +58,14 @@ function CategoryPage() {
     getMenus();
     Modal.setAppElement("#root");
   }, []);
-
+  //주작 라인입니다.
+  const changeMessage = function () {
+    setMessages("초초코스모어 쿠키 한 개 주문하시겠어요?");
+  };
+  const openAmericano = function () {
+    handleDetailOpen(3);
+  };
+  //주작라인입니다.
   useEffect(() => {
     const totalPrice = calculateTotalPrice();
     // 여기서 totalPrice를 사용할 수 있습니다.
@@ -352,7 +361,7 @@ function CategoryPage() {
                     <img
                       src={`${process.env.PUBLIC_URL}/imgs/right.png`}
                       className="page-button"
-                      onClick={null}
+                      onClick={changeMessage}
                     />
                   ) : (
                     <img
