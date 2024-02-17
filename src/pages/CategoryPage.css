@@ -443,13 +443,13 @@
 
 .delete-menu-button {
   width: 30px;
-  height: 21px;
+  height: 20px;
   font-size: 10px;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(189, 189, 189);
+  background-color: rgb(226, 226, 226);
   border: none;
   border-radius: 4px;
 }
