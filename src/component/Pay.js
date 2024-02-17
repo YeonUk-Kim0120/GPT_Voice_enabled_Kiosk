@@ -1,27 +1,34 @@
 import { Link } from 'react-router-dom';
 import './Pay.css';
 import { useOrder } from '../hooks/orderContext';
+import { useShoppingCart } from '../hooks/shoppingCart';
 
-function Pay({ setModal, num }) {
-  // eslint-disable-next-line
+function Pay({ setModal, method }) {
+  const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [orderNum, incrementOrderNum] = useOrder();
+  console.log(method);
 
   const closeModal = () => {
     setModal(false);
   };
 
   const okModal = () => {
+    setShoppingCart((prevItems) => [...prevItems, { payMethod: method }]);
     setModal(false);
     incrementOrderNum();
   };
 
   let text;
 
-  if (num === 1) {
+  if (method === '카드결제') {
     text = '아래의 카드 리더기에 카드를 꽂아주세요!';
-  } else if (num === 2) {
+  } else if (
+    method === '기프티콘' ||
+    method === '선불카드' ||
+    method === '카카오페이'
+  ) {
     text = '아래에 바코드를 찍어주세요!';
-  } else if (num === 3) {
+  } else if (method === '직원호출') {
     text = (
       <>
         직원을 호출하는 중이에요!
