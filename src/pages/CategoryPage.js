@@ -387,7 +387,7 @@ function CategoryPage() {
                       key={menu.id}
                       style={{ whiteSpace: 'nowrap' }}
                     >
-                      <div>{menu.name}</div>
+                      <div className="shop-mnue-name">{menu.name}</div>
                       <div>{menu.count}개</div>
                       <div>
                         {menu.price !== undefined
@@ -489,8 +489,13 @@ function CategoryPage() {
                   <div className="detail-modal-item">
                     <p className="detail-modal-menu-text">{menuDetail.name}</p>
                     <span className="detail-modal-options-text">
-                      {menuDetail.temp}
-                      {menuDetail.cup ? `,${menuDetail.cup}` : null}
+                      {menuDetail.temp === "ice" ? "ICE" : "HOT"}
+                      {menuDetail.tumbler ? `,${menuDetail.tumbler}` : null},
+                      {menuDetail.size === "small"
+                        ? "S"
+                        : menuDetail.size === "medium"
+                        ? "M"
+                        : "L"}
                     </span>
                     <span className="detail-modal-count-text">
                       {menuDetail.count} 개

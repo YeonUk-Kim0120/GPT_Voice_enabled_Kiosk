@@ -337,7 +337,7 @@
   padding: 3px;
   margin-bottom: 4px;
   display: grid;
-  grid-template-columns: 3.9fr 2.5fr 1fr 1.6fr;
+  grid-template-columns: 4.2fr 2.2fr 0.9fr 1.7fr;
   text-align: center;
   gap: 5px;
   justify-content: space-between;
@@ -352,13 +352,13 @@
 }
 
 .detail-modal-menu-text {
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 1000;
   font-weight: bold;
 }
 
 .detail-modal-options-text {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: bold;
 }
 .detail-modal-count-text {
@@ -366,7 +366,7 @@
   font-weight: bold;
 }
 .detail-modal-price-text {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
 }
 .detail-modal-total-container {
@@ -452,4 +452,8 @@
   background-color: rgb(226, 226, 226);
   border: none;
   border-radius: 4px;
+}
+
+.shop-mnue-name {
+  text-align: left;
 }
