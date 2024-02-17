@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import "./MenuOptionBoth.css";
-import TopMenuOption from "./TopMenuOption";
-import CupOption from "./CupOption";
-import TempOption from "./TempOption";
-import { useShoppingCart } from "../hooks/shoppingCart";
-import TumblerOption from "./TumblerOption";
+import { useEffect, useRef, useState } from 'react';
+import './MenuOptionBoth.css';
+import TopMenuOption from './TopMenuOption';
+import CupOption from './CupOption';
+import TempOption from './TempOption';
+import { useShoppingCart } from '../hooks/shoppingCart';
+import TumblerOption from './TumblerOption';
+import CupSize from './CupSize';
 
 function MenuOptionBoth({ menu, setOption }) {
   const [shoppingCart, setShoppingCart] = useShoppingCart();
@@ -15,6 +16,7 @@ function MenuOptionBoth({ menu, setOption }) {
   const [isTempClicked, setIsTempClicked] = useState(null);
   const [loading, setLoading] = useState(false);
   const [activeTemp, setActiveTemp] = useState(null);
+  const [isCupSizeClicked, setIsCupSizeClicked] = useState(null);
   const priceRef = useRef(0);
 
   const type = menu.menu_type;
@@ -40,15 +42,24 @@ function MenuOptionBoth({ menu, setOption }) {
       selectedPrice = menu.price_constant;
     }
 
+    selectedPrice = Number(selectedPrice);
     priceRef.current = selectedPrice;
 
-    if (type == "both" && isTempClicked === "ice" && !price_same) {
+    if (type == 'both' && isTempClicked === 'ice' && !price_same) {
       let priceDifference = Math.abs(menu.price_hot - menu.price_ice);
       selectedPrice += priceDifference;
     }
 
+    if (isCupSizeClicked === 'medium') {
+      selectedPrice += 300;
+    }
+
+    if (isCupSizeClicked === 'large') {
+      selectedPrice += 500;
+    }
+
     setTotalPrice(selectedPrice * count);
-  }, [menu, count, isTempClicked]);
+  }, [menu, count, isTempClicked, isCupSizeClicked]);
 
   const closeOption = () => {
     setOption(false);
@@ -68,12 +79,17 @@ function MenuOptionBoth({ menu, setOption }) {
     setIsTempClicked(value);
   };
 
+  const handleCupSizeClick = (value) => {
+    setIsCupSizeClicked(value);
+  };
+
   const putItem = () => {
     let itemOption = {
       name: menu.name,
       count: count,
+      size: isCupSizeClicked,
       temp: activeTemp,
-      cup: isCupClicked,
+      tumbler: isTumblerClicked,
       price: totalPrice,
     };
     setShoppingCart((prevItem) => [...prevItem, itemOption]);
@@ -103,11 +119,11 @@ function MenuOptionBoth({ menu, setOption }) {
             <p className="option-box">메뉴 설명</p>
             <hr />
             <p id="menu-description">{menu.description}</p>
-            {menu.category === "디저트" ? null : (
+            {menu.category === '디저트' ? null : (
               <>
                 <p className="option-box">무료 옵션</p>
                 <hr />
-                {price_same || type === "onlyice" || type === "onlyhot" ? (
+                {price_same || type === 'onlyice' || type === 'onlyhot' ? (
                   <TempOption
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
@@ -122,7 +138,7 @@ function MenuOptionBoth({ menu, setOption }) {
                 />
                 <p className="option-box">유료 옵션</p>
                 <hr />
-                {!price_same && type === "both" ? (
+                {!price_same && type === 'both' ? (
                   <TempOption
                     isTempClicked={isTempClicked}
                     handleTempClick={handleTempClick}
@@ -131,6 +147,10 @@ function MenuOptionBoth({ menu, setOption }) {
                     setActiveTemp={setActiveTemp}
                   />
                 ) : null}
+                <CupSize
+                  isCupSizeClicked={isCupSizeClicked}
+                  handleCupSizeClick={handleCupSizeClick}
+                />
               </>
             )}
           </div>

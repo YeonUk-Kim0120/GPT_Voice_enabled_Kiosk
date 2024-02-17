@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import "./StartPage.css";
 import { useShoppingCart } from "../hooks/shoppingCart";
+
 function StartPage() {
   const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [touch, setTouch] = useState(false);
@@ -16,6 +17,10 @@ function StartPage() {
     margin: "0 auto",
     border: "0px solid black", // 경계를 확인하기 위한 임시 스타일
   };
+
+  useEffect(() => {
+    setShoppingCart([]);
+  }, []);
 
   return (
     <div style={ScreenStyle} onClick={getTouch} className="container-row">
