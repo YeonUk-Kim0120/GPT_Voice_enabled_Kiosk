@@ -377,7 +377,7 @@ function CategoryPage() {
                       style={{ whiteSpace: "nowrap" }}
                     >
                       {menu.name}/{menu.temp === "ice" ? "차갑게" : "따뜻하게"}/
-                      {menu.cup}/{menu.count}개/
+                      /{menu.size}/{menu.cup}/{menu.count}개/
                       {menu.price.toLocaleString()}원
                     </div>
                   );
