@@ -377,9 +377,21 @@ function CategoryPage() {
                       key={menu.id}
                       style={{ whiteSpace: "nowrap" }}
                     >
-                      {menu.name}/{menu.temp === "ice" ? "차갑게" : "따뜻하게"}/
-                      /{menu.size}/{menu.tumbler}/{menu.count}개/
-                      {menu.price.toLocaleString()}원
+                      <div>{menu.name}</div>
+                      <div>{menu.count}개</div>
+                      <div>{menu.price.toLocaleString()}원</div>
+                      <div>
+                        <button className="delete-menu-button">삭제</button>
+                      </div>
+
+                      {/* {menu.name}/{menu.temp === "ice" ? "COLD" : "HOT"}/ /
+                      {menu.size === "small"
+                        ? "S"
+                        : menu.size === "medium"
+                        ? "M"
+                        : "L"}
+                      /{menu.tumbler}/{menu.count}개/
+                      {menu.price.toLocaleString()}원 */}
                     </div>
                   );
                 })}

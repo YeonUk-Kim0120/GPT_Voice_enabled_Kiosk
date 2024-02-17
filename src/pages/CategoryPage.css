@@ -184,9 +184,10 @@
   font-weight: 520;
   /* border-bottom: 1.5px solid #000000; */
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin-left: 10px;
   margin-top: 10px;
+  margin-right: 10px;
 }
 
 .baguni-text3 {
@@ -336,7 +337,8 @@
   padding: 3px;
   margin-bottom: 4px;
   display: grid;
-  grid-template-columns: 3.5fr 2.5fr 1fr 2fr;
+  grid-template-columns: 3.9fr 2.5fr 1fr 1.6fr;
+  text-align: center;
   gap: 5px;
   justify-content: space-between;
   align-items: center;
@@ -345,12 +347,12 @@
 }
 .detail-modal-item p {
   margin: 0;
-  color: #9e4040;
+  color: #000000;
   word-wrap: break-word;
 }
 
 .detail-modal-menu-text {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 1000;
 }
 
@@ -427,5 +429,26 @@
 }
 
 .shopingcart {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr 1.8fr 2fr;
   line-height: 1.8;
+  width: 221px;
+  font-size: 10px;
+  white-space: nowrap; /* 텍스트를 한 줄에 표시 */
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.delete-menu-button {
+  width: 30px;
+  height: 21px;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(189, 189, 189);
+  border: none;
+  border-radius: 4px;
 }
