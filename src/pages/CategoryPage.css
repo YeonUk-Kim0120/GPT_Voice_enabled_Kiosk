@@ -19,17 +19,18 @@
 
 .menu-item1 {
   display: grid;
-  grid-template-rows: 3fr 1fr 1fr 1fr;
+  grid-template-rows: 7fr 1fr 1fr;
   /* display: flex;
   flex-direction: column;*/
   align-items: center;
   justify-content: center;
   background: rgb(255, 254, 254); /* 배경색 */
-  border: 2px solid rgb(227, 191, 30);
+  border: 1px solid #fcac43;
   padding: 16px;
   border-radius: 10px; /* 둥근 모서리 */
   width: 6vh; /* 부모 요소에 맞게 너비를 설정합니다. */
   height: 14vh; /* 내용에 맞게 높이를 조절합니다. */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .container-colum {
@@ -59,11 +60,11 @@
   height: 66.2px;
   color: #ffffff;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   background-color: #fcac43;
-  border: 1px solid rgb(255, 255, 255);
+  border: 0px solid rgb(255, 255, 255);
   border-radius: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .category-button.active {
   /* text-decoration: underline; */
@@ -79,7 +80,7 @@
   height: 110px;
   position: fixed;
   bottom: 60px; /* 원하는 위치로 조정 */
-  right: 5px; /* 원하는 위치로 조정 */
+  right: 20px; /* 원하는 위치로 조정 */
 }
 .boonga2 {
   width: 100px;
@@ -88,7 +89,8 @@
   bottom: 670px;
   right: 20px;
 }
-
+.bubble-loc {
+}
 .bubble-text {
   width: 120px;
   height: 40px;
@@ -102,20 +104,22 @@
 }
 .pay-button-loc {
   position: fixed;
-  bottom: 18px; /* 원하는 위치로 조정 */
-  right: 14px; /* 원하는 위치로 조정 */
+  bottom: 20px; /* 원하는 위치로 조정 */
+  right: 24px; /* 원하는 위치로 조정 */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .pay-button {
-  width: 120px;
-  height: 50px;
+  width: 107px;
+  height: 52px;
   color: #ffffff;
   font-weight: bold;
   font-size: 22px;
-  background-color: #3d4dc6;
+  background-color: #288fd9;
   border-radius: 15px;
+  border: none;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .team-logo {
@@ -140,8 +144,8 @@
 }
 .container-baguni-col {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1.7fr 1.3fr;
+  gap: 1px;
   margin-left: 0px;
 }
 
@@ -167,23 +171,30 @@
 }
 .baguni-text1 {
   color: #000000;
-  font-weight: bold;
-  font-size: 13px;
-  border-bottom: 1.5px solid #000000;
+  font-weight: 550;
+  font-size: 15px;
+  margin-left: 12px;
+  margin-top: 3px;
+  /* border-bottom: 1.5px solid #000000; */
 }
 
 .baguni-text2 {
   color: #000000;
-  font-size: 13px;
-  font-weight: 560;
-  border-bottom: 1.5px solid #000000;
+  font-size: 15px;
+  font-weight: 520;
+  /* border-bottom: 1.5px solid #000000; */
   overflow-y: auto;
-  margin-left: 5px;
+  overflow-x: hidden;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .baguni-text3 {
   color: #000000;
-  font-size: 17px;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-bottom: -5px;
 }
 .baguni-text {
   vertical-align: text-bottom;
@@ -192,7 +203,7 @@
   color: #000000;
   font-weight: bold;
   text-align: center;
-  font-size: 23px;
+  font-size: 25px;
 }
 
 .header {
@@ -242,14 +253,15 @@
 
 .menu-name1,
 .menu-price1 {
-  font-size: 10px;
+  font-size: 11px;
   text-align: center;
   color: #010101; /* 글자 색상 */
   white-space: nowrap; /* 텍스트를 한 줄에 표시 */
   overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
   text-overflow: ellipsis;
-  width: 80px;
-  margin-left: 7%;
+  width: 78px;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .detail-modal {
@@ -277,7 +289,7 @@
 }
 .detail-modal-date-container {
   margin-left: 10%;
-  margin-top: 10%;
+  margin-top: 25px;
   line-height: 0.6; /* Adjust line height for proper spacing between lines */
   color: #000000; /* Text color */
 }
@@ -292,14 +304,14 @@
   font-weight: bold; /* 글자 두께 */
 }
 .detail-modal-checktext-container {
-  padding: 5px; /* 필요한 경우 패딩 추가 */
+  padding: 2px; /* 필요한 경우 패딩 추가 */
   background-color: #fcac43; /* 배경색 */
-  border: 0.2px solid #000000; /* 테두리 */
+  border: 1px solid #fbad42; /* 테두리 */
   border-radius: 10px; /* 둥근 모서리 */
   width: 300px;
   height: 26px;
   margin-left: 4%;
-  font-size: 20px; /* 글자 크기 */
+  font-size: 18px; /* 글자 크기 */
   color: #ffffff;
   font-weight: bold; /* 글자 두께 */
   text-align: center;
@@ -307,39 +319,40 @@
 }
 
 .detail-modal-list {
-  padding: 10px;
   background-color: rgb(255, 255, 255);
-  border-radius: 30px;
+  border-radius: 10px;
   border: 0.2px solid rgb(213, 213, 213);
   overflow-y: auto;
   margin-left: 3%;
-  width: 35vh;
+  width: 36vh;
   min-height: 45vh;
   max-height: 45vh;
   background-color: #f7f7f7;
+  margin: 0px 0px 0px 15px;
 }
 .detail-modal-item {
   background-color: #f7f7f7;
-  border: 0.2px solid black;
-  border-radius: 16px;
+  border: 0.2px solid #939292;
+  border-radius: 10px;
   padding: 3px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   display: grid;
-  grid-template-columns: 3.5fr 2.5fr 1fr 2fr;
+  grid-template-columns: 3.9fr 2.5fr 1fr 1.6fr;
+  text-align: center;
   gap: 5px;
   justify-content: space-between;
   align-items: center;
   min-height: 40px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
 }
 .detail-modal-item p {
   margin: 0;
-  color: #9e4040;
+  color: #000000;
   word-wrap: break-word;
 }
 
 .detail-modal-menu-text {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 1000;
 }
 
@@ -360,7 +373,7 @@
   justify-content: space-between; /* 양쪽 끝에 요소를 배치 */
   align-items: center; /* 세로 중앙 정렬 */
   padding: 5px; /* 필요한 경우 패딩 추가 */
-  background-color: #ffffff; /* 배경색 */
+  background-color: #f7f7f7; /* 배경색 */
   border: 1px solid #000000; /* 테두리 */
   border-radius: 10px; /* 둥근 모서리 */
   width: 300px;
@@ -416,5 +429,26 @@
 }
 
 .shopingcart {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr 1.8fr 2fr;
   line-height: 1.8;
+  width: 221px;
+  font-size: 10px;
+  white-space: nowrap; /* 텍스트를 한 줄에 표시 */
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.delete-menu-button {
+  width: 30px;
+  height: 21px;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(189, 189, 189);
+  border: none;
+  border-radius: 4px;
 }

@@ -115,7 +115,7 @@ function CategoryPage() {
     width: "390px",
     height: "844px",
     margin: "0 auto",
-    border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
+    border: "0px solid black", // 경계를 확인하기 위한 임시 스타일
   };
 
   const customStyles = {
@@ -277,19 +277,23 @@ function CategoryPage() {
                       alt={menu.name}
                       className="menu-image1"
                     /> */}
-                    <img
-                      src={`${process.env.PUBLIC_URL}/imgs/${menu.image}`}
-                      alt={menu.name}
-                      className="menu-image1"
-                    />
-                    <div></div>
+                    <div>
+                      <img
+                        src={`${process.env.PUBLIC_URL}/imgs/${menu.image}`}
+                        alt={menu.name}
+                        className="menu-image1"
+                      />
+                    </div>
                     <div className="menu-name1">{menu.name}</div>
                     <div className="menu-price1">
-                      {Boolean(Number(menu.price_hot))
-                        ? menu.price_hot
-                        : Boolean(Number(menu.price_ice))
-                        ? menu.price_ice
-                        : menu.price_constant}
+                      {Number(
+                        Boolean(Number(menu.price_hot))
+                          ? menu.price_hot.toLocaleString()
+                          : Boolean(Number(menu.price_ice))
+                          ? menu.price_ice.toLocaleString()
+                          : menu.price_constant.toLocaleString()
+                      ).toLocaleString()}
+                      원
                     </div>
                   </div>
                 ))}
@@ -360,7 +364,7 @@ function CategoryPage() {
           </div>
           <div className="container-baguni-col">
             <div style={basket} className="basket container-baguni-rowrow">
-              <div className="baguni-text1">-주문한 상품</div>
+              <div className="baguni-text1"> 주문한 상품</div>
               <div className="baguni-text2">
                 {shoppingCart.map((menu) => {
                   // 각 상품의 가격을 costSum에 더합니다.
@@ -373,8 +377,21 @@ function CategoryPage() {
                       key={menu.id}
                       style={{ whiteSpace: "nowrap" }}
                     >
-                      [{menu.name}] {menu.temp},{menu.cup}|{menu.count}개|
-                      {menu.price}원
+                      <div>{menu.name}</div>
+                      <div>{menu.count}개</div>
+                      <div>{menu.price.toLocaleString()}원</div>
+                      <div>
+                        <button className="delete-menu-button">삭제</button>
+                      </div>
+
+                      {/* {menu.name}/{menu.temp === "ice" ? "COLD" : "HOT"}/ /
+                      {menu.size === "small"
+                        ? "S"
+                        : menu.size === "medium"
+                        ? "M"
+                        : "L"}
+                      /{menu.tumbler}/{menu.count}개/
+                      {menu.price.toLocaleString()}원 */}
                     </div>
                   );
                 })}
@@ -393,7 +410,9 @@ function CategoryPage() {
                   className="bubble"
                 />
                 <p className="bubble-text">안녕하세요 </p> */}
-                <Message message={messages} />
+                <div className="bubble-loc">
+                  <Message message={messages} />
+                </div>
                 <img
                   src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
                   className="boonga"

@@ -11,6 +11,7 @@
 .Text {
   text-align: center;
   animation: blink 2s linear infinite; /* 1초 간격으로 무한 반복 */
+  font-size: 15px;
 }
 
 .Logo {
