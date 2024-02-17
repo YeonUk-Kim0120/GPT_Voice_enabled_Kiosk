@@ -86,10 +86,12 @@ function CategoryPage() {
   };
 
   const deleteMenu = function (id) {
-    const newShoppingCart = shoppingCart.filter(
-      (menu) => shoppingCart.id === id
+    const newShoppingCart = shoppingCart.filter((menu) =>
+      shoppingCart.includes(menu.id)
     );
     console.log(newShoppingCart);
+    console.log(shoppingCart);
+    console.log(id);
     setShoppingCart(newShoppingCart);
   };
   const filteredMenus = menus.filter((menu) => {
