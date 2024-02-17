@@ -37,7 +37,7 @@ function CategoryPage() {
   const [messages, setMessages] = useState(
     "안녕녕하세요! 원하시는 메뉴가 있을까요?"
   );
-  const messages2 = "안녕하세요 김년욱입니다. 여기는 장바구니입니다.";
+  const messages2 = "주문문하신 메뉴가 맞는지 확인해주세요!";
   const navigate = useNavigate();
   const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [loading, setLoading] = useState(false);
@@ -58,24 +58,28 @@ function CategoryPage() {
     getMenus();
     Modal.setAppElement("#root");
   }, []);
-  // //주작 라인입니다./////////////////////////////////////////////////
-  // const [is, setIs] = useState(true);
-  // const goSpy = () => {
-  //   if (is) {
-  //     changeMessage();
-  //   } else {
-  //     openAmericano();
-  //   }
-  //   setIs(!is);
-  // };
-  // const changeMessage = function () {
-  //   setMessages("초초코스모어 쿠키 한 개 주문하시겠어요?");
-  // };
-  // const openAmericano = function () {
-  //   handleDetailOpen(90);
-  //   setMessages("더더 주문하시겠습니까?");
-  // };
-  // //주작라인입니다.///////////////////////////////////////////////////
+  //주작라인입니다.///////////////////////////////////////////////////
+  //주작 라인입니다./////////////////////////////////////////////////
+  const [is, setIs] = useState(0);
+  const goSpy = () => {
+    if (is === 0) {
+      changeMessage();
+    } else if (is === 1) {
+      openAmericano();
+    } else if (is == 2) {
+      modalPay();
+    }
+    setIs(is + 1);
+  };
+  const changeMessage = function () {
+    setMessages("초초코스모어 쿠키 한 개 주문하시겠어요?");
+  };
+  const openAmericano = function () {
+    handleDetailOpen(90);
+    setMessages("더더 주문하시겠습니까?");
+  };
+  //주작라인입니다.///////////////////////////////////////////////////
+  //주작라인입니다.///////////////////////////////////////////////////
   useEffect(() => {
     const totalPrice = calculateTotalPrice();
     // 여기서 totalPrice를 사용할 수 있습니다.
@@ -525,7 +529,7 @@ function CategoryPage() {
                 ))
               : "현재 선택한 메뉴가 없습니다."}
           </div>
-          <div className="detail-modal-total-container">
+          <div className="detail-modal-total-container" onClick={goPay}>
             <span>총 수량:</span>
             <span>{calculateTotalCount()} 개</span>
           </div>
