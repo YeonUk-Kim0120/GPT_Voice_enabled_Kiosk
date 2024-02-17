@@ -85,6 +85,9 @@ function CategoryPage() {
     return totalCount;
   };
 
+  const deleteMenu = function (id) {
+    shoppingCart.filter((menu) => shoppingCart.id !== id);
+  };
   const filteredMenus = menus.filter((menu) => {
     // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
     if (selectedCategory === "all")
@@ -381,7 +384,12 @@ function CategoryPage() {
                       <div>{menu.count}개</div>
                       <div>{menu.price.toLocaleString()}원</div>
                       <div>
-                        <button className="delete-menu-button">삭제</button>
+                        <button
+                          className="delete-menu-button"
+                          onClick={() => deleteMenu(menu.id)}
+                        >
+                          삭제
+                        </button>
                       </div>
 
                       {/* {menu.name}/{menu.temp === "ice" ? "COLD" : "HOT"}/ /
