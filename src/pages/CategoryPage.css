@@ -435,6 +435,7 @@
   line-height: 1.8;
   width: 221px;
   font-size: 10px;
+  height: 25px;
   white-space: nowrap; /* 텍스트를 한 줄에 표시 */
   overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
   text-overflow: ellipsis;
