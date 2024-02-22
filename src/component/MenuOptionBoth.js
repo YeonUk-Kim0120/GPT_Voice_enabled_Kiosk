@@ -102,8 +102,7 @@ function MenuOptionBoth({ menu, setOption }) {
   }, [shoppingCart]);
 
   return (
-    <div className="option-container" onClick={putItem}>
-      {/*onClick={putItem}지워야함*/}
+    <div className="option-container">
       {loading ? (
         <p>Loading...</p>
       ) : (

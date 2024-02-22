@@ -60,35 +60,23 @@ function CategoryPage() {
     getMenus();
     Modal.setAppElement("#root");
   }, []);
-  //.///////////////////////////////////////////////////
-  //./////////////////////////////////////////////////
-  const [is, setIs] = useState(0);
+  //주작 라인입니다./////////////////////////////////////////////////
+  const [is, setIs] = useState(true);
   const goSpy = () => {
-    if (is === 0) {
+    if (is) {
       changeMessage();
-    } else if (is === 1) {
+    } else {
       openAmericano();
-    } else if (is == 2) {
-      modalPay();
-    } else if (is == 3) {
-      setMessages2("포포장하시겠어요? 먹고가시겠어요?");
-    } else if (is == 4) {
-      navigate("/pay");
     }
-
-    setIs(is + 1);
+    setIs(!is);
   };
   const changeMessage = function () {
-    setMessages(
-      "딸딸기라떼 시원한 것으로 1잔 기본 사이즈로 준비해드리겠습니다"
-    );
+    setMessages("초초코스모어 쿠키 한 개 주문하시겠어요?");
   };
   const openAmericano = function () {
-    handleDetailOpen(21);
-    setMessages("추추가 주문은 없으신가요?");
+    handleDetailOpen(90);
   };
-  //.///////////////////////////////////////////////////
-  /////////////////////////////////////////////////////
+  //주작라인입니다.///////////////////////////////////////////////////
   useEffect(() => {
     const totalPrice = calculateTotalPrice();
     // 여기서 totalPrice를 사용할 수 있습니다.
