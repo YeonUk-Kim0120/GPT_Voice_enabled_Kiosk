@@ -407,18 +407,14 @@ function CategoryPage() {
             </div>
             <div className="container-baguni-row">
               <div className="">
-                {/* <img
-                  src={`${process.env.PUBLIC_URL}/imgs/bubble.png`}
-                  className="bubble"
-                />
-                <p className="bubble-text">안녕하세요 </p> */}
-                <div className="bubble-loc">
-                  <Message message={messages} />
-                </div>
                 <img
                   src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
                   className="boonga"
                 />
+
+                <div className="bubble-loc">
+                  <Message message={messages} />
+                </div>
               </div>
               <div className="pay-button-loc">
                 <button className="pay-button" onClick={modalPay}>
@@ -448,42 +444,46 @@ function CategoryPage() {
               </p>
             </div>
             <div>
-              <div style={{ position: "relative", zIndex: 2 }}>
-                <Message message={messages2} className="bubble2" />
-              </div>
               <img
                 src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
                 className="boonga2"
               />
+              <div style={{ position: "relative", zIndex: 2 }}>
+                <Message message={messages2} className="bubble2" />
+              </div>
             </div>
           </div>
-          <div>
+          <div className="detail-modal-checktext-container-loc">
             <div className="detail-modal-checktext-container">
               주문 세부내용을 확인해 주세요!
             </div>
           </div>
           <div className="detail-modal-list">
-            {shoppingCart.length
-              ? shoppingCart.map((menuDetail) => (
-                  <div className="detail-modal-item">
-                    <p className="detail-modal-menu-text">{menuDetail.name}</p>
-                    <span className="detail-modal-options-text">
-                      {menuDetail.temp === "hot" ? "따뜻하게" : "시원하게"},{" "}
-                      {menuDetail.size === "large"
-                        ? "L"
-                        : menuDetail.size === "medium"
-                        ? "M"
-                        : "S"}
-                    </span>
-                    <span className="detail-modal-count-text">
-                      {menuDetail.count} 개
-                    </span>
-                    <span className="detail-modal-price-text">
-                      {menuDetail.price} 원
-                    </span>
-                  </div>
-                ))
-              : "현재 선택한 메뉴가 없습니다."}
+            {shoppingCart.length ? (
+              shoppingCart.map((menuDetail) => (
+                <div className="detail-modal-item">
+                  <p className="detail-modal-menu-text">{menuDetail.name}</p>
+                  <span className="detail-modal-options-text">
+                    {menuDetail.temp === "hot" ? "따뜻하게" : "시원하게"},{" "}
+                    {menuDetail.size === "large"
+                      ? "L"
+                      : menuDetail.size === "medium"
+                      ? "M"
+                      : "S"}
+                  </span>
+                  <span className="detail-modal-count-text">
+                    {menuDetail.count} 개
+                  </span>
+                  <span className="detail-modal-price-text">
+                    {menuDetail.price} 원
+                  </span>
+                </div>
+              ))
+            ) : (
+              <div className="detail-modal-nomenu">
+                현재 선택한 메뉴가 없습니다.
+              </div>
+            )}
           </div>
           <div className="detail-modal-total-container">
             <span>총 수량:</span>
