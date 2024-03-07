@@ -12,9 +12,9 @@
   ); /* 한 줄에 3개의 아이템을 표시합니다. */
   grid-template-rows: repeat(3, 1fr); /* 세 줄을 만듭니다. */
   gap: 10px; /* 아이템 사이의 간격을 설정합니다. */
-  width: 32vh;
-  height: 51vh;
-  margin-top: 5%;
+  width: 270px;
+  height: 480px;
+  margin-top: 10px;
 }
 
 .menu-item1 {

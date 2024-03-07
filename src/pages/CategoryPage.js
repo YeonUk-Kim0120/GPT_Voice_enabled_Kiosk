@@ -8,31 +8,6 @@ import MenuOptionBoth from "../component/MenuOptionBoth";
 import Message from "../component/Message";
 import { useShoppingCart } from "../hooks/shoppingCart";
 
-// const messages = [
-//   "안녕하세요!",
-//   "이 말풍선은 길어질까요?",
-//   "짧아지나요?",
-//   "리액트로 말풍선을 만들어 보는 중입니다.",
-//   "다양한 말을 넣어서 테스트해 보세요!",
-// ];
-
-const menusDetail = [
-  {
-    id: 1,
-    menu: "아메리카노",
-    options: "아이스, 샷 추가x1",
-    price: 4000,
-    number: 1,
-  },
-  {
-    id: 2,
-    menu: "아포카토",
-    options: "샷 추가x3",
-    price: 5000,
-    number: 2,
-  },
-];
-
 function CategoryPage() {
   const [messages, setMessages] = useState(
     "안녕녕하세요! 할메가커피에 오신 것을 환영합니다. 주문을 도와드릴까요?"
@@ -40,6 +15,7 @@ function CategoryPage() {
   const [messages2, setMessages2] = useState(
     "주문문하신 메뉴가 맞는지 확인해주세요!"
   );
+
   const navigate = useNavigate();
   const [shoppingCart, setShoppingCart] = useShoppingCart();
   const [loading, setLoading] = useState(false);
@@ -49,7 +25,7 @@ function CategoryPage() {
   const [payIsOpen, setPayIsOpen] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const isZero = menusDetail.length === 0;
+
   const getMenus = async () => {
     const json = await (await fetch("/megaMenu.json")).json();
     setMenus(json);
@@ -60,23 +36,7 @@ function CategoryPage() {
     getMenus();
     Modal.setAppElement("#root");
   }, []);
-  //주작 라인입니다./////////////////////////////////////////////////
-  const [is, setIs] = useState(true);
-  const goSpy = () => {
-    if (is) {
-      changeMessage();
-    } else {
-      openAmericano();
-    }
-    setIs(!is);
-  };
-  const changeMessage = function () {
-    setMessages("초초코스모어 쿠키 한 개 주문하시겠어요?");
-  };
-  const openAmericano = function () {
-    handleDetailOpen(90);
-  };
-  //주작라인입니다.///////////////////////////////////////////////////
+
   useEffect(() => {
     const totalPrice = calculateTotalPrice();
     // 여기서 totalPrice를 사용할 수 있습니다.
@@ -115,6 +75,7 @@ function CategoryPage() {
 
     setShoppingCart(updatedMenu);
   };
+
   const filteredMenus = menus.filter((menu) => {
     // 'all' 카테고리가 선택된 경우 모든 메뉴를 반환
     if (selectedCategory === "all")
@@ -145,7 +106,7 @@ function CategoryPage() {
     width: "390px",
     height: "844px",
     margin: "0 auto",
-    border: "0px solid black", // 경계를 확인하기 위한 임시 스타일
+    border: "1px solid black", // 경계를 확인하기 위한 임시 스타일
   };
 
   const customStyles = {
@@ -372,7 +333,6 @@ function CategoryPage() {
                     <img
                       src={`${process.env.PUBLIC_URL}/imgs/right.png`}
                       className="page-button"
-                      onClick={goSpy}
                     />
                   ) : (
                     <img
@@ -503,7 +463,7 @@ function CategoryPage() {
             </div>
           </div>
           <div className="detail-modal-list">
-            {!isZero
+            {shoppingCart.length
               ? shoppingCart.map((menuDetail) => (
                   <div className="detail-modal-item">
                     <p className="detail-modal-menu-text">{menuDetail.name}</p>
@@ -525,7 +485,7 @@ function CategoryPage() {
                 ))
               : "현재 선택한 메뉴가 없습니다."}
           </div>
-          <div className="detail-modal-total-container" onClick={goSpy}>
+          <div className="detail-modal-total-container">
             <span>총 수량:</span>
             <span>{calculateTotalCount()} 개</span>
           </div>
