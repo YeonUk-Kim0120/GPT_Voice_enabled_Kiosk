@@ -90,8 +90,7 @@
   margin-top: 40px;
   margin-left: 70px;
 }
-.bubble-loc {
-}
+
 .bubble-text {
   width: 120px;
   height: 40px;
@@ -249,7 +248,7 @@
 
 .menu-name1,
 .menu-price1 {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 11px;
   font-weight: bold;
   text-align: center;
