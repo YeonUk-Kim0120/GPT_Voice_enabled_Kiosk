@@ -245,13 +245,7 @@ function CategoryPage() {
               </div>
 
               <Modal isOpen={menuIsOpen} className="detail-modal">
-                <div>
-                  안녕
-                  <MenuOptionBoth
-                    menu={selectedItem}
-                    setOption={setMenuIsOpen}
-                  />
-                </div>
+                <MenuOptionBoth menu={selectedItem} setOption={setMenuIsOpen} />
               </Modal>
 
               <div className="menu-grid-container">
