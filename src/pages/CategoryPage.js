@@ -10,10 +10,10 @@ import { useShoppingCart } from "../hooks/shoppingCart";
 
 function CategoryPage() {
   const [messages, setMessages] = useState(
-    "안녕녕하세요! 할메가커피에 오신 것을 환영합니다. 주문을 도와드릴까요?"
+    "안녕하세요! 할메가커피에 오신 것을 환영합니다. 주문을 도와드릴까요?"
   );
   const [messages2, setMessages2] = useState(
-    "주문문하신 메뉴가 맞는지 확인해주세요!"
+    "주문하신 메뉴가 맞는지 확인해주세요!"
   );
 
   const navigate = useNavigate();
@@ -244,10 +244,11 @@ function CategoryPage() {
                 </div>
               </div>
 
-              <Modal isOpen={menuIsOpen} className="detail-modal">
+              <Modal isOpen={menuIsOpen} className="">
                 <div>
                   안녕
                   <MenuOptionBoth
+                    isOpen={menuIsOpen}
                     menu={selectedItem}
                     setOption={setMenuIsOpen}
                   />
