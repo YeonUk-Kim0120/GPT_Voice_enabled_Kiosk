@@ -7,6 +7,7 @@ import CurrentTime from "../component/CurrentTime";
 import MenuOptionBoth from "../component/MenuOptionBoth";
 import Message from "../component/Message";
 import { useShoppingCart } from "../hooks/shoppingCart";
+import { audioLoad } from "../api";
 
 function CategoryPage() {
   const [messages, setMessages] = useState(
@@ -25,6 +26,7 @@ function CategoryPage() {
   const [payIsOpen, setPayIsOpen] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [audioURL, setAudioURL] = useState("");
 
   const getMenus = async () => {
     const json = await (await fetch("/megaMenu.json")).json(); // url : 절대주소/api/cafe/v1/menus
@@ -38,9 +40,9 @@ function CategoryPage() {
   }, []);
 
   useEffect(() => {
-    const totalPrice = calculateTotalPrice();
-    // 여기서 totalPrice를 사용할 수 있습니다.
-  }, [shoppingCart]);
+    const URL = audioLoad();
+    setAudioURL(URL);
+  });
 
   // 총 가격을 계산하는 함수
   const calculateTotalPrice = () => {
