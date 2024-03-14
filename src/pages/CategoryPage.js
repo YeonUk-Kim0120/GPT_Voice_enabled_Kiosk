@@ -27,7 +27,7 @@ function CategoryPage() {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const getMenus = async () => {
-    const json = await (await fetch('/megaMenu.json')).json();
+    const json = await (await fetch('/megaMenu.json')).json(); // url : 절대주소/api/cafe/v1/menus
     setMenus(json);
     setLoading(false);
   };
