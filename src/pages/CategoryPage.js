@@ -132,7 +132,7 @@ function CategoryPage() {
   };
   const goHome = function () {
     //setShoppingCart([]);
-    navigate("/");
+    navigate("/login");
   };
 
   const goPay = function (e) {

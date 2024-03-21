@@ -1,11 +1,11 @@
 .register-container {
   display: grid;
-  grid-template-rows: 0.5fr 4.5fr;
-  width: 300px;
-  height: 530px;
+  grid-template-rows: 1fr 4fr;
+  gap: 44px;
+  width: 385px;
+  height: 840px;
   border: 2px solid black;
   border-radius: 10px;
-  margin: 50px;
 }
 
 .flex-container {
@@ -15,8 +15,8 @@
 }
 
 .register-btn {
-  width: 278px;
-  height: 36px;
+  width: 328px;
+  height: 41px;
   font-size: 15px;
   font-weight: 900;
   color: white;

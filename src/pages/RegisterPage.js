@@ -12,6 +12,7 @@ function RegisterPage() {
     password_check: "",
     store_name: "",
     store_address: "",
+    store_phone: "",
   }); // 이메일, 비밀번호
   const [loginErr, setLoginErr] = useState("");
   const handleInputChange = (event) => {
@@ -156,6 +157,19 @@ function RegisterPage() {
                 placeholder="매장 주소"
                 value={userInfo.store_address}
                 name="store_address"
+              />
+            </div>
+          </div>
+          <div className="flex-container">
+            <div>
+              <div className="register-input-name">
+                매장 전화번호 <span className="register-must-input"></span>
+              </div>
+              <UserInput
+                type="text"
+                placeholder="매장 전화번호"
+                value={userInfo.store_phone}
+                name="store_phone"
               />
             </div>
           </div>

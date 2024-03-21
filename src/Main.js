@@ -7,6 +7,7 @@ import Register from "./pages/RegisterPage";
 import PayOKPage from "./pages/PayOKPage";
 import { OrderProvider } from "./hooks/orderContext";
 import { ShoppingCartProvider } from "./hooks/shoppingCart";
+import Test from "./pages/TestPage";
 
 function Main() {
   return (
@@ -20,6 +21,7 @@ function Main() {
             <Route path="/category" element={<CategoryPage />} />
             <Route path="/pay" element={<App />} />
             <Route path="/pay/payOK" element={<PayOKPage />} />
+            <Route path="/tt" element={<Test />} />
           </Routes>
         </OrderProvider>
       </ShoppingCartProvider>

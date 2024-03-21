@@ -55,7 +55,9 @@ function LoginPage() {
   return (
     <div className="login-container">
       <div className="flex-container">
-        <div className="login-text">BoongABang</div>
+        <div className="login-text">
+          BoongABang <br /> 로그인
+        </div>
       </div>
       <div className="flex-container">
         <img
