@@ -29,7 +29,7 @@ function CategoryPage() {
 
   const getMenus = async () => {
     try {
-      const response = await fetch('/megaMenu.json');
+      const response = await fetch('/megaMenu.json'); // http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com:8080/api/cafe/v1/menus/
       if (!response.ok) {
         throw new Error('Failed to fetch menus');
       }
