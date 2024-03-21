@@ -29,9 +29,7 @@ function CategoryPage() {
 
   const getMenus = async () => {
     try {
-      const response = await fetch(
-        'http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com:8080/api/cafe/v1/menus/'
-      );
+      const response = await fetch('/megaMenu.json');
       if (!response.ok) {
         throw new Error('Failed to fetch menus');
       }
@@ -58,11 +56,6 @@ function CategoryPage() {
     });
     return totalPrice;
   };
-
-  useEffect(() => {
-    const totalCount = calculateTotalCount();
-    // 여기서 totalPrice를 사용할 수 있습니다.
-  }, [shoppingCart]);
 
   // 총 가격을 계산하는 함수
   const calculateTotalCount = () => {
