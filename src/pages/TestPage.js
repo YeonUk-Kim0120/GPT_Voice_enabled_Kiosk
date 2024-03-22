@@ -1,54 +1,48 @@
+// TestPage.js
+
 import React, { useState, useEffect, useRef } from "react";
 
 function QueryComponent() {
   const [history, setHistory] = useState([]);
   const [prompt, setPrompt] = useState("");
-  const promptRef = useRef(null); // Ref 생성
+  const [recording, setRecording] = useState(false); // recording 상태 추가
+  const [audioBlob, setAudioBlob] = useState(null); // 오디오 Blob 상태 추가
+  const lastAudioDetectedTime = useRef(null); // useRef로 변경
+
+  const promptRef = useRef(null);
+  const audioRef = useRef(null); // 오디오 요소에 접근하기 위한 useRef
 
   useEffect(() => {
     startListening();
   }, []);
-  let recording = false; // recording 변수 정의
-  let lastAudioDetectedTime; // lastAudioDetectedTime 변수 정의
 
   async function startRecording(stream) {
     try {
-      // 미디어 레코더 생성
       const recorder = new MediaRecorder(stream);
-      const chunks = []; // 녹음된 오디오 데이터를 저장할 배열
+      const chunks = [];
 
-      // 녹음 데이터가 준비되면 발생하는 이벤트 핸들러
       recorder.ondataavailable = (event) => {
         chunks.push(event.data);
       };
 
-      // 녹음이 멈추면 발생하는 이벤트 핸들러
       recorder.onstop = async () => {
         try {
-          // 녹음된 오디오 데이터를 하나의 Blob으로 합치기
           const blob = new Blob(chunks, { type: "audio/wav" });
-
-          // FormData에 오디오 데이터 추가
-          const formData = new FormData();
-          formData.append("audio", blob);
-
-          // 서버로 오디오 데이터 전송
-          const response = await fetch("{URL}", {
-            method: "POST",
-            body: formData,
-          });
-
-          // 서버 응답 처리
-          const data = await response.json();
-          console.log("Transcripts:", data.transcripts);
-          // 서버 응답에 따라 작업 수행
+          setAudioBlob(blob); // 녹음이 끝나면 Blob을 상태로 설정
         } catch (error) {
-          console.error("Error in mediaRecorder.onstop:", error);
+          console.error("Error creating Blob:", error);
         }
       };
 
-      // 녹음 시작
-      recorder.start();
+      if (recording) {
+        // 녹음 중인 경우 녹음을 중지하고 recording 상태를 false로 변경
+        recorder.stop();
+        setRecording(false);
+      } else {
+        // 녹음 중이 아닌 경우 녹음을 시작하고 recording 상태를 true로 변경
+        recorder.start();
+        setRecording(true);
+      }
     } catch (error) {
       console.error("Error starting recording:", error);
     }
@@ -56,10 +50,8 @@ function QueryComponent() {
 
   async function startListening() {
     try {
-      // 마이크 접근 권한 요청 및 스트림 받기
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-      // 스트림으로부터 음성 감지 및 녹음 시작
       const audioContext = new AudioContext();
       const source = audioContext.createMediaStreamSource(stream);
       const processor = audioContext.createScriptProcessor(1024, 1, 1);
@@ -73,11 +65,10 @@ function QueryComponent() {
         }
         const average = sum / bufferLength;
         if (average > 0.01 && !recording) {
-          // 음성이 감지되고 녹음 중이 아닌 경우에만 녹음 시작
           startRecording(stream);
         } else if (average <= 0.01 && recording) {
-          // 음성이 감지되지 않고 녹음 중인 경우에 녹음 종료
-          lastAudioDetectedTime = Date.now(); // 마지막으로 음성이 감지된 시간 기록
+          lastAudioDetectedTime.current = Date.now();
+          startRecording(stream); // 녹음 종료 시 recording 상태를 false로 변경하지 않고 다시 녹음 시작
         }
       };
 
@@ -88,28 +79,29 @@ function QueryComponent() {
     }
   }
 
-  startListening(); // 페이지 로드 시 음성 감지 시작
-
   async function handleSubmit(event) {
     event.preventDefault();
 
     const dateTime = new Date();
     const time = dateTime.toLocaleTimeString();
 
-    // 사용자의 입력을 즉시 표시
     setHistory((prevHistory) => [...prevHistory, { user: prompt, time }]);
-
-    // 입력 필드 초기화
     setPrompt("");
-    // Ref를 사용하여 입력 필드 초기화
     promptRef.current.value = "";
 
-    // 서버로부터 응답 받기
     try {
       // Fetch 로직...
       console.log();
     } catch (error) {
       console.error("Error in fetch:", error);
+    }
+  }
+
+  function handlePlay() {
+    if (audioBlob) {
+      const audioUrl = URL.createObjectURL(audioBlob);
+      audioRef.current.src = audioUrl;
+      audioRef.current.play();
     }
   }
 
@@ -140,21 +132,34 @@ function QueryComponent() {
             <label htmlFor="prompt" className="form-label">
               Prompt:
             </label>
-            {/* Ref를 사용하여 입력 필드에 접근 */}
             <textarea
               className="form-control"
               id="prompt"
               name="prompt"
               rows="3"
-              ref={promptRef} // Ref 할당
+              ref={promptRef}
               onChange={(event) => setPrompt(event.target.value)}
             ></textarea>
           </div>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
+          <button onClick={handlePlay} className="btn btn-success ms-2">
+            Play
+          </button>
+          <button onClick={startRecording} className="btn btn-warning ms-2">
+            {recording ? "Stop Recording" : "Record"}
+          </button>
         </form>
       </div>
+
+      {/* 오디오 플레이어 */}
+      {audioBlob && (
+        <audio ref={audioRef} controls style={{ display: "none" }}>
+          <source src={URL.createObjectURL(audioBlob)} type="audio/wav" />
+          Your browser does not support the audio element.
+        </audio>
+      )}
     </div>
   );
 }
