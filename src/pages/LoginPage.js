@@ -64,7 +64,7 @@ function LoginPage() {
       </div>
       <div className="flex-container">
         <img
-          src={`${process.env.PUBLIC_URL}/imgs/signature.png`}
+          src={`${process.env.PUBLIC_URL}/Imgs/signature.png`}
           className="login-img"
         />
       </div>
