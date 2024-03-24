@@ -100,6 +100,7 @@ function LoginPage() {
             <Link to="/register" className="login-signup">
               회원가입
             </Link>
+            안녕
           </div>
         </div>
       </div>
