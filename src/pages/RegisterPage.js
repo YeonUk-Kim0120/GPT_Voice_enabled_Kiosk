@@ -6,14 +6,14 @@ import { useState } from "react";
 function RegisterPage() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
-    name: "",
+    owner_name: "",
     email: "",
     password: "",
     password_check: "",
-    store_name: "",
-    store_address: "",
+    cafe_name: "",
+    cafe_address: "",
     owner_phone_number: "",
-    store_phone: "",
+    cafe_phone_number: "",
   }); // 이메일, 비밀번호
   const [loginErr, setLoginErr] = useState("");
   const handleInputChange = (event) => {
@@ -32,11 +32,12 @@ function RegisterPage() {
     userInfo.password.length >= 1;
 
   const clickRegister = function () {
-    if (userInfo.name) {
+    if (userInfo.owner_name) {
       if (userInfo.email) {
         if (userInfo.password) {
           if (userInfo.password == userInfo.password_check) {
             setLoginErr("");
+
             registerRequest();
           } else {
             setLoginErr("비밀번호가 일치하지 않습니다.");
@@ -53,14 +54,16 @@ function RegisterPage() {
   };
   const registerRequest = async () => {
     try {
+      const { password_check, ...requestData } = userInfo;
+      console.log(requestData);
       const response = await fetch(
-        "http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com:8080/api/cafe/v1/register/",
+        "http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com/api/cafe/v1/register/",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(userInfo),
+          body: JSON.stringify(requestData),
         }
       );
 
@@ -93,8 +96,8 @@ function RegisterPage() {
               <UserInput
                 type="text"
                 placeholder="이름"
-                value={userInfo.name}
-                name="name"
+                value={userInfo.owner_name}
+                name="owner_name"
               />
             </div>
           </div>
@@ -146,8 +149,8 @@ function RegisterPage() {
               <UserInput
                 type="text"
                 placeholder="매장 이름"
-                value={userInfo.store_name}
-                name="store_name"
+                value={userInfo.cafe_name}
+                name="cafe_name"
               />
             </div>
           </div>
@@ -159,8 +162,8 @@ function RegisterPage() {
               <UserInput
                 type="text"
                 placeholder="매장 주소"
-                value={userInfo.store_address}
-                name="store_address"
+                value={userInfo.cafe_address}
+                name="cafe_address"
               />
             </div>
           </div>
@@ -185,8 +188,8 @@ function RegisterPage() {
               <UserInput
                 type="text"
                 placeholder="매장 전화번호"
-                value={userInfo.store_phone}
-                name="store_phone"
+                value={userInfo.cafe_phone_number}
+                name="cafe_phone_number"
               />
             </div>
           </div>
