@@ -57,7 +57,7 @@ function RegisterPage() {
       const { password_check, ...requestData } = userInfo;
       console.log(requestData);
       const response = await fetch(
-        "https://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com/api/cafe/v1/register/",
+        "http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com/api/cafe/v1/register/",
         {
           method: "POST",
           headers: {
