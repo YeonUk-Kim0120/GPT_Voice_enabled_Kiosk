@@ -450,9 +450,7 @@ function CategoryPage() {
           </div>
           <div className="detail-modal-checktext-container-loc">
             <div className="detail-modal-checktext-container">
-              <p className="detail-modal-checktext">
-                주문 세부내용을 확인해 주세요!
-              </p>
+              주문 세부내용을 확인해 주세요!
             </div>
           </div>
           <div className="detail-modal-list">
