@@ -29,7 +29,9 @@ function CategoryPage() {
 
   const getMenus = async () => {
     try {
-      const response = await fetch("/megaMenu.json"); // http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com:8080/api/cafe/v1/menus/
+      const response = await fetch(
+        "http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com/api/cafe/v1/menus/"
+      ); ///megaMenu.json http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com:8080/api/cafe/v1/menus/
       if (!response.ok) {
         throw new Error("Failed to fetch menus");
       }
@@ -265,19 +267,23 @@ function CategoryPage() {
                     /> */}
                     <div>
                       <img
-                        src={`${process.env.PUBLIC_URL}/Imgs/${menu.image}`}
+                        src={`https://bongabangaudio.s3.ap-southeast-2.amazonaws.com/images/고구마라떼.jpg`}
+                        // image.replace(
+                        //   "/media",
+                        //   "images"
+                        // )
+                        // src={`${process.env.PUBLIC_URL}/Imgs/${menu.image}`}
                         alt={menu.name}
                         className="menu-image1"
                       />
                     </div>
                     <div className="menu-name1">{menu.name}</div>
                     <div className="menu-price1">
-                      {Number(
-                        Boolean(Number(menu.price_hot))
-                          ? menu.price_hot.toLocaleString()
-                          : Boolean(Number(menu.price_ice))
-                          ? menu.price_ice.toLocaleString()
-                          : menu.price_constant.toLocaleString()
+                      {(menu.price_hot
+                        ? menu.price_hot
+                        : menu.price_ice
+                        ? menu.price_ice
+                        : menu.price_constant
                       ).toLocaleString()}
                       원
                     </div>
