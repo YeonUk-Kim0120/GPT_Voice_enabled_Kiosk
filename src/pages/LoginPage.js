@@ -27,7 +27,7 @@ function LoginPage() {
   const handleLogin = async () => {
     try {
       const response = await fetch(
-        "http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com/api/cafe/v1/login/",
+        "https://bongabang.shop/api/cafe/v1/login/",
         {
           method: "POST",
           headers: {

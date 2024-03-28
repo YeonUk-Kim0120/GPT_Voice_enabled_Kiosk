@@ -29,9 +29,7 @@ function CategoryPage() {
 
   const getMenus = async () => {
     try {
-      const response = await fetch(
-        "http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com/api/cafe/v1/menus/"
-      ); ///megaMenu.json http://ec2-54-79-29-119.ap-southeast-2.compute.amazonaws.com:8080/api/cafe/v1/menus/
+      const response = await fetch("https://bongabang.shop/api/cafe/v1/menus/"); ///megaMenu.json
       if (!response.ok) {
         throw new Error("Failed to fetch menus");
       }
@@ -267,7 +265,10 @@ function CategoryPage() {
                     /> */}
                     <div>
                       <img
-                        src={`https://bongabangaudio.s3.ap-southeast-2.amazonaws.com/images/고구마라떼.jpg`}
+                        src={`https://bongabangaudio.s3.ap-southeast-2.amazonaws.com${menu.image.replace(
+                          "/media",
+                          "/images"
+                        )}`}
                         // image.replace(
                         //   "/media",
                         //   "images"
@@ -386,7 +387,7 @@ function CategoryPage() {
                           삭제
                         </button>
                       </div>
-
+                      {console.log(menu)}
                       {/* {menu.name}/{menu.temp === "ice" ? "COLD" : "HOT"}/ /
                       {menu.size === "small"
                         ? "S"
