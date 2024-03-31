@@ -265,15 +265,7 @@ function CategoryPage() {
                     /> */}
                     <div>
                       <img
-                        src={`https://bongabangaudio.s3.ap-southeast-2.amazonaws.com${menu.image.replace(
-                          "/media",
-                          "/images"
-                        )}`}
-                        // image.replace(
-                        //   "/media",
-                        //   "images"
-                        // )
-                        // src={`${process.env.PUBLIC_URL}/Imgs/${menu.image}`}
+                        src={menu.image}
                         alt={menu.name}
                         className="menu-image1"
                       />

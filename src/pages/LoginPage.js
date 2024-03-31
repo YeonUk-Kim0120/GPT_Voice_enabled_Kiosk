@@ -20,7 +20,6 @@ function LoginPage() {
   };
 
   const loginRequest = function () {
-    console.log(12);
     handleLogin();
   };
 
