@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function QueryComponent() {
   const [stream, setStream] = useState();
@@ -70,9 +70,9 @@ function QueryComponent() {
       URL.createObjectURL(audioUrl);
     }
 
-    const sound = new File([audioUrl], "soundBlob", {
+    const sound = new File([audioUrl], 'soundBlob', {
       lastModified: new Date().getTime(),
-      type: "audio",
+      type: 'audio',
     });
 
     setDisabled(false);
@@ -89,44 +89,45 @@ function QueryComponent() {
   const handleSubmit = async (blobData) => {
     try {
       const formData = new FormData();
-      formData.append("audio", blobData, "recordedAudio.wav");
+      formData.append('audio', blobData, 'recordedAudio.wav');
       console.log(formData, typeof formData);
-      const response = await fetch("https://bongabang.shop/api/cafe/v1/stt/", {
-        method: "POST",
+      const response = await fetch('https://bongabang.shop/api/cafe/v1/stt/', {
+        method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
         const data = await response.json(); // 텍스트 데이터를 JSON 형식으로 파싱
-        console.log("Transcribed text:", data.transcripts); // 텍스트 데이터 출력
+        console.log('Transcribed text:', data.transcripts); // 텍스트 데이터 출력
 
         // 챗봇 엔드포인트로 텍스트 데이터를 전송
         const chatResponse = await fetch(
-          "https://bongabang.shop/api/cafe/v1/chatgpt/",
+          'https://bongabang.shop/api/cafe/v1/chatgpt/',
           {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              text: data.transcripts,
+              response: data.transcripts[0],
             }),
           }
         );
 
         if (chatResponse.ok) {
-          console.log("Text submitted to chatbot successfully!");
+          console.log('Text submitted to chatbot successfully!');
+          console.log(response);
         } else {
           console.error(
-            "Error submitting text to chatbot:",
+            'Error submitting text to chatbot:',
             chatResponse.statusText
           );
         }
       } else {
-        console.error("Error submitting audio file:", response.statusText);
+        console.error('Error submitting audio file:', response.statusText);
       }
     } catch (error) {
-      console.error("Error ", error);
+      console.error('Error ', error);
     }
   };
 
