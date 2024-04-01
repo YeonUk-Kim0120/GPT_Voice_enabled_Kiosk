@@ -1,8 +1,5 @@
 // // TestPage.js
 import React, { useState } from "react";
-import { saveAs } from "file-saver";
-import { ReactMic } from "react-mic";
-
 function QueryComponent() {
   const [stream, setStream] = useState();
   const [media, setMedia] = useState();
@@ -110,6 +107,12 @@ function QueryComponent() {
     </>
   );
 }
+
+export default QueryComponent;
+// import { saveAs } from "file-saver";
+// import { ReactMic } from "react-mic";
+
+// function QueryComponent() {
 //   // // const [isRecording, setIsRecording] = useState(false);
 //   // // const [isPlaying, setIsPlaying] = useState(false);
 //   // // const [blobObject, setBlobObject] = useState(null);
@@ -212,10 +215,12 @@ function QueryComponent() {
 //       </button>
 //     </div>
 //   );
-// }
-
-export default QueryComponent;
-
+// // }
+// export default QueryComponent;
+//
+//
+//
+//
 // import React, { useState, useEffect, useRef } from "react";
 
 // function QueryComponent() {
