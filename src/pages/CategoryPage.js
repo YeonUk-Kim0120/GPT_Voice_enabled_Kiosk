@@ -36,17 +36,19 @@ function CategoryPage() {
       const json = await response.json();
       setMenus(json);
       setLoading(false);
-      console.log(menus);
     } catch (error) {
       console.error('Error fetching menus: ', error);
       setLoading(false);
     }
   };
 
+  // 초기 실행 - 메뉴 받아오기, audio 파일 받아오기
   useEffect(() => {
     getMenus();
-    Modal.setAppElement('#root');
-    fetchAudioURLFromServer();
+    // Modal.setAppElement('#root');
+    setAudioURL(
+      'https://bongabangaudio.s3.ap-southeast-2.amazonaws.com/audio/newoutput_v1_20240309142553.mp3'
+    );
   }, []);
 
   useEffect(() => {
@@ -56,14 +58,15 @@ function CategoryPage() {
 
       return () => {
         audio.pause();
+        audio = null;
       };
     }
-    fetchAudioURLFromServer();
+    //fetchAudioURLFromServer();
   }, [audioURL]);
 
   async function fetchAudioURLFromServer() {
     try {
-      const response = await fetch('/audioURL'); // 오디오 URL을 반환하는 서버의 엔드포인트
+      const response = await fetch(''); // 오디오 URL을 반환하는 서버의 엔드포인트
       const { url } = await response.json();
       setAudioURL(url);
     } catch (error) {
@@ -71,6 +74,7 @@ function CategoryPage() {
     }
   }
 
+  // 오디오 접근 권한 받기
   var AudioContext;
   var audioContext;
 
