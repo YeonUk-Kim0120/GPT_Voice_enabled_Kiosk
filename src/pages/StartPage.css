@@ -1,0 +1,36 @@
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.Text {
+  text-align: center;
+  animation: blink 2s linear infinite; /* 1초 간격으로 무한 반복 */
+  font-size: 15px;
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Boong {
+  width: 200px;
+  height: 150px;
+}
+
+.container-row {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.container-col {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+}

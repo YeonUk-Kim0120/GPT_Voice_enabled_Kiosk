@@ -1,0 +1,61 @@
+#link {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.PayOK {
+  width: 390px;
+  height: 844px;
+  border: 1px solid black;
+}
+.payLogo {
+  margin-top: 94px;
+  margin-left: 103px;
+  width: 185px;
+  height: 77px;
+}
+
+.payOKText {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.orange {
+  color: #fcac43;
+}
+
+.receiptText {
+  font-size: 17px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.receipt {
+  margin-left: 134px;
+  margin-top: 65px;
+  width: 135px;
+  height: 135px;
+}
+
+.orderNum {
+  font-size: 30px;
+  color: #ff0000;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 65px;
+}
+
+.thx {
+  font-size: 17px;
+  text-align: center;
+  margin-top: 20px;
+}

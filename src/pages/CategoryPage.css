@@ -1,0 +1,482 @@
+.container-menu-row {
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+  gap: 5px;
+}
+
+.menu-grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* 한 줄에 3개의 아이템을 표시합니다. */
+  grid-template-rows: repeat(3, 1fr); /* 세 줄을 만듭니다. */
+  gap: 8px; /* 아이템 사이의 간격을 설정합니다. */
+  width: 285px;
+  height: 480px;
+  margin-top: 15px;
+}
+
+.menu-item1 {
+  display: grid;
+  grid-template-rows: 7fr 1fr 1fr;
+  /* display: flex;
+  flex-direction: column;*/
+  align-items: center;
+  justify-content: center;
+  background: rgb(255, 254, 254); /* 배경색 */
+  border: 1px solid #fcac43;
+  padding: 16px;
+  border-radius: 10px; /* 둥근 모서리 */
+  width: 55px; /* 부모 요소에 맞게 너비를 설정합니다. */
+  height: 110px; /* 내용에 맞게 높이를 조절합니다. */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-colum {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 5px;
+}
+
+.container-row {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  gap: 10px;
+}
+.menu-image1 {
+  width: 100%; /* 이미지의 너비를 메뉴 아이템의 80%로 설정합니다. */
+  height: 100%; /* 이미지의 높이를 자동으로 조절합니다. */
+  object-fit: contain; /* 이미지 비율을 유지하면서 컨테이너에 맞게 조절합니다. */
+  overflow: hidden;
+}
+
+/* =------------- */
+/* =------------- */
+/* =------------- */
+
+.category-button {
+  width: 95px;
+  height: 66.2px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #fcac43;
+  border: 0px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.category-button.active {
+  /* text-decoration: underline; */
+  border: 3px solid #ffffff;
+}
+.team-color {
+  background-color: #fcac43;
+  border-radius: 10px;
+}
+
+.boonga {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 70px;
+  z-index: -1;
+}
+.boonga2 {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 70px;
+}
+
+.bubble-text {
+  width: 120px;
+  height: 40px;
+  position: fixed;
+  bottom: 145px; /* 원하는 위치로 조정 */
+  right: 15px; /* 원하는 위치로 조정 */
+  z-index: 1;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pay-button {
+  width: 107px;
+  height: 52px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 22px;
+  background-color: #288fd9;
+  border-radius: 15px;
+  border: none;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.team-logo {
+  width: 80px;
+  height: 90px;
+  margin-top: 10%;
+  margin-left: 5%;
+  display: block;
+}
+
+.brand-logo {
+  width: 120px;
+  height: 50px;
+  display: block;
+  margin: auto;
+}
+.home-icon {
+  width: 25px;
+  height: 27px;
+  display: block;
+  margin: auto;
+}
+.container-baguni-col {
+  display: grid;
+  grid-template-columns: 1.7fr 1.3fr;
+  gap: 1px;
+  margin-left: 0px;
+}
+
+.container-baguni-row {
+  display: grid;
+  grid-template-rows: 3fr 2fr;
+  gap: 10px;
+}
+
+.container-baguni-rowrow {
+  display: grid;
+  grid-template-rows: 2fr 12fr 3fr;
+}
+
+.baguni-text-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+.basket {
+  border-radius: 10px;
+  /* overflow: hidden; */
+}
+.baguni-text1 {
+  color: #000000;
+  font-weight: 550;
+  font-size: 15px;
+  margin-left: 12px;
+  margin-top: 3px;
+  /* border-bottom: 1.5px solid #000000; */
+}
+
+.baguni-text2 {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 520;
+  /* border-bottom: 1.5px solid #000000; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.baguni-text3 {
+  color: #000000;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-bottom: -5px;
+}
+.baguni-text {
+  vertical-align: text-bottom;
+}
+.baguni-text4 {
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 5px;
+}
+
+.bottom {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+
+.page-button {
+  width: 32;
+  height: 32;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.page-buttons {
+  display: block;
+  margin: auto;
+}
+
+.page-indicators {
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 세로축 기준 중앙 정렬 */
+  gap: 5px; /* 점들 사이의 간격 */
+  height: 15.5px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.page-dot1 {
+  width: 10px; /* 점 이미지의 가로 크기 */
+  height: 10px; /* 점 이미지의 세로 크기 */
+  /* 추가적인 스타일링이 필요하다면 여기에 추가 */
+}
+
+.page-dot2 {
+  width: 5px; /* 점 이미지의 가로 크기 */
+  height: 5px; /* 점 이미지의 세로 크기 */
+  /* 추가적인 스타일링이 필요하다면 여기에 추가 */
+}
+
+.menu-name1,
+.menu-price1 {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  color: #585353; /* 글자 색상 */
+  white-space: nowrap; /* 텍스트를 한 줄에 표시 */
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+  text-overflow: ellipsis;
+  width: 78px;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.detail-modal {
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  width: 350px;
+  height: 750px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 1px solid #fcac43;
+}
+
+.detail-modal2 {
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  width: 350px;
+  height: 000px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 0px solid #fcac43;
+}
+
+.detail-modal-container {
+  display: grid;
+  grid-template-rows: 2.2fr 1fr 8fr 1fr 1fr 3fr;
+  gap: 10px;
+  height: 810px;
+}
+.detail-modal-header-container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 10px;
+}
+.detail-modal-date-container {
+  margin-left: 10%;
+  margin-top: 25px;
+  line-height: 0.6; /* Adjust line height for proper spacing between lines */
+  color: #000000; /* Text color */
+}
+.detail-modal-text-brand {
+  font-size: 16px; /* 글자 크기 */
+  color: #000000;
+  font-weight: bold; /* 글자 두께 */
+}
+.detail-modal-text-date {
+  font-size: 10px; /* 글자 크기 */
+  color: #000000;
+  font-weight: bold; /* 글자 두께 */
+}
+.detail-modal-checktext-container-loc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-modal-checktext-container {
+  padding: 2px; /* 필요한 경우 패딩 추가 */
+  background-color: #fcac43; /* 배경색 */
+  border: 1px solid #fbad42; /* 테두리 */
+  border-radius: 10px; /* 둥근 모서리 */
+  width: 320px;
+  height: 26px;
+
+  font-size: 18px; /* 글자 크기 */
+  color: #ffffff;
+  font-weight: bold; /* 글자 두께 */
+  text-align: center;
+  margin-top: 1%;
+}
+
+.detail-modal-checktext {
+  margin: 0;
+  margin-top: 3px;
+}
+
+.detail-modal-list {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 0.2px solid rgb(213, 213, 213);
+  overflow-y: auto;
+  margin-left: 3%;
+  width: 320px;
+  min-height: 45vh;
+  max-height: 45vh;
+  background-color: #f7f7f7;
+  margin: 0px 0px 0px 15px;
+}
+.detail-modal-item {
+  background-color: #f7f7f7;
+  border: 0.2px solid #939292;
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 4px;
+  display: grid;
+  grid-template-columns: 4.2fr 2.2fr 0.9fr 1.7fr;
+  text-align: center;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 40px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+}
+.detail-modal-item p {
+  margin: 0;
+  color: #000000;
+  word-wrap: break-word;
+}
+.detail-modal-nomenu {
+  text-align: center;
+  margin-top: 10px;
+  color: #939292;
+}
+
+.detail-modal-menu-text {
+  font-size: 12.5px;
+  font-weight: 1000;
+  font-weight: bold;
+}
+
+.detail-modal-options-text {
+  font-size: 10px;
+  font-weight: bold;
+}
+.detail-modal-count-text {
+  font-size: 11px;
+  font-weight: bold;
+}
+.detail-modal-price-text {
+  font-size: 12px;
+  font-weight: bold;
+}
+.detail-modal-total-container {
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝에 요소를 배치 */
+  align-items: center; /* 세로 중앙 정렬 */
+  padding: 5px; /* 필요한 경우 패딩 추가 */
+  background-color: #f7f7f7; /* 배경색 */
+  border: 1px solid #000000; /* 테두리 */
+  border-radius: 10px; /* 둥근 모서리 */
+  width: 300px;
+  margin-left: 4%;
+}
+.detail-modal-total-container span {
+  font-size: 22px; /* 글자 크기 */
+  font-weight: bold; /* 글자 두께 */
+}
+
+.detail-modal-btns-container {
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  gap: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.detail-modal-cancel-button {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #584c49;
+  width: 73px;
+  height: 52px;
+  border-radius: 10px;
+  border: none;
+}
+
+.detail-modal-in-button {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #fcac43;
+  width: 107px;
+  height: 52px;
+  border-radius: 10px;
+  border: none;
+}
+
+.detail-modal-out-button {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #9860d0;
+  width: 107px;
+  height: 52px;
+  border-radius: 10px;
+  border: none;
+}
+
+.detail-modal {
+  padding: 0;
+}
+
+.shopingcart {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr 1.8fr 2fr;
+  line-height: 1.8;
+  width: 221px;
+  font-size: 10px;
+  height: 25px;
+  white-space: nowrap; /* 텍스트를 한 줄에 표시 */
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.delete-menu-button {
+  width: 30px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(226, 226, 226);
+  border: none;
+  border-radius: 4px;
+}
+
+.shop-mnue-name {
+  text-align: left;
+}
