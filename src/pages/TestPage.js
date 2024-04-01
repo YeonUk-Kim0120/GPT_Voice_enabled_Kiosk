@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { saveAs } from "file-saver";
 import { ReactMic } from "react-mic";
+
 function QueryComponent() {
   const [isRecording, setIsRecording] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,8 +39,48 @@ function QueryComponent() {
       setIsPlaying(false);
     });
   };
-  navigator.mediaDevices.getUserMedia({ audio: true });
 
+  const handleSubmit = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("audio", blobObject.blob, "recordedAudio.wav");
+
+      const response = await fetch("https://bongabang.shop/api/cafe/v1/stt/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const { text } = await response.json(); // 반환된 텍스트 가져오기
+        //await sendTextToChatGPT(text);
+        console.log("Audio file submitted successfully!");
+      } else {
+        console.error("Error submitting audio file:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting audio file:", error);
+    }
+  };
+
+  //   const sendTextToChatGPT = async (text) => {
+  //     try {
+  //         const response = await fetch("https://bongabang.shop/api/cafe/v1/chatgpt/", {
+  //             method: "POST",
+  //             headers: {
+  //                 "Content-Type": "application/json"
+  //             },
+  //             body: JSON.stringify({ text: text })
+  //         });
+
+  //         if (response.ok) {
+  //             console.log("Text submitted to ChatGPT successfully!");
+  //         } else {
+  //             console.error("Error submitting text to ChatGPT:", response.statusText);
+  //         }
+  //     } catch (error) {
+  //         console.error("Error submitting text to ChatGPT:", error);
+  //     }
+  // };
   return (
     <div>
       <ReactMic
@@ -59,6 +100,9 @@ function QueryComponent() {
       </button>
       <button onClick={handlePlay} disabled={!blobObject || isPlaying}>
         Play
+      </button>
+      <button onClick={handleSubmit} disabled={!blobObject}>
+        Submit
       </button>
     </div>
   );
