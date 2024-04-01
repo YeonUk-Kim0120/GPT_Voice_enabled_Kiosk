@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function QueryComponent() {
   const [stream, setStream] = useState();
@@ -8,6 +8,7 @@ function QueryComponent() {
   const [analyser, setAnalyser] = useState();
   const [audioUrl, setAudioUrl] = useState();
   const [disabled, setDisabled] = useState(true);
+  const [audioURL, setAudioURL] = useState('');
 
   const onRecAudio = () => {
     setDisabled(true);
@@ -116,7 +117,8 @@ function QueryComponent() {
 
         if (chatResponse.ok) {
           console.log('Text submitted to chatbot successfully!');
-          console.log(response);
+          const data_1 = await chatResponse.json();
+          setAudioURL(data_1.audio_url);
         } else {
           console.error(
             'Error submitting text to chatbot:',
@@ -130,6 +132,29 @@ function QueryComponent() {
       console.error('Error ', error);
     }
   };
+
+  useEffect(() => {
+    fetchAudioURLFromServer(audioURL);
+    if (audioURL) {
+      const audio = new Audio(audioURL);
+      audio.play();
+
+      return () => {
+        audio.pause();
+        audio = null;
+      };
+    }
+  }, [audioURL]);
+
+  async function fetchAudioURLFromServer(audio_url) {
+    try {
+      const response = await fetch(audio_url); // 오디오 URL을 반환하는 서버의 엔드포인트
+      const { url } = await response.json();
+      setAudioURL(url);
+    } catch (error) {
+      console.error('Error fetching audio URL: ', error);
+    }
+  }
 
   return (
     <>
