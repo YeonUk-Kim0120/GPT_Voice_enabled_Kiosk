@@ -80,7 +80,8 @@ function App() {
       <Modal
         isOpen={modal}
         className="pay-card"
-        onRequestClose={() => goToNextPage()}
+        onRequestClose={() => setModal(false)}
+        shouldCloseOnOverlayClick={true}
       >
         <Pay setModal={setModal} method={payMethod} />
       </Modal>

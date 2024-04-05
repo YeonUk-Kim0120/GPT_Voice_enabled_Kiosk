@@ -10,6 +10,7 @@ function Pay({ setModal, method }) {
 
   const closeModal = () => {
     setModal(false);
+    console.log(setModal);
   };
 
   const okModal = () => {

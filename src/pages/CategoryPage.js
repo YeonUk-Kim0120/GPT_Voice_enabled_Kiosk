@@ -14,7 +14,7 @@ function CategoryPage() {
     "안녕하세요!! 붕어방커피에 오신 것을 환영합니다. 주문을 도와드릴까요?"
   );
   const [messages2, setMessages2] = useState(
-    "주문문하신 메뉴가 맞는지 확인해주세요!"
+    "주문하신 메뉴가 맞는지 확인해주세요!"
   );
 
   const navigate = useNavigate();

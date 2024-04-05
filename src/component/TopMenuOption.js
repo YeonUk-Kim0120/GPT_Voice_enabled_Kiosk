@@ -14,11 +14,7 @@ function TopMenuOption({ name, price, count, setCount, img }) {
 
   return (
     <>
-      <img
-        className="pic"
-        src={`${process.env.PUBLIC_URL}/Imgs/${img}`}
-        alt={name}
-      />
+      <img className="pic" src={img} alt={name} />
       <div className="basic-menu">
         <p className="menu-name" id="name">
           {name}
