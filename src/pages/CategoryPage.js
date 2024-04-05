@@ -11,7 +11,7 @@ import { audioLoad } from "../api";
 
 function CategoryPage() {
   const [messages, setMessages] = useState(
-    "안녕녕하세요! 할메가커피에 오신 것을 환영합니다. 주문을 도와드릴까요?"
+    "안녕하세요!! 붕어방커피에 오신 것을 환영합니다. 주문을 도와드릴까요?"
   );
   const [messages2, setMessages2] = useState(
     "주문문하신 메뉴가 맞는지 확인해주세요!"
@@ -195,39 +195,30 @@ function CategoryPage() {
     }
   };
 
-  useEffect(() => {
-    fetchAudioURLFromServer(audioURL);
-    if (audioURL) {
-      const audio = new Audio(audioURL);
-      audio.play();
+  // useEffect(() => {
+  //   fetchAudioURLFromServer(audioURL);
+  //   if (audioURL) {
+  //     const audio = new Audio(audioURL);
+  //     audio.play();
 
-      return () => {
-        audio.pause();
-        audio = null;
-      };
-    }
-  }, [audioURL]);
+  //     return () => {
+  //       audio.pause();
+  //       audio = null;
+  //     };
+  //   }
+  // }, [audioURL]);
 
-  async function fetchAudioURLFromServer(audio_url) {
-    try {
-      const response = await fetch(audio_url); // 오디오 URL을 반환하는 서버의 엔드포인트
-      const { url } = await response.json();
-      setAudioURL(url);
-    } catch (error) {
-      console.error("Error fetching audio URL: ", error);
-    }
-  }
+  // async function fetchAudioURLFromServer(audio_url) {
+  //   try {
+  //     const response = await fetch(audio_url); // 오디오 URL을 반환하는 서버의 엔드포인트
+  //     const { url } = await response.json();
+  //     setAudioURL(url);
+  //   } catch (error) {
+  //     console.error("Error fetching audio URL: ", error);
+  //   }
+  // }
 
   ///////////////////////////////////////////////////////////////
-  async function fetchAudioURLFromServer() {
-    try {
-      const response = await fetch(""); // 오디오 URL을 반환하는 서버의 엔드포인트
-      const { url } = await response.json();
-      setAudioURL(url);
-    } catch (error) {
-      console.error("Error fetching audio URL: ", error);
-    }
-  }
 
   // 총 가격을 계산하는 함수
   const calculateTotalPrice = () => {

@@ -6,7 +6,7 @@ function PayOK() {
   const [orderNum] = useOrder();
 
   return (
-    <Link to="/" id="link">
+    <Link to="/login" id="link">
       <div className="PayOK">
         <img
           src={`${process.env.PUBLIC_URL}/Imgs/logo.png`}
